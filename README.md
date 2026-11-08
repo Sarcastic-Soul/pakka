@@ -5,6 +5,8 @@ Speak an udhaar entry in Hindi or Hinglish. Pakka writes it into the khata, chec
 > "रमेश के खाते में 2 पैकेट Maggi 30 रुपये और एक दूध 28 रुपये"
 > → रमेश वर्मा · उधार · Maggi ₹30, दूध ₹28 · कुल ₹58 → confirm → Timbre: "रमेश वर्मा जी, आज 58 रुपये का सामान खाते में लिखा गया। अब कुल बाकी 226 रुपये है।"
 
+**Live:** https://pakka-nu-puce.vercel.app (tap "Try the demo", no signup) · noise test: https://pakka-nu-puce.vercel.app/proof
+
 Built solo from Raipur for the Gnani AI Great Indian AI Internship Challenge.
 
 ## Why check twice
