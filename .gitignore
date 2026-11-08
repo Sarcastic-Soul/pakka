@@ -21,3 +21,5 @@ npm-debug.log*
 
 # DeepFilterNet binary (scripts/fetch-deep-filter.mjs)
 /bin/
+.env*
+!.env.example
