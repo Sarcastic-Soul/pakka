@@ -1,0 +1,28 @@
+[project]
+name = "shor"
+version = "0.1.0"
+description = "Noise stress-test pipeline for Gnani Prisma on Hindi and Hinglish speech"
+authors = [
+    { name = "Sarcastic-Soul", email = "anishisbusy@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "numpy==2.5.4",
+    "requests==2.34.2",
+]
+
+[project.scripts]
+shor = "shor.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest==9.2.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
