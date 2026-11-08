@@ -1,0 +1,596 @@
+[
+  {
+    "id": "amt_01",
+    "category": "amount",
+    "text": "बैंक से 2,50,000 रुपये का लोन मिला है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "250000",
+        "aliases": []
+      }
+    ],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "amt_02",
+    "category": "amount",
+    "text": "इस महीने की EMI 4,500 रुपये है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "4500",
+        "aliases": []
+      }
+    ],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "amt_03",
+    "category": "amount",
+    "text": "दुकान का बिल 850 रुपये बना है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "850",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "amt_04",
+    "category": "amount",
+    "text": "बच्चे की स्कूल फीस 18,500 रुपये जमा करनी है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "18500",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "amt_05",
+    "category": "amount",
+    "text": "मकान का किराया 7,500 रुपये महीना है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "7500",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "amt_06",
+    "category": "amount",
+    "text": "इस महीने सैलरी 32,000 रुपये आई है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "32000",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "amt_07",
+    "category": "amount",
+    "text": "कार का लोन 7,75,000 रुपये का है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "775000",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "amt_08",
+    "category": "amount",
+    "text": "ऑटो वाले को 120 रुपये दिए",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "120",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "amt_09",
+    "category": "amount",
+    "text": "ज़मीन का सौदा 1,25,00,000 रुपये में तय हुआ",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "12500000",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "amt_10",
+    "category": "amount",
+    "text": "बिजली का बिल 2,340 रुपये आया है",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "2340",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_01",
+    "category": "digits",
+    "text": "मेरा मोबाइल नंबर 9876543210 है",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "9876543210",
+        "aliases": []
+      }
+    ],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "dig_02",
+    "category": "digits",
+    "text": "आपका OTP 482915 है, किसी को मत बताइए",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "482915",
+        "aliases": []
+      }
+    ],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "dig_03",
+    "category": "digits",
+    "text": "मेरा पिन कोड 492001 है",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "492001",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_04",
+    "category": "digits",
+    "text": "इस नंबर पर कॉल कीजिए, 8123456780",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "8123456780",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_05",
+    "category": "digits",
+    "text": "OTP 307561 डालिए और आगे बढ़िए",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "307561",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_06",
+    "category": "digits",
+    "text": "घर का पिन कोड 221001 है",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "221001",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_07",
+    "category": "digits",
+    "text": "मेरे अकाउंट नंबर के आखिरी चार अंक 7316 हैं",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "7316",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_08",
+    "category": "digits",
+    "text": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "7000123456",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_09",
+    "category": "digits",
+    "text": "पार्सल पिन कोड 492013 पर भेज दीजिए",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "492013",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "dig_10",
+    "category": "digits",
+    "text": "आपका वेरिफिकेशन कोड 715204 है",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "715204",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_01",
+    "category": "name",
+    "text": "मैं रायपुर से बोल रही हूँ",
+    "entities": [
+      {
+        "type": "name",
+        "value": "रायपुर",
+        "aliases": [
+          "Raipur"
+        ]
+      }
+    ],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "name_02",
+    "category": "name",
+    "text": "मेरा नाम सुनीता वर्मा है",
+    "entities": [
+      {
+        "type": "name",
+        "value": "सुनीता वर्मा",
+        "aliases": [
+          "Sunita Verma",
+          "सुनिता वर्मा"
+        ]
+      }
+    ],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "name_03",
+    "category": "name",
+    "text": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं",
+    "entities": [
+      {
+        "type": "name",
+        "value": "राकेश साहू",
+        "aliases": [
+          "Rakesh Sahu"
+        ]
+      },
+      {
+        "type": "name",
+        "value": "बिलासपुर",
+        "aliases": [
+          "Bilaspur"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_04",
+    "category": "name",
+    "text": "आप पंडरी बाज़ार आ जाइए",
+    "entities": [
+      {
+        "type": "name",
+        "value": "पंडरी बाज़ार",
+        "aliases": [
+          "Pandri bazaar",
+          "पंडरी बाजार",
+          "Pandri Bazar"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_05",
+    "category": "name",
+    "text": "मेरा घर तेलीबांधा में है",
+    "entities": [
+      {
+        "type": "name",
+        "value": "तेलीबांधा",
+        "aliases": [
+          "Telibandha",
+          "तेलीबान्धा"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_06",
+    "category": "name",
+    "text": "हम अस्सी घाट के पास रहते हैं",
+    "entities": [
+      {
+        "type": "name",
+        "value": "अस्सी घाट",
+        "aliases": [
+          "Assi Ghat",
+          "असी घाट"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_07",
+    "category": "name",
+    "text": "अंजलि तिवारी जी से बात करवाइए",
+    "entities": [
+      {
+        "type": "name",
+        "value": "अंजलि तिवारी",
+        "aliases": [
+          "Anjali Tiwari",
+          "अंजली तिवारी"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_08",
+    "category": "name",
+    "text": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं",
+    "entities": [
+      {
+        "type": "name",
+        "value": "वाराणसी",
+        "aliases": [
+          "Varanasi"
+        ]
+      },
+      {
+        "type": "name",
+        "value": "गोदौलिया",
+        "aliases": [
+          "Godowlia",
+          "गोदोलिया"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_09",
+    "category": "name",
+    "text": "दुर्ग से नया रायपुर की बस कब चलेगी",
+    "entities": [
+      {
+        "type": "name",
+        "value": "दुर्ग",
+        "aliases": [
+          "Durg"
+        ]
+      },
+      {
+        "type": "name",
+        "value": "नया रायपुर",
+        "aliases": [
+          "Naya Raipur",
+          "नवा रायपुर"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "name_10",
+    "category": "name",
+    "text": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा",
+    "entities": [
+      {
+        "type": "name",
+        "value": "भिलाई",
+        "aliases": [
+          "Bhilai"
+        ]
+      },
+      {
+        "type": "name",
+        "value": "लंका",
+        "aliases": [
+          "Lanka"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "mix_01",
+    "category": "mixed",
+    "text": "मेरा account number 50100234567 है, please verify करो",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "50100234567",
+        "aliases": []
+      }
+    ],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "mix_02",
+    "category": "mixed",
+    "text": "Bill की amount 3,200 रुपये है, payment कर दो",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "3200",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "mix_03",
+    "category": "mixed",
+    "text": "आपका OTP 619204 आया होगा, please बताइए",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "619204",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "mix_04",
+    "category": "mixed",
+    "text": "मेरा loan 1,50,000 रुपये का है, EMI कब से start होगी",
+    "entities": [
+      {
+        "type": "amount",
+        "value": "150000",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "mix_05",
+    "category": "mixed",
+    "text": "इस number पर call back करो 9123456789, urgent है",
+    "entities": [
+      {
+        "type": "digits",
+        "value": "9123456789",
+        "aliases": []
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "pln_01",
+    "category": "plain",
+    "text": "आज मौसम बहुत अच्छा है, शाम को बाज़ार चलेंगे",
+    "entities": [],
+    "featured": true,
+    "field": false
+  },
+  {
+    "id": "pln_02",
+    "category": "plain",
+    "text": "मुझे कल सुबह doctor के पास जाना है",
+    "entities": [],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "pln_03",
+    "category": "plain",
+    "text": "बच्चे स्कूल से अभी तक घर नहीं आए हैं",
+    "entities": [],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "pln_04",
+    "category": "plain",
+    "text": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे",
+    "entities": [
+      {
+        "type": "name",
+        "value": "रायपुर",
+        "aliases": [
+          "Raipur"
+        ]
+      }
+    ],
+    "featured": false,
+    "field": false
+  },
+  {
+    "id": "pln_05",
+    "category": "plain",
+    "text": "कृपया थोड़ी देर बाद दोबारा फोन कीजिए",
+    "entities": [],
+    "featured": false,
+    "field": false
+  }
+]
