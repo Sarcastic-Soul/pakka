@@ -1,0 +1,339 @@
+{
+  "generated_at": "2026-11-08T12:00:00Z",
+  "models": [
+    "prisma-v3.0"
+  ],
+  "conditions": [
+    {
+      "id": "clean",
+      "kind": "clean"
+    },
+    {
+      "id": "street_snr20",
+      "kind": "noise",
+      "noise": "street",
+      "snr_db": 20
+    },
+    {
+      "id": "street_snr10",
+      "kind": "noise",
+      "noise": "street",
+      "snr_db": 10
+    },
+    {
+      "id": "street_snr5",
+      "kind": "noise",
+      "noise": "street",
+      "snr_db": 5
+    },
+    {
+      "id": "street_snr0",
+      "kind": "noise",
+      "noise": "street",
+      "snr_db": 0
+    },
+    {
+      "id": "fan_snr10",
+      "kind": "noise",
+      "noise": "fan",
+      "snr_db": 10
+    },
+    {
+      "id": "g711",
+      "kind": "codec",
+      "codec": "g711"
+    }
+  ],
+  "clips": [
+    {
+      "id": "amt_01",
+      "category": "amount",
+      "text": "कुल 2,50,000 रुपये चाहिए",
+      "audio_base": "/audio/amt_01"
+    },
+    {
+      "id": "dig_01",
+      "category": "digits",
+      "text": "मेरा नंबर 9876543210 है",
+      "audio_base": "/audio/dig_01"
+    },
+    {
+      "id": "nam_01",
+      "category": "name",
+      "text": "मेरा नाम राहुल शर्मा है",
+      "audio_base": null
+    }
+  ],
+  "results": [
+    {
+      "clip": "amt_01",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr20",
+      "model": "prisma-v3.0",
+      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "कुल 2,50,00 रुपये चाहिए",
+      "entity_ok": false,
+      "wer": 0.25,
+      "cer": 0.0417,
+      "delta_wer": 0.25
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1,
+      "cer": 1,
+      "delta_wer": 1
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "dig_01",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नंबर 9876543210 है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr20",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नंबर 9876543210 है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नंबर 9876543219 है",
+      "entity_ok": false,
+      "wer": 0.25,
+      "cer": 0.0435,
+      "delta_wer": 0.25
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नंबर 98765 है",
+      "entity_ok": false,
+      "wer": 0.25,
+      "cer": 0.2174,
+      "delta_wer": 0.25
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा है",
+      "entity_ok": false,
+      "wer": 0.5,
+      "cer": 0.6957,
+      "delta_wer": 0.5
+    },
+    {
+      "clip": "dig_01",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नंबर 9876543210 है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "nam_01",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम राहुल शर्मा है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "nam_01",
+      "condition": "street_snr20",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम राहुल शर्मा है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "nam_01",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम राहुल शर्मा है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "nam_01",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम राहुल शरमा है",
+      "entity_ok": false,
+      "wer": 0.2,
+      "cer": 0.0435,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "nam_01",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम है",
+      "entity_ok": false,
+      "wer": 0.4,
+      "cer": 0.5217,
+      "delta_wer": 0.4
+    },
+    {
+      "clip": "nam_01",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम राहुल शर्मा है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    },
+    {
+      "clip": "nam_01",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम राहुल शर्मा है",
+      "entity_ok": true,
+      "wer": 0,
+      "cer": 0,
+      "delta_wer": 0
+    }
+  ],
+  "aggregates": [
+    {
+      "model": "prisma-v3.0",
+      "condition": "clean",
+      "entity_accuracy": 1,
+      "wer": 0,
+      "delta_wer": 0,
+      "n": 3
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "street_snr20",
+      "entity_accuracy": 1,
+      "wer": 0,
+      "delta_wer": 0,
+      "n": 3
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "street_snr10",
+      "entity_accuracy": 0.6667,
+      "wer": 0.0833,
+      "delta_wer": 0.0833,
+      "n": 3
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "street_snr5",
+      "entity_accuracy": 0,
+      "wer": 0.2333,
+      "delta_wer": 0.2333,
+      "n": 3
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "street_snr0",
+      "entity_accuracy": 0,
+      "wer": 0.6333,
+      "delta_wer": 0.6333,
+      "n": 3
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "fan_snr10",
+      "entity_accuracy": 1,
+      "wer": 0,
+      "delta_wer": 0,
+      "n": 2
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "g711",
+      "entity_accuracy": 1,
+      "wer": 0,
+      "delta_wer": 0,
+      "n": 3
+    }
+  ],
+  "breakpoints": [
+    {
+      "model": "prisma-v3.0",
+      "noise": "street",
+      "snr_db": 17
+    },
+    {
+      "model": "prisma-v3.0",
+      "noise": "fan",
+      "snr_db": null
+    }
+  ]
+}
