@@ -49,6 +49,12 @@ input[type="radio"] {
   accent-color: var(--ink);
 }
 
+/* Pakka app screens: larger base text for older eyes on small phones. */
+.khata-app {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 .settle {
   animation: settle 180ms ease-out;
 }

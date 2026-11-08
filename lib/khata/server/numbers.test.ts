@@ -1,0 +1,55 @@
+import { describe, expect, it } from "vitest";
+import { extractNumbers, numbersIn, parseSpokenNumbers } from "./numbers";
+
+describe("extractNumbers", () => {
+  it("drops Indian grouping commas", () => {
+    expect(extractNumbers("2,50,000 रुपये")).toEqual(["250000"]);
+  });
+  it("drops Western grouping commas", () => {
+    expect(extractNumbers("1,234,567")).toEqual(["1234567"]);
+  });
+  it("keeps list commas as separators", () => {
+    expect(extractNumbers("1, 2 और 12,3456")).toEqual(["1", "2", "12", "3456"]);
+  });
+  it("maps Devanagari digits to ASCII", () => {
+    expect(extractNumbers("₹२४० दिए")).toEqual(["240"]);
+  });
+});
+
+describe("parseSpokenNumbers", () => {
+  it("reads Hindi hundreds", () => {
+    expect(parseSpokenNumbers("दो सौ चालीस")).toEqual([240]);
+  });
+  it("mixes digits with scale words", () => {
+    expect(parseSpokenNumbers("1 करोड़ 25 लाख")).toEqual([12500000]);
+    expect(parseSpokenNumbers("2 लाख 50 हज़ार")).toEqual([250000]);
+  });
+  it("ignores nukta differences", () => {
+    expect(parseSpokenNumbers("तीन हजार")).toEqual([3000]);
+    expect(parseSpokenNumbers("अडतालीस")).toEqual([48]);
+  });
+  it("reads English words", () => {
+    expect(parseSpokenNumbers("two hundred and forty five rupees")).toEqual([245]);
+    expect(parseSpokenNumbers("twenty five")).toEqual([25]);
+  });
+  it("splits repeated scales into separate numbers", () => {
+    expect(parseSpokenNumbers("दो लाख तीन लाख")).toEqual([200000, 300000]);
+  });
+  it("leaves bare digits to extractNumbers", () => {
+    expect(parseSpokenNumbers("240 रुपये")).toEqual([]);
+  });
+  it("splits Hindi number words that cannot combine", () => {
+    expect(parseSpokenNumbers("बीस पाँच")).toEqual([20, 5]);
+  });
+});
+
+describe("numbersIn", () => {
+  it("unions digits and words", () => {
+    expect([...numbersIn("2,50,000 रुपये")]).toEqual([250000]);
+    const s = numbersIn("2 Maggi 30 रुपये और एक दूध अट्ठाईस");
+    expect(s).toEqual(new Set([2, 30, 1, 28]));
+  });
+  it("is empty for no numbers", () => {
+    expect(numbersIn("रमेश जी").size).toBe(0);
+  });
+});

@@ -29,9 +29,9 @@ const deva = Noto_Sans_Devanagari({
 });
 
 export const metadata: Metadata = {
-  title: "Shor Meter",
+  title: "Pakka · पक्का",
   description:
-    "How much phone-line noise Gnani Prisma can take before amounts, phone numbers and names come out wrong.",
+    "Udhaar you can trust. Speak a credit entry in Hindi; every amount is heard twice, checked by you, then saved and read out to the customer.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
