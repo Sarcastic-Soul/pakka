@@ -81,17 +81,19 @@ class FakeClient:
 CLEAN = [condition_by_id("clean")]
 
 
-def test_conditions_are_the_eleven_ids():
+def test_conditions_are_the_thirteen_ids():
     assert [c.id for c in CONDITIONS] == [
         "clean",
-        "street_snr20",
         "street_snr10",
         "street_snr5",
         "street_snr0",
-        "fan_snr20",
+        "street_snr-5",
+        "street_snr-10",
         "fan_snr10",
         "fan_snr5",
         "fan_snr0",
+        "fan_snr-5",
+        "fan_snr-10",
         "g711",
         "amr_nb",
     ]
@@ -268,8 +270,16 @@ def test_export_web_audio_featured_only(tmp_path):
     (work / "g711").mkdir(parents=True)
     write_wav(work / "g711" / "c0.wav")
     out = tmp_path / "audio"
-    export_web_audio(clips, [condition_by_id("clean"), condition_by_id("g711"),
-                             condition_by_id("fan_snr0")], work, out)
+    export_web_audio(
+        clips,
+        [
+            condition_by_id("clean"),
+            condition_by_id("g711"),
+            condition_by_id("fan_snr0"),
+        ],
+        work,
+        out,
+    )
     assert sorted(p.relative_to(out).as_posix() for p in out.rglob("*.mp3")) == [
         "c0/clean.mp3",
         "c0/g711.mp3",
@@ -297,13 +307,26 @@ def test_cli_score_writes_results_offline(tmp_path, monkeypatch):
     from shor import cli
 
     corpus = tmp_path / "corpus.json"
-    corpus.write_text(json.dumps([{
-        "id": "amt_01", "category": "amount", "text": "कुल 500 रुपये",
-        "entities": [{"type": "amount", "value": "500", "aliases": []}],
-        "featured": False, "field": False,
-    }], ensure_ascii=False), encoding="utf-8")
+    corpus.write_text(
+        json.dumps(
+            [
+                {
+                    "id": "amt_01",
+                    "category": "amount",
+                    "text": "कुल 500 रुपये",
+                    "entities": [{"type": "amount", "value": "500", "aliases": []}],
+                    "featured": False,
+                    "field": False,
+                }
+            ],
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
     work = tmp_path / "work"
-    save_raw(work / "raw-m.json", [RawResult("amt_01", "clean", "m", "कुल 500 रुपये", None)])
+    save_raw(
+        work / "raw-m.json", [RawResult("amt_01", "clean", "m", "कुल 500 रुपये", None)]
+    )
     monkeypatch.setattr(cli, "CORPUS", corpus)
     monkeypatch.setattr(cli, "WORK", work)
     out = tmp_path / "results.json"

@@ -24,7 +24,7 @@ class Condition:
 
 
 NOISES = ("street", "fan")
-SNRS = (20, 10, 5, 0)
+SNRS = (10, 5, 0, -5, -10)
 
 CONDITIONS: list[Condition] = [
     Condition("clean", "clean"),

@@ -550,7 +550,7 @@
     "category": "plain",
     "text": "आज मौसम बहुत अच्छा है, शाम को बाज़ार चलेंगे",
     "entities": [],
-    "featured": true,
+    "featured": false,
     "field": false
   },
   {
@@ -582,7 +582,7 @@
         ]
       }
     ],
-    "featured": false,
+    "featured": true,
     "field": false
   },
   {

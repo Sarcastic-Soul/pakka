@@ -134,6 +134,59 @@ def cmd_score(args) -> None:
     )
 
 
+def cmd_denoise_run(args) -> None:
+    """Clean every noisy (and clean) clip with one method, then send it to Prisma.
+    Rows are saved under the model label `<model>+<method>`."""
+    from .denoise import check_tools, cleaned_copy
+    from .gnani import GnaniError, OutOfCredit
+    from .grid import RawResult, _audio_for
+
+    check_tools(args.method)
+    clips = [c for c in _recorded(load_corpus(CORPUS, CLIPS)) if not c.field]
+    conds = [c for c in _usable(CONDITIONS) if c.kind in ("clean", "noise")]
+    if args.only:
+        conds = [c for c in conds if c.id in args.only]
+        clips = [c for c in clips if not args.clips or c.id in args.clips]
+    client = _client(args.model)
+    label = f"{args.model}+{args.method}"
+    path = _raw_path(label)
+    done = {(r.clip_id, r.condition_id) for r in load_raw(path) if r.error is None}
+    new_calls = 0
+    for cond in conds:
+        for clip in clips:
+            if (clip.id, cond.id) in done:
+                continue
+            if args.max_new_calls is not None and new_calls >= args.max_new_calls:
+                print(f"new-call budget of {args.max_new_calls} spent")
+                return
+            tag = f"{clip.id} {cond.id} {args.method}"
+            try:
+                noisy = _audio_for(clip, cond, NOISE, WORK)
+                audio = cleaned_copy(noisy, args.method, WORK, cond.id, clip.id)
+            except Exception as exc:  # noqa: BLE001 - one bad file must not stop the run
+                print(f"{tag}: could not prepare audio ({type(exc).__name__})")
+                save_raw(
+                    path, [RawResult(clip.id, cond.id, label, "", f"audio: {exc}")]
+                )
+                continue
+            try:
+                t = client.transcribe(audio, language_code="hi-IN", fmt="transcribe")
+            except OutOfCredit as exc:
+                print(f"{tag}: {exc}. Stopping; finished calls are kept.")
+                return
+            except GnaniError as exc:
+                print(f"{tag}: {exc}")
+                save_raw(path, [RawResult(clip.id, cond.id, label, "", str(exc))])
+                continue
+            if not t.cached:
+                new_calls += 1
+            save_raw(path, [RawResult(clip.id, cond.id, label, t.transcript, None)])
+            print(
+                f"{tag} {'[cache]' if t.cached else '[new]'} {t.transcript}", flush=True
+            )
+    print(f"done; {new_calls} new calls; saved to {path}")
+
+
 def cmd_export_audio(args) -> None:
     export_web_audio(load_corpus(CORPUS, CLIPS), CONDITIONS, WORK, AUDIO)
     export_noise(NOISE, NOISE_OUT)
@@ -144,6 +197,12 @@ def cmd_record(args) -> None:
     from .record import record_missing
 
     record_missing(CORPUS, CLIPS)
+
+
+def cmd_record_noise(args) -> None:
+    from .record_noise import record_noise
+
+    record_noise(args.name, NOISE, args.seconds)
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -165,11 +224,26 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--out", type=Path, default=RESULTS)
     p.set_defaults(func=cmd_score)
 
+    p = sub.add_parser(
+        "denoise-run", help="clean noisy clips, then send them to Prisma"
+    )
+    p.add_argument("method", choices=["rnnoise", "deepfilter"])
+    p.add_argument("--model", default=DEFAULT_MODEL)
+    p.add_argument("--max-new-calls", type=int, default=None)
+    p.add_argument("--only", nargs="*", help="condition ids to run")
+    p.add_argument("--clips", nargs="*", help="clip ids to run (with --only)")
+    p.set_defaults(func=cmd_denoise_run)
+
     p = sub.add_parser("export-audio", help="MP3s of featured clips and noise beds")
     p.set_defaults(func=cmd_export_audio)
 
     p = sub.add_parser("record", help="record clips that have no wav yet")
     p.set_defaults(func=cmd_record)
+
+    p = sub.add_parser("record-noise", help="record a noise bed, e.g. the ceiling fan")
+    p.add_argument("name", choices=["fan", "street"])
+    p.add_argument("--seconds", type=int, default=60)
+    p.set_defaults(func=cmd_record_noise)
 
     args = parser.parse_args(argv)
     args.func(args)

@@ -6,7 +6,7 @@ import DiffView from "@/components/DiffView";
 import { findResult } from "@/lib/results";
 import type { Condition, ResultsFile } from "@/lib/types";
 
-const SNR_STOPS = [20, 10, 5, 0];
+const SNR_STOPS = [10, 5, 0, -5, -10];
 const LINE_WIDEBAND = "wideband";
 
 type Stop = { label: string; valueText: string; condition?: Condition };

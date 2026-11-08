@@ -3,6 +3,7 @@
 !.env.example
 pipeline/.cache/
 pipeline/.work/
+pipeline/.tools/
 pipeline/.venv/
 __pycache__/
 .pytest_cache/

@@ -8,6 +8,8 @@ export type Clip = {
   category: string;
   text: string;
   audio_base: string | null;
+  /** False when the clip has no key word; it then counts only if every word is right. */
+  has_entity: boolean;
 };
 
 export type ResultRow = {

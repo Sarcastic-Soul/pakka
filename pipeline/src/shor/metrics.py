@@ -1,7 +1,5 @@
 from collections.abc import Sequence
 
-from .normalize import normalize_text
-
 
 def _edit_distance(a: Sequence, b: Sequence) -> int:
     prev = list(range(len(b) + 1))
@@ -20,8 +18,12 @@ def _rate(ref: Sequence, hyp: Sequence) -> float:
 
 
 def wer(ref: str, hyp: str) -> float:
-    return _rate(normalize_text(ref).split(), normalize_text(hyp).split())
+    from .lexicon import canonical_tokens
+
+    return _rate(canonical_tokens(ref), canonical_tokens(hyp))
 
 
 def cer(ref: str, hyp: str) -> float:
-    return _rate(normalize_text(ref), normalize_text(hyp))
+    from .lexicon import canonical_tokens
+
+    return _rate(" ".join(canonical_tokens(ref)), " ".join(canonical_tokens(hyp)))

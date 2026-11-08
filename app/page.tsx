@@ -38,7 +38,7 @@ export default function Home() {
   const model = data.models[0] ?? "";
   const clean = cleanStat(data, model);
   const street0 = data.aggregates.find(
-    (a) => a.model === model && a.condition === "street_snr0",
+    (a) => a.model === model && a.condition === "street_snr-5",
   );
   const streetBreak = data.breakpoints.find(
     (b) => b.model === model && b.noise === "street",
@@ -49,7 +49,7 @@ export default function Home() {
   const stats = [
     { label: "Entity accuracy, clean", value: pct(clean?.entityAccuracy), bad: false },
     {
-      label: "Entity accuracy, street noise at 0 dB",
+      label: "Entity accuracy, street noise at -5 dB",
       value: pct(street0?.entity_accuracy),
       bad: street0 !== undefined && street0.entity_accuracy < 0.9,
     },

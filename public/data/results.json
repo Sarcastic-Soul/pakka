@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T12:00:00Z",
+  "generated_at": "2026-11-08T19:07:18Z",
   "models": [
     "prisma-v3.0"
   ],
@@ -7,12 +7,6 @@
     {
       "id": "clean",
       "kind": "clean"
-    },
-    {
-      "id": "street_snr20",
-      "kind": "noise",
-      "noise": "street",
-      "snr_db": 20
     },
     {
       "id": "street_snr10",
@@ -33,35 +27,338 @@
       "snr_db": 0
     },
     {
+      "id": "street_snr-5",
+      "kind": "noise",
+      "noise": "street",
+      "snr_db": -5
+    },
+    {
+      "id": "street_snr-10",
+      "kind": "noise",
+      "noise": "street",
+      "snr_db": -10
+    },
+    {
       "id": "fan_snr10",
       "kind": "noise",
       "noise": "fan",
       "snr_db": 10
     },
     {
+      "id": "fan_snr5",
+      "kind": "noise",
+      "noise": "fan",
+      "snr_db": 5
+    },
+    {
+      "id": "fan_snr0",
+      "kind": "noise",
+      "noise": "fan",
+      "snr_db": 0
+    },
+    {
+      "id": "fan_snr-5",
+      "kind": "noise",
+      "noise": "fan",
+      "snr_db": -5
+    },
+    {
+      "id": "fan_snr-10",
+      "kind": "noise",
+      "noise": "fan",
+      "snr_db": -10
+    },
+    {
       "id": "g711",
       "kind": "codec",
       "codec": "g711"
+    },
+    {
+      "id": "amr_nb",
+      "kind": "codec",
+      "codec": "amr_nb"
     }
   ],
   "clips": [
     {
       "id": "amt_01",
       "category": "amount",
-      "text": "कुल 2,50,000 रुपये चाहिए",
-      "audio_base": "/audio/amt_01"
+      "text": "बैंक से 2,50,000 रुपये का लोन मिला है",
+      "audio_base": "/audio/amt_01",
+      "has_entity": true
+    },
+    {
+      "id": "amt_02",
+      "category": "amount",
+      "text": "इस महीने की EMI 4,500 रुपये है",
+      "audio_base": "/audio/amt_02",
+      "has_entity": true
+    },
+    {
+      "id": "amt_03",
+      "category": "amount",
+      "text": "दुकान का बिल 850 रुपये बना है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "amt_04",
+      "category": "amount",
+      "text": "बच्चे की स्कूल फीस 18,500 रुपये जमा करनी है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "amt_05",
+      "category": "amount",
+      "text": "मकान का किराया 7,500 रुपये महीना है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "amt_06",
+      "category": "amount",
+      "text": "इस महीने सैलरी 32,000 रुपये आई है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "amt_07",
+      "category": "amount",
+      "text": "कार का लोन 7,75,000 रुपये का है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "amt_08",
+      "category": "amount",
+      "text": "ऑटो वाले को 120 रुपये दिए",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "amt_09",
+      "category": "amount",
+      "text": "ज़मीन का सौदा 1,25,00,000 रुपये में तय हुआ",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "amt_10",
+      "category": "amount",
+      "text": "बिजली का बिल 2,340 रुपये आया है",
+      "audio_base": null,
+      "has_entity": true
     },
     {
       "id": "dig_01",
       "category": "digits",
-      "text": "मेरा नंबर 9876543210 है",
-      "audio_base": "/audio/dig_01"
+      "text": "मेरा मोबाइल नंबर 9876543210 है",
+      "audio_base": "/audio/dig_01",
+      "has_entity": true
     },
     {
-      "id": "nam_01",
+      "id": "dig_02",
+      "category": "digits",
+      "text": "आपका OTP 482915 है, किसी को मत बताइए",
+      "audio_base": "/audio/dig_02",
+      "has_entity": true
+    },
+    {
+      "id": "dig_03",
+      "category": "digits",
+      "text": "मेरा पिन कोड 492001 है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "dig_04",
+      "category": "digits",
+      "text": "इस नंबर पर कॉल कीजिए, 8123456780",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "dig_05",
+      "category": "digits",
+      "text": "OTP 307561 डालिए और आगे बढ़िए",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "dig_06",
+      "category": "digits",
+      "text": "घर का पिन कोड 221001 है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "dig_07",
+      "category": "digits",
+      "text": "मेरे अकाउंट नंबर के आखिरी चार अंक 7316 हैं",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "dig_08",
+      "category": "digits",
+      "text": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "dig_09",
+      "category": "digits",
+      "text": "पार्सल पिन कोड 492013 पर भेज दीजिए",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "dig_10",
+      "category": "digits",
+      "text": "आपका वेरिफिकेशन कोड 715204 है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_01",
       "category": "name",
-      "text": "मेरा नाम राहुल शर्मा है",
-      "audio_base": null
+      "text": "मैं रायपुर से बोल रही हूँ",
+      "audio_base": "/audio/name_01",
+      "has_entity": true
+    },
+    {
+      "id": "name_02",
+      "category": "name",
+      "text": "मेरा नाम सुनीता वर्मा है",
+      "audio_base": "/audio/name_02",
+      "has_entity": true
+    },
+    {
+      "id": "name_03",
+      "category": "name",
+      "text": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_04",
+      "category": "name",
+      "text": "आप पंडरी बाज़ार आ जाइए",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_05",
+      "category": "name",
+      "text": "मेरा घर तेलीबांधा में है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_06",
+      "category": "name",
+      "text": "हम अस्सी घाट के पास रहते हैं",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_07",
+      "category": "name",
+      "text": "अंजलि तिवारी जी से बात करवाइए",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_08",
+      "category": "name",
+      "text": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_09",
+      "category": "name",
+      "text": "दुर्ग से नया रायपुर की बस कब चलेगी",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "name_10",
+      "category": "name",
+      "text": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "mix_01",
+      "category": "mixed",
+      "text": "मेरा account number 50100234567 है, please verify करो",
+      "audio_base": "/audio/mix_01",
+      "has_entity": true
+    },
+    {
+      "id": "mix_02",
+      "category": "mixed",
+      "text": "Bill की amount 3,200 रुपये है, payment कर दो",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "mix_03",
+      "category": "mixed",
+      "text": "आपका OTP 619204 आया होगा, please बताइए",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "mix_04",
+      "category": "mixed",
+      "text": "मेरा loan 1,50,000 रुपये का है, EMI कब से start होगी",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "mix_05",
+      "category": "mixed",
+      "text": "इस number पर call back करो 9123456789, urgent है",
+      "audio_base": null,
+      "has_entity": true
+    },
+    {
+      "id": "pln_01",
+      "category": "plain",
+      "text": "आज मौसम बहुत अच्छा है, शाम को बाज़ार चलेंगे",
+      "audio_base": null,
+      "has_entity": false
+    },
+    {
+      "id": "pln_02",
+      "category": "plain",
+      "text": "मुझे कल सुबह doctor के पास जाना है",
+      "audio_base": null,
+      "has_entity": false
+    },
+    {
+      "id": "pln_03",
+      "category": "plain",
+      "text": "बच्चे स्कूल से अभी तक घर नहीं आए हैं",
+      "audio_base": null,
+      "has_entity": false
+    },
+    {
+      "id": "pln_04",
+      "category": "plain",
+      "text": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे",
+      "audio_base": "/audio/pln_04",
+      "has_entity": true
+    },
+    {
+      "id": "pln_05",
+      "category": "plain",
+      "text": "कृपया थोड़ी देर बाद दोबारा फोन कीजिए",
+      "audio_base": null,
+      "has_entity": false
     }
   ],
   "results": [
@@ -69,271 +366,5319 @@
       "clip": "amt_01",
       "condition": "clean",
       "model": "prisma-v3.0",
-      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
-    },
-    {
-      "clip": "amt_01",
-      "condition": "street_snr20",
-      "model": "prisma-v3.0",
-      "transcript": "कुल 2,50,000 रुपये चाहिए",
-      "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
       "clip": "amt_01",
       "condition": "street_snr10",
       "model": "prisma-v3.0",
-      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "दुकान का bill 850 रुपए बना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "दुकान का bill 850 रुपए बना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "दुकान का bill 850 रुपये बनाइए।",
+      "entity_ok": true,
+      "wer": 0.2857,
+      "cer": 0.1,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "amt_04",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा कर।",
+      "entity_ok": true,
+      "wer": 0.2222,
+      "cer": 0.1136,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_05",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
       "clip": "amt_01",
       "condition": "street_snr5",
       "model": "prisma-v3.0",
-      "transcript": "कुल 2,50,00 रुपये चाहिए",
-      "entity_ok": false,
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "बैंक से 2,50,000 रुपये का loan।",
+      "entity_ok": true,
       "wer": 0.25,
-      "cer": 0.0417,
+      "cer": 0.2222,
       "delta_wer": 0.25
     },
     {
       "clip": "amt_01",
-      "condition": "street_snr0",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "bank से।",
+      "entity_ok": false,
+      "wer": 0.75,
+      "cer": 0.8056,
+      "delta_wer": 0.75
+    },
+    {
+      "clip": "amt_01",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपए है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr-10",
       "model": "prisma-v3.0",
       "transcript": "",
       "entity_ok": false,
-      "wer": 1,
-      "cer": 1,
-      "delta_wer": 1
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
     },
     {
-      "clip": "amt_01",
-      "condition": "fan_snr10",
-      "model": "prisma-v3.0",
-      "transcript": "कुल 2,50,000 रुपये चाहिए",
-      "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
-    },
-    {
-      "clip": "amt_01",
+      "clip": "amt_02",
       "condition": "g711",
       "model": "prisma-v3.0",
-      "transcript": "कुल 2,50,000 रुपये चाहिए",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "दुकान का bill 850 रुपये बना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "पान का बिल 850 रुपये बन गया।",
+      "entity_ok": true,
+      "wer": 0.4286,
+      "cer": 0.2333,
+      "delta_wer": 0.4286
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "दुकान का bill 850 रुपए बना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "दुकान का bill 850 रुपए बना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये।",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.2727,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees।",
+      "entity_ok": false,
+      "wer": 0.5556,
+      "cer": 0.5455,
+      "delta_wer": 0.5556
+    },
+    {
+      "clip": "amt_04",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "कार का किराया 7500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.2857,
+      "cer": 0.2353,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "amt_05",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32000 रुपए आई है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32,000 रुपए आई है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32,000 रुपए आई है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32000 रुपए आई है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32000 है, मान लीजिए।",
+      "entity_ok": true,
+      "wer": 0.4286,
+      "cer": 0.3333,
+      "delta_wer": 0.4286
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "732000",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 0.8485,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32000 रुपए आई है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32,000 रुपए आई है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "कार का loan 7,75,000 रूपए का है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "कार का loan 7,75,000 रूपए का है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "कार का loan 7,75,000 रूपए का है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "कार का loan 7,75,000 रुपये का है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "कार का loan 7,75,000।",
+      "entity_ok": true,
+      "wer": 0.4286,
+      "cer": 0.4,
+      "delta_wer": 0.4286
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "कार का loan 7,75,000 रुपये का है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "कार का loan 7,75,000 रूपए का है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "ऑटो वाले को 120 रुपए दिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "ऑटो वाले को 120 रुपए दिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "ऑटो वाले को 120 रुपए दिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "ऑटो वाले को 120 रुपए दिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "टो वाले को 120 रुपये मिले।",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.2692,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "एक 120 रुपए है।",
+      "entity_ok": true,
+      "wer": 0.6667,
+      "cer": 0.5385,
+      "delta_wer": 0.6667
+    },
+    {
+      "clip": "amt_08",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "auto वाले को 120 रुपए दिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "ऑटो वाले को 120 रुपए दिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_09",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 135 लाख रुपए में तय हुआ।",
+      "entity_ok": false,
+      "wer": 0.25,
+      "cer": 0.1579,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपये में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1 करोड़पति साहब के घर में हुआ।",
+      "entity_ok": false,
+      "wer": 0.75,
+      "cer": 0.5263,
+      "delta_wer": 0.6667
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपये में हुआ।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0789,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "amt_09",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_09",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_10",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपए आया है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपए आया है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपए आया है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपये आया है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपये आ रहा है।",
+      "entity_ok": true,
+      "wer": 0.2857,
+      "cer": 0.0968,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "क्या bill 2020 का भुगतान होगा?",
+      "entity_ok": false,
+      "wer": 0.8571,
+      "cer": 0.6774,
+      "delta_wer": 0.8571
+    },
+    {
+      "clip": "amt_10",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपये आया है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपये आया है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
       "clip": "dig_01",
       "condition": "clean",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नंबर 9876543210 है",
+      "transcript": "मेरा mobile number 9876543210 है।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
-    },
-    {
-      "clip": "dig_01",
-      "condition": "street_snr20",
-      "model": "prisma-v3.0",
-      "transcript": "मेरा नंबर 9876543210 है",
-      "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
       "clip": "dig_01",
       "condition": "street_snr10",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नंबर 9876543219 है",
+      "transcript": "मेरा mobile number 9876543910 है।",
       "entity_ok": false,
-      "wer": 0.25,
-      "cer": 0.0435,
-      "delta_wer": 0.25
+      "wer": 0.2,
+      "cer": 0.0312,
+      "delta_wer": 0.2
     },
     {
       "clip": "dig_01",
       "condition": "street_snr5",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नंबर 98765 है",
-      "entity_ok": false,
-      "wer": 0.25,
-      "cer": 0.2174,
-      "delta_wer": 0.25
+      "transcript": "मेरा mobile number 9876543210 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
       "clip": "dig_01",
       "condition": "street_snr0",
       "model": "prisma-v3.0",
-      "transcript": "मेरा है",
+      "transcript": "मेरा mobile number 987254121 है।",
       "entity_ok": false,
-      "wer": 0.5,
-      "cer": 0.6957,
-      "delta_wer": 0.5
+      "wer": 0.2,
+      "cer": 0.0938,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा mobile number 987।",
+      "entity_ok": false,
+      "wer": 0.4,
+      "cer": 0.3125,
+      "delta_wer": 0.4
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
     },
     {
       "clip": "dig_01",
       "condition": "g711",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नंबर 9876543210 है",
+      "transcript": "मेरा मोबाइल नंबर 9876543210 है।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
-      "clip": "nam_01",
+      "clip": "dig_01",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा मोबाइल नंबर 9876543210 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_02",
       "condition": "clean",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नाम राहुल शर्मा है",
+      "transcript": "आपका OTP 482915 है, किसी को मत बताइए।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
-      "clip": "nam_01",
-      "condition": "street_snr20",
-      "model": "prisma-v3.0",
-      "transcript": "मेरा नाम राहुल शर्मा है",
-      "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
-    },
-    {
-      "clip": "nam_01",
+      "clip": "dig_02",
       "condition": "street_snr10",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नाम राहुल शर्मा है",
+      "transcript": "आपका OTP 482915 है, किसी को मत बताइए।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
     },
     {
-      "clip": "nam_01",
+      "clip": "dig_02",
       "condition": "street_snr5",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नाम राहुल शरमा है",
+      "transcript": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "आपका OTP 489915 है, किसी को मत बताइए।",
+      "entity_ok": false,
+      "wer": 0.125,
+      "cer": 0.0286,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 4829।",
+      "entity_ok": false,
+      "wer": 0.875,
+      "cer": 0.6857,
+      "delta_wer": 0.875
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "4 OTP 48",
+      "entity_ok": false,
+      "wer": 0.875,
+      "cer": 0.8,
+      "delta_wer": 0.875
+    },
+    {
+      "clip": "dig_02",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_02",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा pin code 492001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा pin code 492001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा pin code 492001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा pin code 492031 है।",
       "entity_ok": false,
       "wer": 0.2,
       "cer": 0.0435,
       "delta_wer": 0.2
     },
     {
-      "clip": "nam_01",
-      "condition": "street_snr0",
+      "clip": "dig_03",
+      "condition": "street_snr-5",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नाम है",
+      "transcript": "मेरा pin code 492।",
       "entity_ok": false,
       "wer": 0.4,
-      "cer": 0.5217,
+      "cer": 0.2609,
       "delta_wer": 0.4
     },
     {
-      "clip": "nam_01",
-      "condition": "fan_snr10",
+      "clip": "dig_03",
+      "condition": "street_snr-10",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नाम राहुल शर्मा है",
-      "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "transcript": "249",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 0.913,
+      "delta_wer": 1.0
     },
     {
-      "clip": "nam_01",
+      "clip": "dig_03",
       "condition": "g711",
       "model": "prisma-v3.0",
-      "transcript": "मेरा नाम राहुल शर्मा है",
+      "transcript": "मेरा pin code 492001 है।",
       "entity_ok": true,
-      "wer": 0,
-      "cer": 0,
-      "delta_wer": 0
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा pin code 492001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 8123456। 780",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.0294,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 8123456। 780",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.0294,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 8123456। 780",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.0294,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए: 8123452। 780",
+      "entity_ok": false,
+      "wer": 0.3333,
+      "cer": 0.0588,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 81214। 7802",
+      "entity_ok": false,
+      "wer": 0.3333,
+      "cer": 0.1176,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 81।",
+      "entity_ok": false,
+      "wer": 0.1667,
+      "cer": 0.2353,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "dig_04",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 8123456। 780",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.0294,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 8123456। 780",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.0294,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_05",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "PP 307561 डालिए और आगे बढ़िए।",
+      "entity_ok": true,
+      "wer": 0.1667,
+      "cer": 0.0714,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "OTP 307561 डालिए और आगे बढ़िए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.1667
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "OTP 307561 डालिए और आगे बढ़िए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.1667
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "OTP 30756140 और 822।",
+      "entity_ok": false,
+      "wer": 0.6667,
+      "cer": 0.5,
+      "delta_wer": 0.8333
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "OTP 30756141।",
+      "entity_ok": false,
+      "wer": 0.8333,
+      "cer": 0.6429,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_05",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "TP 307561 डालिए और आगे बढ़िए।",
+      "entity_ok": true,
+      "wer": 0.1667,
+      "cer": 0.0357,
+      "delta_wer": 0.1667
+    },
+    {
+      "clip": "dig_05",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "OTP 307561 डालिए और आगे बढ़िए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.1667
+    },
+    {
+      "clip": "dig_06",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221002।",
+      "entity_ok": false,
+      "wer": 0.3333,
+      "cer": 0.1667,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 2210।",
+      "entity_ok": false,
+      "wer": 0.3333,
+      "cer": 0.2083,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "dig_06",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_07",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे account number के आख़िर 4 अंक 7316 हैं।",
+      "entity_ok": true,
+      "wer": 0.2222,
+      "cer": 0.0889,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे account number के आख़िर 4 अंक 7316 हैं।",
+      "entity_ok": true,
+      "wer": 0.2222,
+      "cer": 0.0889,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे account number के आख़िर 4 अंक 7312 हैं।",
+      "entity_ok": false,
+      "wer": 0.3333,
+      "cer": 0.1111,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे account number के आख़िर 4 अंक 73।",
+      "entity_ok": false,
+      "wer": 0.4444,
+      "cer": 0.2222,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे account number के आख़िर 4 अंक 72।",
+      "entity_ok": false,
+      "wer": 0.4444,
+      "cer": 0.2444,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_07",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे account number के आख़िर 4 अंक 7316 हैं।",
+      "entity_ok": true,
+      "wer": 0.2222,
+      "cer": 0.0889,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_07",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे account number के आख़िर 4 अंक 7316 हैं।",
+      "entity_ok": true,
+      "wer": 0.2222,
+      "cer": 0.0889,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_08",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "दूसरा नंबर 7000123452 है, इस पर WhatsApp करना।",
+      "entity_ok": false,
+      "wer": 0.125,
+      "cer": 0.0217,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "दूसरा नंबर 7000123452 है, इस पर WhatsApp करना।",
+      "entity_ok": false,
+      "wer": 0.125,
+      "cer": 0.0217,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "दूसरा नंबर 700011111 है, इस पर WhatsApp रखें।",
+      "entity_ok": false,
+      "wer": 0.25,
+      "cer": 0.1957,
+      "delta_wer": 0.25
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "17 नंबर 7।",
+      "entity_ok": false,
+      "wer": 0.875,
+      "cer": 0.8043,
+      "delta_wer": 0.875
+    },
+    {
+      "clip": "dig_08",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_08",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "दूसरा नंबर 7000123456 है। इस पर WhatsApp करना।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "parcel pin code 492013 पर भेज दीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "parcel pin code 492013 पर भेज दीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "parcel pin code 492013 पर भेज दीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "parcel pin code 4923036 है, समझ लीजिए।",
+      "entity_ok": false,
+      "wer": 0.5714,
+      "cer": 0.2571,
+      "delta_wer": 0.5714
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "56, pin code 4928।",
+      "entity_ok": false,
+      "wer": 0.7143,
+      "cer": 0.6286,
+      "delta_wer": 0.7143
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "parcel pin code 492013 पर भेज दीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "parcel pin code 492013 पर भेज दीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "आपका verification code 715204 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आपका verification code 715204 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "आपका verification code 715204 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "आपका verification code 715294 है।",
+      "entity_ok": false,
+      "wer": 0.2,
+      "cer": 0.0312,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "आपका verification code 715295।",
+      "entity_ok": false,
+      "wer": 0.4,
+      "cer": 0.1562,
+      "delta_wer": 0.4
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "का verification code 7।",
+      "entity_ok": false,
+      "wer": 0.6,
+      "cer": 0.3125,
+      "delta_wer": 0.6
+    },
+    {
+      "clip": "dig_10",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "आपका वेरिफिकेशन कोड 715204 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "आपका वेरिफिकेशन कोड 715204 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मैं रायपुर से बोल रही हूँ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मैं रायपुर से बोल रही हूँ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मैं रायपुर से बोल रही हूँ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मैं रायपुर से बोल रही हूँ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मैं रायपुर से बोल रही हूँ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मैं रायपुर से बोल रही हूँ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे भैया राकेश साहू बिलासपुर से हैं।",
+      "entity_ok": true,
+      "wer": 0.25,
+      "cer": 0.1667,
+      "delta_wer": 0.25
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाजार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाजार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाजार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाजार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाजार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "पंडरी बाजार आ जाइये।",
+      "entity_ok": true,
+      "wer": 0.4,
+      "cer": 0.2381,
+      "delta_wer": 0.4
+    },
+    {
+      "clip": "name_04",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाज़ार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाज़ार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर तेलीबांधा में है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर तेलीबांधा में है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर तेलीबांधा में है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर तेलीबांधा में है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर सेलिबांधा में है।",
+      "entity_ok": false,
+      "wer": 0.2,
+      "cer": 0.0833,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर पेरीपांडा में है।",
+      "entity_ok": false,
+      "wer": 0.2,
+      "cer": 0.1667,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "name_05",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर तेलीबांधा में है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर तेलीबांधा में है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "अंजलि तिवारी जी से बात करवाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "अंजलि तिवारी जी से बात करवाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "अंजलि तिवारी जी से बात करवाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "अंजलि तिवारी जी से बात करवाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "बात करवाइए।",
+      "entity_ok": false,
+      "wer": 0.6667,
+      "cer": 0.6552,
+      "delta_wer": 0.6667
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "अंजलि तिवारी जी से बात करवाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "अंजली तिवारी जी से बात करवाइए।",
+      "entity_ok": true,
+      "wer": 0.1667,
+      "cer": 0.0345,
+      "delta_wer": 0.1667
+    },
+    {
+      "clip": "name_08",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहा प्रसिद्ध है।",
+      "entity_ok": true,
+      "wer": 0.5714,
+      "cer": 0.2,
+      "delta_wer": 0.5714
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "क्या मैं अपना mobile bill online काट सकता हूँ?",
+      "entity_ok": false,
+      "wer": 1.2857,
+      "cer": 0.925,
+      "delta_wer": 1.2857
+    },
+    {
+      "clip": "name_08",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "से नया रायपुर की बस।",
+      "entity_ok": false,
+      "wer": 0.375,
+      "cer": 0.4412,
+      "delta_wer": 0.375
+    },
+    {
+      "clip": "name_09",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूं, लंका पर रुकूंगा।",
+      "entity_ok": true,
+      "wer": 0.2222,
+      "cer": 0.0526,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लड़का पर उतरूँगा।",
+      "entity_ok": false,
+      "wer": 0.2222,
+      "cer": 0.1053,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लड़का पढ़ रहा है।",
+      "entity_ok": false,
+      "wer": 0.4444,
+      "cer": 0.2105,
+      "delta_wer": 0.4444
+    },
+    {
+      "clip": "name_10",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_01",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234567 है, please verify करो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234567 है, please verify करो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234567 है, please verify करो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234527 है। please verify करें।",
+      "entity_ok": false,
+      "wer": 0.25,
+      "cer": 0.0577,
+      "delta_wer": 0.25
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234527 है, इसे verify करें।",
+      "entity_ok": false,
+      "wer": 0.375,
+      "cer": 0.1731,
+      "delta_wer": 0.375
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 5010।",
+      "entity_ok": false,
+      "wer": 0.625,
+      "cer": 0.5385,
+      "delta_wer": 0.625
+    },
+    {
+      "clip": "mix_01",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा अकाउंट नंबर 50100234567 है, please verify करो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_01",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा अकाउंट नंबर 50100234567 है please verify करो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है, payment कर दो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है, payment कर दें।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.0476,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है, payment कर दें।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.0476,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है, payment कर दें।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.0476,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.3333,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है, payment कर दो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है, payment कर दो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_03",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 619204 आया होगा, please बताइए।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.0541,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 619204 आया होगा, please बताइए।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.0541,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 619204 आया होगा, please बताइए।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.0541,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 61920412 होगा, please बताइए।",
+      "entity_ok": false,
+      "wer": 0.4286,
+      "cer": 0.1622,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 619234।",
+      "entity_ok": false,
+      "wer": 0.8571,
+      "cer": 0.6757,
+      "delta_wer": 0.7143
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 61।",
+      "entity_ok": false,
+      "wer": 0.8571,
+      "cer": 0.7568,
+      "delta_wer": 0.7143
+    },
+    {
+      "clip": "mix_03",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "आपका ओटीपी 619204 आया होगा, please बताइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "mix_03",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "आपका OTP 619204 आया होगा, please बताइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "mix_04",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा loan 1,50,000 रूपए का है, EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा loan 1,50,000 रूपए का है, EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा loan 1,50,000 रुपए का है, EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा loan 1,50,000 रुपए का है, EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा loan 1,50,000 रूपए का है, EMI कब तक बाकी होगी?",
+      "entity_ok": true,
+      "wer": 0.1818,
+      "cer": 0.1429,
+      "delta_wer": 0.1818
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "1,50,000 रूपए का है।",
+      "entity_ok": true,
+      "wer": 0.6364,
+      "cer": 0.6327,
+      "delta_wer": 0.6364
+    },
+    {
+      "clip": "mix_04",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा लोन 1,50,000 रुपये का है, EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा loan 1,50,000 रुपए का है, EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो, 9123456789, urgent है।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.1064,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो, 9123456789, urgent है।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.1064,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो, 9123452789, urgent है।",
+      "entity_ok": false,
+      "wer": 0.2222,
+      "cer": 0.1277,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो, 9123452489। urgent है।",
+      "entity_ok": false,
+      "wer": 0.2222,
+      "cer": 0.1489,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो: 9123452479।",
+      "entity_ok": false,
+      "wer": 0.4444,
+      "cer": 0.383,
+      "delta_wer": 0.375
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "परसों।",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 0.9362,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो, 9123456789, urgent है।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.1064,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो, 9123456789, urgent है।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.1064,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है, शाम को बाजार चलेंगे?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है, शाम को बाजार चलेंगे।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है, शाम को बाजार चलेंगे।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है, शाम को बाजार खुलेंगे।",
+      "entity_ok": false,
+      "wer": 0.1111,
+      "cer": 0.0488,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "pln_01",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मौसम बहुत अच्छा।",
+      "entity_ok": false,
+      "wer": 0.6667,
+      "cer": 0.6341,
+      "delta_wer": 0.6667
+    },
+    {
+      "clip": "pln_01",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है, शाम को बाजार चलेंगे?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है, शाम को बाज़ार चलेंगे?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "यह office का घर है।",
+      "entity_ok": false,
+      "wer": 0.8889,
+      "cer": 0.7568,
+      "delta_wer": 0.8889
+    },
+    {
+      "clip": "pln_03",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_04",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.025,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.025,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.025,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "कल रायपुर से लौट आऊंगा।",
+      "entity_ok": true,
+      "wer": 0.5556,
+      "cer": 0.475,
+      "delta_wer": 0.5556
+    },
+    {
+      "clip": "pln_04",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_04",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "clean",
+      "model": "prisma-v3.0",
+      "transcript": "कृपया थोड़ी देर बाद दोबारा phone कीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "street_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "कृपया थोड़ी देर बाद दोबारा phone कीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "street_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "कृपया थोड़ी देर बाद दोबारा phone कीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "street_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "कृपया थोड़ी देर बाद दोबारा phone कीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "street_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "क्या थोड़ी देर बाद दोबारा phone करें?",
+      "entity_ok": false,
+      "wer": 0.2857,
+      "cer": 0.1622,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "pln_05",
+      "condition": "street_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "इस बात के बारे।",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 0.8108,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "g711",
+      "model": "prisma-v3.0",
+      "transcript": "कृपया थोड़ी देर बाद दोबारा phone कीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "amr_nb",
+      "model": "prisma-v3.0",
+      "transcript": "कृपया थोड़ी देर बाद दोबारा phone कीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "50,000 रूपए का loan मिल रहा है।",
+      "entity_ok": false,
+      "wer": 0.625,
+      "cer": 0.3333,
+      "delta_wer": 0.625
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने की EMI 4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "4500 रुपये है।",
+      "entity_ok": true,
+      "wer": 0.5714,
+      "cer": 0.5517,
+      "delta_wer": 0.5714
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "पान का बिल 850 रुपये बना है।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.1,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "का बिल 850 रुपये पड़ा है।",
+      "entity_ok": true,
+      "wer": 0.2857,
+      "cer": 0.2667,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "850 रुपये बढ़ा है।",
+      "entity_ok": true,
+      "wer": 0.5714,
+      "cer": 0.5,
+      "delta_wer": 0.5714
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मकान का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "काम का किराया 7500 रुपए महीना है।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.0588,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस महीने salary 32000 रुपए आई है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "पहली 32000 रुपये आय है।",
+      "entity_ok": true,
+      "wer": 0.5714,
+      "cer": 0.4545,
+      "delta_wer": 0.5714
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आपका loan 7,75,000 रूपए का है।",
+      "entity_ok": true,
+      "wer": 0.2857,
+      "cer": 0.1333,
+      "delta_wer": 0.2857
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "7,75,000 रुपये का।",
+      "entity_ok": true,
+      "wer": 0.5714,
+      "cer": 0.5,
+      "delta_wer": 0.5714
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "ऑटो वाले को 120 रुपए दिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "show वाले को 120 रुपये दिए।",
+      "entity_ok": true,
+      "wer": 0.1667,
+      "cer": 0.1538,
+      "delta_wer": 0.1667
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "तो पुलिस को।",
+      "entity_ok": false,
+      "wer": 0.8333,
+      "cer": 0.8462,
+      "delta_wer": 0.8333
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "का सौदा 1,25,00,000 रुपये में तय हुआ।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.1316,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बिजली का बिल 2340 रुपए आया है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "का बिल 2340 रुपये आया है।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.1935,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा mobile number 9876543210 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "mobile number 9876543210 है।",
+      "entity_ok": true,
+      "wer": 0.2,
+      "cer": 0.1562,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 482915 है, किसी को मत बताइए।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0571,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा pin code 492001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा pin code 492001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "क्या आप मुझे?",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 0.8696,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 8123456। 780",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.0294,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call कीजिए, 8123456। 780",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.0294,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "307561 डालिए और आगे बढ़िए।",
+      "entity_ok": true,
+      "wer": 0.1667,
+      "cer": 0.1429,
+      "delta_wer": 0.1667
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "एकतालिये और आगे बढ़े।",
+      "entity_ok": false,
+      "wer": 0.6667,
+      "cer": 0.5714,
+      "delta_wer": 0.6667
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "घर का pin code 221001 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "account number के आख़िर 4 अंक 7316 हैं।",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.2,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "account number के आख़िर 4 अंक 7316 हैं।",
+      "entity_ok": true,
+      "wer": 0.3333,
+      "cer": 0.2,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "account number 1541।",
+      "entity_ok": false,
+      "wer": 0.7778,
+      "cer": 0.6444,
+      "delta_wer": 0.7778
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मतरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0652,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0652,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0652,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "parcel pin code 492013 पर भेज दीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "PIN code 492013 पर भेज दीजिए।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.2,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आपका verification code 715204 है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "का verification code 715204 है।",
+      "entity_ok": true,
+      "wer": 0.2,
+      "cer": 0.0625,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मैं रायपुर से बोल रही हूँ।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "कुछ बोल रही हैं।",
+      "entity_ok": false,
+      "wer": 0.6667,
+      "cer": 0.56,
+      "delta_wer": 0.6667
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा नाम सुनीता वर्मा है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "राकेश साहू बिलासपुर में रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.25,
+      "cer": 0.2381,
+      "delta_wer": 0.25
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "ते शाहू बिलासपुर में रहते हैं।",
+      "entity_ok": false,
+      "wer": 0.5,
+      "cer": 0.3333,
+      "delta_wer": 0.5
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आप पंडरी बाजार आ जाइए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरी बाजार आ जाइए।",
+      "entity_ok": false,
+      "wer": 0.4,
+      "cer": 0.2857,
+      "delta_wer": 0.4
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर तेलीबांधा में है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा घर टेलीपांडा में है।",
+      "entity_ok": false,
+      "wer": 0.2,
+      "cer": 0.125,
+      "delta_wer": 0.2
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "क्या घर के लिए बीमा नहीं है?",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 0.5833,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "हम अस्सी घाट के पास रहते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "हम उसी घाट के पास रहते हैं।",
+      "entity_ok": false,
+      "wer": 0.1429,
+      "cer": 0.1071,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "स्वारी जी से बात करवाइए।",
+      "entity_ok": false,
+      "wer": 0.3333,
+      "cer": 0.2759,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "पारी से बात करवाइए।",
+      "entity_ok": false,
+      "wer": 0.5,
+      "cer": 0.4138,
+      "delta_wer": 0.5
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "वाराणसी में कढ़ौलिया चौराहे पर मिलते हैं।",
+      "entity_ok": false,
+      "wer": 0.1429,
+      "cer": 0.075,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "रोड से नया रायपुर की बस कब चलेगी?",
+      "entity_ok": false,
+      "wer": 0.125,
+      "cer": 0.1176,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मैं भिलाई से आ रहा हूँ, मौका पर रुकूँगा।",
+      "entity_ok": false,
+      "wer": 0.1111,
+      "cer": 0.0526,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234567 है, please verify करें।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0385,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234567 है, please verify करें।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0385,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा account number 50100234567 है। please verify करें।",
+      "entity_ok": true,
+      "wer": 0.125,
+      "cer": 0.0385,
+      "delta_wer": 0.125
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बिल की amount 3200 रुपये है, payment कर दो।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "की amount 3200 रुपये है, payment कर दें।",
+      "entity_ok": true,
+      "wer": 0.2222,
+      "cer": 0.1667,
+      "delta_wer": 0.2222
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "का OTP 619204 आया होगा, please बताइए।",
+      "entity_ok": true,
+      "wer": 0.1429,
+      "cer": 0.0541,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "काउ के पीछे एक 9204 आया होगा, please बताइए।",
+      "entity_ok": false,
+      "wer": 0.7143,
+      "cer": 0.3243,
+      "delta_wer": 0.7143
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "और पीछे एक नाव, 2 3 4 आया हुआ है, 3 लोग।",
+      "entity_ok": false,
+      "wer": 1.5714,
+      "cer": 0.8108,
+      "delta_wer": 1.5714
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मेरा loan 1,50,000 रुपए का है। EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "लोन 1,50,000 रूपए का है, EMI कब से start होगी?",
+      "entity_ok": true,
+      "wer": 0.0909,
+      "cer": 0.102,
+      "delta_wer": 0.0909
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "5000 रुपये का है ये माल।",
+      "entity_ok": false,
+      "wer": 0.7273,
+      "cer": 0.6122,
+      "delta_wer": 0.7273
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "इस number पर call करो 9123456789 urgent है।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.1064,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "पर call करो 9123456789। भजन नहीं",
+      "entity_ok": true,
+      "wer": 0.5556,
+      "cer": 0.5106,
+      "delta_wer": 0.5
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है, शाम को बाजार चलेंगे?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "आज मौसम बहुत अच्छा है। शाम को बाजार चलेंगे?",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_01",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "मुझे कल सुबह doctor के पास जाना है।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_02",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "बच्चे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "वे school से अभी तक घर नहीं आए हैं।",
+      "entity_ok": false,
+      "wer": 0.1111,
+      "cer": 0.1081,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "pln_03",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_03",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "entity_ok": true,
+      "wer": 0.1111,
+      "cer": 0.025,
+      "delta_wer": 0.1111
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "कल जयपुर से लौट आऊंगा, तब बात करेंगे।",
+      "entity_ok": false,
+      "wer": 0.3333,
+      "cer": 0.175,
+      "delta_wer": 0.3333
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "fan_snr10",
+      "model": "prisma-v3.0",
+      "transcript": "कृपया थोड़ी देर बाद दोबारा phone कीजिए।",
+      "entity_ok": true,
+      "wer": 0.0,
+      "cer": 0.0,
+      "delta_wer": 0.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "fan_snr5",
+      "model": "prisma-v3.0",
+      "transcript": "क्या थोड़ी देर बाद दोबारा phone कीजिए?",
+      "entity_ok": false,
+      "wer": 0.1429,
+      "cer": 0.0541,
+      "delta_wer": 0.1429
+    },
+    {
+      "clip": "pln_05",
+      "condition": "fan_snr0",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "fan_snr-5",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
+    },
+    {
+      "clip": "pln_05",
+      "condition": "fan_snr-10",
+      "model": "prisma-v3.0",
+      "transcript": "",
+      "entity_ok": false,
+      "wer": 1.0,
+      "cer": 1.0,
+      "delta_wer": 1.0
     }
   ],
   "aggregates": [
     {
       "model": "prisma-v3.0",
       "condition": "clean",
-      "entity_accuracy": 1,
-      "wer": 0,
-      "delta_wer": 0,
-      "n": 3
-    },
-    {
-      "model": "prisma-v3.0",
-      "condition": "street_snr20",
-      "entity_accuracy": 1,
-      "wer": 0,
-      "delta_wer": 0,
-      "n": 3
+      "entity_accuracy": 0.9722,
+      "wer": 0.0307,
+      "delta_wer": 0.0,
+      "n": 40
     },
     {
       "model": "prisma-v3.0",
       "condition": "street_snr10",
-      "entity_accuracy": 0.6667,
-      "wer": 0.0833,
-      "delta_wer": 0.0833,
-      "n": 3
+      "entity_accuracy": 0.9722,
+      "wer": 0.028,
+      "delta_wer": 0.0175,
+      "n": 40
     },
     {
       "model": "prisma-v3.0",
       "condition": "street_snr5",
-      "entity_accuracy": 0,
-      "wer": 0.2333,
-      "delta_wer": 0.2333,
-      "n": 3
+      "entity_accuracy": 0.9167,
+      "wer": 0.0345,
+      "delta_wer": 0.0243,
+      "n": 40
     },
     {
       "model": "prisma-v3.0",
       "condition": "street_snr0",
-      "entity_accuracy": 0,
-      "wer": 0.6333,
-      "delta_wer": 0.6333,
-      "n": 3
+      "entity_accuracy": 0.6667,
+      "wer": 0.1207,
+      "delta_wer": 0.1142,
+      "n": 40
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "street_snr-5",
+      "entity_accuracy": 0.5,
+      "wer": 0.3597,
+      "delta_wer": 0.3497,
+      "n": 40
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "street_snr-10",
+      "entity_accuracy": 0.2222,
+      "wer": 0.709,
+      "delta_wer": 0.7136,
+      "n": 40
     },
     {
       "model": "prisma-v3.0",
       "condition": "fan_snr10",
-      "entity_accuracy": 1,
-      "wer": 0,
-      "delta_wer": 0,
-      "n": 2
+      "entity_accuracy": 0.9722,
+      "wer": 0.0615,
+      "delta_wer": 0.0468,
+      "n": 40
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "fan_snr5",
+      "entity_accuracy": 0.7222,
+      "wer": 0.2209,
+      "delta_wer": 0.2112,
+      "n": 40
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "fan_snr0",
+      "entity_accuracy": 0.1667,
+      "wer": 0.8077,
+      "delta_wer": 0.8129,
+      "n": 40
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "fan_snr-5",
+      "entity_accuracy": 0.0,
+      "wer": 1.0,
+      "delta_wer": 1.0,
+      "n": 40
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "fan_snr-10",
+      "entity_accuracy": 0.0,
+      "wer": 1.0,
+      "delta_wer": 1.0,
+      "n": 40
     },
     {
       "model": "prisma-v3.0",
       "condition": "g711",
-      "entity_accuracy": 1,
-      "wer": 0,
-      "delta_wer": 0,
-      "n": 3
+      "entity_accuracy": 1.0,
+      "wer": 0.0208,
+      "delta_wer": 0.0133,
+      "n": 40
+    },
+    {
+      "model": "prisma-v3.0",
+      "condition": "amr_nb",
+      "entity_accuracy": 1.0,
+      "wer": 0.0208,
+      "delta_wer": 0.0175,
+      "n": 40
     }
   ],
   "breakpoints": [
     {
       "model": "prisma-v3.0",
       "noise": "street",
-      "snr_db": 17
+      "snr_db": 4.67
     },
     {
       "model": "prisma-v3.0",
       "noise": "fan",
-      "snr_db": null
+      "snr_db": 8.56
     }
   ]
 }

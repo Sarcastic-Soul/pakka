@@ -9,7 +9,7 @@ import { encodeWav16 } from "@/lib/live/wav";
 
 const RATE = 16000;
 const MAX_RECORD_SEC = 12;
-const SNRS = [20, 10, 5, 0] as const;
+const SNRS = [10, 5, 0, -5, -10] as const;
 type Noise = "street" | "fan";
 
 type Status =
@@ -93,7 +93,7 @@ export default function TryIt() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [clip, setClip] = useState<Float32Array | null>(null);
   const [noise, setNoise] = useState<Noise>("street");
-  const [snr, setSnr] = useState<number>(10);
+  const [snr, setSnr] = useState<number>(0);
   const [phone, setPhone] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
   const [noisyUrl, setNoisyUrl] = useState<string | null>(null);

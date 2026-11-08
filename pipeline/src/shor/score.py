@@ -142,6 +142,7 @@ def score(clips: list[Clip], raw: list[RawResult], conditions: list[Condition]) 
                 "category": c.category,
                 "text": c.text,
                 "audio_base": f"/audio/{c.id}" if c.featured else None,
+                "has_entity": bool(c.entities),
             }
             for c in clips
             if c.id in used_clips

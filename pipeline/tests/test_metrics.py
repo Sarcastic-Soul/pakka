@@ -34,7 +34,7 @@ def test_wer_not_clipped_at_one():
 
 
 def test_wer_hindi_substitution():
-    assert wer("मेरा नंबर है", "मेरा नम्बर है") == pytest.approx(1 / 3)
+    assert wer("मेरा घर है", "मेरा गर है") == pytest.approx(1 / 3)
 
 
 def test_cer_one_substitution():

@@ -145,8 +145,9 @@ def test_clips_and_audio_base():
             "category": "amount",
             "text": AMT.text,
             "audio_base": "/audio/amt_01",
+            "has_entity": True,
         },
-        {"id": "nam_01", "category": "amount", "text": NAM.text, "audio_base": None},
+        {"id": "nam_01", "category": "amount", "text": NAM.text, "audio_base": None, "has_entity": True},
     ]
     assert p["generated_at"].endswith("Z")
 
@@ -154,8 +155,8 @@ def test_clips_and_audio_base():
 def test_breakpoints_use_snr_order_and_skip_unrun_noise():
     clips = [clip(f"a{i}", "कुल 500 रुपये", [Entity("amount", "500")]) for i in range(4)]
     raw = []
-    # street: 20 -> 4/4, 10 -> 3/4, 5 -> 2/4
-    hits = {20: 4, 10: 3, 5: 2}
+    # street: 10 -> 4/4, 0 -> 3/4, -5 -> 2/4 (5 dB not run)
+    hits = {10: 4, 0: 3, -5: 2}
     for snr, n in hits.items():
         for i, c in enumerate(clips):
             text = "कुल 500 रुपये" if i < n else "कुल रुपये"
@@ -163,8 +164,8 @@ def test_breakpoints_use_snr_order_and_skip_unrun_noise():
     p = score(clips, raw, CONDITIONS)
     (bp,) = p["breakpoints"]
     assert bp["noise"] == "street"
-    # 1.0 at 20, 0.75 at 10: crosses 0.9 at 20 - 10 * 0.1 / 0.25 = 16
-    assert bp["snr_db"] == pytest.approx(16.0)
+    # 1.0 at 10, 0.75 at 0: crosses 0.9 at 10 - 10 * 0.1 / 0.25 = 6
+    assert bp["snr_db"] == pytest.approx(6.0)
 
 
 def test_write_results_rejects_nan(tmp_path):

@@ -44,6 +44,7 @@ function makeData(): ResultsFile {
         category: "amount",
         text: "कुल 2,50,000 रुपये चाहिए",
         audio_base: "/audio/amt_01",
+        has_entity: true,
       },
     ],
     results: [row("clean", 0), row("street_snr20", 0), row("street_snr5", 0.25)],
@@ -214,7 +215,8 @@ describe("public/data/results.json", () => {
     const conditions = new Set(data.conditions.map((c) => c.id));
     const models = new Set(data.models);
     const seen = new Set<string>();
-    const stats = new Map<string, { n: number; ok: number }>();
+    const hasEntity = new Map(data.clips.map((c) => [c.id, c.has_entity]));
+    const stats = new Map<string, { n: number; ok: number; en: number; eok: number }>();
 
     for (const r of data.results) {
       expect(clips.has(r.clip), `unknown clip ${r.clip}`).toBe(true);
@@ -224,17 +226,23 @@ describe("public/data/results.json", () => {
       expect(seen.has(cell), `duplicate cell ${cell}`).toBe(false);
       seen.add(cell);
       const key = `${r.model}|${r.condition}`;
-      const s = stats.get(key) ?? { n: 0, ok: 0 };
+      const s = stats.get(key) ?? { n: 0, ok: 0, en: 0, eok: 0 };
       s.n += 1;
       if (r.entity_ok) s.ok += 1;
+      if (hasEntity.get(r.clip)) {
+        s.en += 1;
+        if (r.entity_ok) s.eok += 1;
+      }
       stats.set(key, s);
     }
 
+    // Accuracy counts only clips with a key word, unless a cell has none.
     for (const a of data.aggregates) {
       const s = stats.get(`${a.model}|${a.condition}`);
       expect(s, `aggregate without rows: ${a.model}|${a.condition}`).toBeDefined();
       expect(a.n).toBe(s!.n);
-      expect(a.entity_accuracy).toBeCloseTo(s!.ok / s!.n, 3);
+      const want = s!.en > 0 ? s!.eok / s!.en : s!.ok / s!.n;
+      expect(a.entity_accuracy).toBeCloseTo(want, 3);
     }
   });
 });

@@ -64,6 +64,7 @@ function checkClip(c: Obj, path: string): void {
   if (c.audio_base !== null && typeof c.audio_base !== "string") {
     fail(`${path}.audio_base`, "a string or null");
   }
+  bool(c, "has_entity", path);
 }
 
 function checkRow(r: Obj, path: string): void {

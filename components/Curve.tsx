@@ -5,7 +5,9 @@ import { cleanStat, curve } from "@/lib/results";
 import type { ResultsFile } from "@/lib/types";
 
 const DASHES = ["", "7 5", "2 4", "10 3 2 3"];
-const TICKS = [0, 5, 10, 20];
+const TICKS = [-10, -5, 0, 5, 10];
+const SNR_MIN = -10;
+const SNR_MAX = 10;
 const THRESHOLD = 0.9;
 
 export default function Curve({
@@ -33,7 +35,8 @@ export default function Curve({
   const m = { top: 20, right: narrow ? 64 : 96, bottom: 48, left: 48 };
   const cleanGap = narrow ? 44 : 64;
   const plotRight = width - m.right - cleanGap;
-  const x = (snr: number) => m.left + (snr / 20) * (plotRight - m.left);
+  const x = (snr: number) =>
+    m.left + ((snr - SNR_MIN) / (SNR_MAX - SNR_MIN)) * (plotRight - m.left);
   const xClean = width - m.right;
   const y = (acc: number) => m.top + (1 - acc) * (height - m.top - m.bottom);
 
@@ -116,7 +119,7 @@ export default function Curve({
         </text>
 
         {breaks.map((b) => {
-          const bx = x(Math.min(20, Math.max(0, b.snr_db as number)));
+          const bx = x(Math.min(SNR_MAX, Math.max(SNR_MIN, b.snr_db as number)));
           return (
             <g key={b.noise}>
               <line x1={bx} x2={bx} y1={m.top} y2={height - m.bottom} stroke="var(--accent)" strokeWidth={1.25} />
