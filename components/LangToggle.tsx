@@ -34,7 +34,12 @@ export default function LangToggle({ className = "" }: { className?: string }) {
 export function LangSync() {
   const { lang } = useLang();
   useEffect(() => {
-    document.documentElement.lang = lang;
+    const html = document.documentElement;
+    // Hydration renders English first; unhide only once the text matches the
+    // language the boot script picked (see LANG_BOOT in app/layout.tsx).
+    if (html.classList.contains("lang-pending") && lang !== "hi") return;
+    html.lang = lang;
+    html.classList.remove("lang-pending");
   }, [lang]);
   return null;
 }

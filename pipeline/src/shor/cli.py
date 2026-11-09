@@ -15,7 +15,7 @@ from .grid import (
     save_raw,
 )
 from .metrics import wer
-from .normalize import entity_match
+from .normalize import entity_match, extract_numbers, parse_spoken_numbers
 
 ROOT = Path(__file__).resolve().parents[3]
 CORPUS = ROOT / "data" / "corpus.json"
@@ -187,6 +187,63 @@ def cmd_denoise_run(args) -> None:
     print(f"done; {new_calls} new calls; saved to {path}")
 
 
+def _heard_numbers(text: str) -> set[str]:
+    return set(extract_numbers(text)) | {str(n) for n in parse_spoken_numbers(text)}
+
+
+def cmd_catch(args) -> None:
+    """How often the app's double-hearing check flags a wrong entry.
+
+    Uses the same rule as the app: flag when the numbers heard in the raw and
+    the cleaned transcript differ, or the raw transcript is empty. No network.
+    """
+    from .score import write_results
+
+    clips = {c.id: c for c in _recorded(load_corpus(CORPUS, CLIPS)) if not c.field and c.entities}
+    raw = {(r.clip_id, r.condition_id): r for r in load_raw(_raw_path(args.model)) if r.error is None}
+    label = f"{args.model}+{args.method}"
+    cleaned = {(r.clip_id, r.condition_id): r for r in load_raw(_raw_path(label)) if r.error is None}
+    rows = []
+    for (clip_id, cond_id), r in sorted(raw.items()):
+        c = cleaned.get((clip_id, cond_id))
+        clip = clips.get(clip_id)
+        if clip is None or c is None:
+            continue
+        rows.append(
+            {
+                "clip": clip_id,
+                "condition": cond_id,
+                "wrong": not all(entity_match(e, r.transcript) for e in clip.entities),
+                "flagged": _heard_numbers(r.transcript) != _heard_numbers(c.transcript)
+                or not r.transcript.strip(),
+                "raw": r.transcript,
+                "cleaned": c.transcript,
+            }
+        )
+    summary = []
+    for cond_id in sorted({x["condition"] for x in rows}):
+        cell = [x for x in rows if x["condition"] == cond_id]
+        wrong = [x for x in cell if x["wrong"]]
+        right = [x for x in cell if not x["wrong"]]
+        summary.append(
+            {
+                "condition": cond_id,
+                "wrong": len(wrong),
+                "caught": sum(x["flagged"] for x in wrong),
+                "right": len(right),
+                "false_alarms": sum(x["flagged"] for x in right),
+            }
+        )
+    payload = {"model": args.model, "cleaner": args.method, "rule": "numbers differ or raw empty", "summary": summary, "rows": rows}
+    write_results(args.out, payload)
+    for s in summary:
+        print(
+            f"{s['condition']:<14} caught {s['caught']:>2} of {s['wrong']:>2} wrong"
+            f"   false alarms {s['false_alarms']:>2} of {s['right']:>2} right"
+        )
+    print(f"wrote {args.out}")
+
+
 def cmd_export_audio(args) -> None:
     export_web_audio(load_corpus(CORPUS, CLIPS), CONDITIONS, WORK, AUDIO)
     export_noise(NOISE, NOISE_OUT)
@@ -233,6 +290,12 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--only", nargs="*", help="condition ids to run")
     p.add_argument("--clips", nargs="*", help="clip ids to run (with --only)")
     p.set_defaults(func=cmd_denoise_run)
+
+    p = sub.add_parser("catch", help="how often raw-vs-cleaned disagreement flags a wrong entry")
+    p.add_argument("method", nargs="?", default="deepfilter", choices=["rnnoise", "deepfilter"])
+    p.add_argument("--model", default=DEFAULT_MODEL)
+    p.add_argument("--out", type=Path, default=ROOT / "public" / "data" / "catch.json")
+    p.set_defaults(func=cmd_catch)
 
     p = sub.add_parser("export-audio", help="MP3s of featured clips and noise beds")
     p.set_defaults(func=cmd_export_audio)

@@ -22,7 +22,7 @@ Kirana shops are loud: a ceiling fan, traffic, customers talking. Before buildin
 
 - The first thing to break is a single digit. At street 0 dB, 9 of 10 phone numbers came back with one digit wrong (`482915` → `489915`). That is the worst possible mistake in a ledger.
 - Cleaning the audio with DeepFilterNet before Prisma did **not** make it more accurate at 5–10 dB (street 5 dB: 92% → 81%). So Pakka does not claim to "fix" noise.
-- What does work: send both the raw and the cleaned audio, and compare the numbers. When they disagree the entry is probably wrong. That check caught 27 of 30 wrong entries at fan 0 dB and 11 of 12 at street 0 dB.
+- What does work: send both the raw and the cleaned audio, and compare the numbers. When they disagree the entry is probably wrong. That check caught 27 of 30 wrong entries at fan 0 dB and 11 of 12 at street 0 dB. It is weaker in lighter noise (3 of 10 at fan 5 dB), which is why the other checks below still run. Every row is in [`public/data/catch.json`](public/data/catch.json); rebuild it with `uv run shor catch`.
 
 So every entry goes to Prisma twice. If the numbers differ, an amount was never spoken, the items don't add up, or the customer is new, the card turns red and the shop owner has to look before it is saved.
 
@@ -65,7 +65,7 @@ pnpm dev
 
 `pnpm build` downloads the pinned DeepFilterNet v0.5.6 binary (sha256-checked) into `bin/`.
 
-The benchmark pipeline is in `pipeline/` (Python, uv): `uv run shor run`, `uv run shor denoise-run deepfilter`, `uv run shor score`.
+The benchmark pipeline is in `pipeline/` (Python, uv): `uv run shor run`, `uv run shor denoise-run deepfilter`, `uv run shor score`, `uv run shor catch`.
 
 ## Limits and honesty
 

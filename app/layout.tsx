@@ -39,12 +39,21 @@ export const metadata: Metadata = {
   openGraph: { title: "Pakka · पक्का", description, type: "website", locale: "hi_IN" },
 };
 
+// The page is built ahead of time in English. When the visitor chose Hindi,
+// hide the page until React has switched the text, so English never flashes.
+// The 2.5 s fallback shows the page even if the app script fails to load.
+const LANG_BOOT = `try{var l=localStorage.getItem("pakka-lang");if(l!=="en"&&(l==="hi"||(navigator.language||"").toLowerCase().indexOf("hi")===0)){var d=document.documentElement;d.lang="hi";d.classList.add("lang-pending");setTimeout(function(){d.classList.remove("lang-pending")},2500)}}catch(e){}`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
       className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable} ${deva.variable} antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: LANG_BOOT }} />
+      </head>
       <body className="min-h-screen">
         <LangSync />
         {children}

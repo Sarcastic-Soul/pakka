@@ -1,0 +1,3198 @@
+{
+  "model": "prisma-v3.0",
+  "cleaner": "deepfilter",
+  "rule": "numbers differ or raw empty",
+  "summary": [
+    {
+      "condition": "clean",
+      "wrong": 1,
+      "caught": 1,
+      "right": 34,
+      "false_alarms": 0
+    },
+    {
+      "condition": "fan_snr-10",
+      "wrong": 36,
+      "caught": 36,
+      "right": 0,
+      "false_alarms": 0
+    },
+    {
+      "condition": "fan_snr-5",
+      "wrong": 36,
+      "caught": 36,
+      "right": 0,
+      "false_alarms": 0
+    },
+    {
+      "condition": "fan_snr0",
+      "wrong": 30,
+      "caught": 27,
+      "right": 6,
+      "false_alarms": 4
+    },
+    {
+      "condition": "fan_snr10",
+      "wrong": 1,
+      "caught": 0,
+      "right": 35,
+      "false_alarms": 1
+    },
+    {
+      "condition": "fan_snr5",
+      "wrong": 10,
+      "caught": 3,
+      "right": 26,
+      "false_alarms": 6
+    },
+    {
+      "condition": "street_snr-10",
+      "wrong": 26,
+      "caught": 21,
+      "right": 7,
+      "false_alarms": 2
+    },
+    {
+      "condition": "street_snr-5",
+      "wrong": 18,
+      "caught": 14,
+      "right": 16,
+      "false_alarms": 2
+    },
+    {
+      "condition": "street_snr0",
+      "wrong": 12,
+      "caught": 11,
+      "right": 23,
+      "false_alarms": 3
+    },
+    {
+      "condition": "street_snr10",
+      "wrong": 1,
+      "caught": 1,
+      "right": 35,
+      "false_alarms": 6
+    },
+    {
+      "condition": "street_snr5",
+      "wrong": 3,
+      "caught": 2,
+      "right": 33,
+      "false_alarms": 4
+    }
+  ],
+  "rows": [
+    {
+      "clip": "amt_01",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "cleaned": "bank से। 2,50,000 रुपये का loan मिला है।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "दुकान बताओ।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "क्या? 2,50,000 रुपए"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "50,000 रूपए का loan मिल रहा है।",
+      "cleaned": "बैंक से। 2,50,000 रुपये का loan मिल रहा है।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "cleaned": "bank से। 2,50,000 रुपये का loan मिला है।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "cleaned": "bank से। 2,50,000 रुपये का loan मिला है।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": false,
+      "raw": "bank से।",
+      "cleaned": "Ma'am।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बैंक से 2,50,000 रुपये का loan।",
+      "cleaned": "बैंक से। 2,50,000 रुपये का loan मिला है।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "cleaned": "बैंक से 2,50,000 रुपये car loan। हाँ है।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "cleaned": "bank से। 2,50,000 रुपये का loan मिला है।"
+    },
+    {
+      "clip": "amt_01",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "bank से। 2,50,000 रुपये का loan मिला है।",
+      "cleaned": "bank से। 2,50,000 रुपये का loan मिला है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने की EMI 4500 रुपये है।",
+      "cleaned": "इस महीने की EMI 4500 रुपये है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "4,000"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "4500 रुपये है।",
+      "cleaned": "इस महीने EMI 4,500 रुपए है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने की EMI 4500 रुपये है।",
+      "cleaned": "इस महीने की EMI 4500 रुपये है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने की EMI 4500 रुपये है।",
+      "cleaned": "इस महीने की EMI 4,500 रुपये है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "इस महीने की EMI 4,000"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने की EMI 4500 रुपये है।",
+      "cleaned": "इस महीने की EMI 4,500 रुपये है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने की EMI 4500 रुपये है।",
+      "cleaned": "इस महीने की EMI 4,500 रुपए है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने की EMI 4500 रुपये है।",
+      "cleaned": "इस महीने की EMI 4500 रुपये है।"
+    },
+    {
+      "clip": "amt_02",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने की EMI 4500 रुपए है।",
+      "cleaned": "इस महीने की EMI 4500 रुपये है।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुकान का bill 850 रुपए बना है।",
+      "cleaned": "दुकान का bill 850 रुपए बना है।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "500, 550।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr0",
+      "wrong": false,
+      "flagged": true,
+      "raw": "850 रुपये बढ़ा है।",
+      "cleaned": "5 7 850 रुपये है।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "पान का बिल 850 रुपये बना है।",
+      "cleaned": "दुकान का bill 850 रुपए बना है।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "का बिल 850 रुपये पड़ा है।",
+      "cleaned": "दुकान का bill 850 रुपए बना है।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "दुकान का rate 850।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "पान का बिल 850 रुपये बन गया।",
+      "cleaned": "दुकान का bill 850 रुपये बनाइए।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुकान का bill 850 रुपये बनाइए।",
+      "cleaned": "दुकान का bill 850 रुपए बना है।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुकान का bill 850 रुपए बना है।",
+      "cleaned": "दुकान का bill 850 रुपए बना है।"
+    },
+    {
+      "clip": "amt_03",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुकान का bill 850 रुपये बना है।",
+      "cleaned": "दुकान का bill 850 रुपए बना है।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "cleaned": "बच्चे की school fees 18500 रुपये जमा करनी है।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "आसपास।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "बच्चे की 18,000 5 साल से जमा करने का।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "cleaned": "बच्चे की school fees 18,500 रुपये जमा करनी है।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "cleaned": "बच्चे की school fees 18500 रुपए जमा करनी है।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "बच्चे की school fees 18500 रुपये।",
+      "cleaned": "बच्चे की school fees 18,700"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बच्चे की school fees 18500 रुपये जमा कर।",
+      "cleaned": "बच्चे की school fees 18500 रुपये जमा कर।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "cleaned": "बच्चे की school fees 18500 रुपये जमा करनी है।"
+    },
+    {
+      "clip": "amt_04",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बच्चे की school fees 18500 रुपये जमा करनी है।",
+      "cleaned": "बच्चे की school fees 18500 रुपये जमा कर।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मकान का किराया 7500 रुपए महीना है।",
+      "cleaned": "मकान का किराया 7500 रुपए महीना है।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "बात"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ, बात कर रहा है।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मकान का किराया 7500 रुपए महीना है।",
+      "cleaned": "मकान का किराया 7500 रुपये महीना है।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "काम का किराया 7500 रुपए महीना है।",
+      "cleaned": "मुकान का किराया 7500 रुपये महीना है।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr-10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "कार का किराया 7500 रुपये है।",
+      "cleaned": "मकान का किराया 7000 साल को मिलता है।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मकान का किराया 7500 रुपए महीना है।",
+      "cleaned": "मकान का किराया 7500 रुपये।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मकान का किराया 7500 रुपए महीना है।",
+      "cleaned": "मकान का किराया 7500 रुपए महीना है।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मकान का किराया 7500 रुपए महीना है।",
+      "cleaned": "मकान का किराया 7500 रुपए महीना है।"
+    },
+    {
+      "clip": "amt_05",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मकान का किराया 7500 रुपए महीना है।",
+      "cleaned": "मकान का किराया 7500 रुपए महीना है।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने salary 32000 रुपए आई है।",
+      "cleaned": "इस महीने salary 32,000 रुपए आई है।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "अच्छा।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "अच्छा।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "55, 25, 18, 55"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने salary 32000 रुपए आई है।",
+      "cleaned": "इस महीने salary 32000 रुपए आई है।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "पहली 32000 रुपये आय है।",
+      "cleaned": "इस महीने salary 32,000 रुपए आई है।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "732000",
+      "cleaned": "This might be a bad day but you'll be glad."
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने salary 32000 रुपए आई है।",
+      "cleaned": "इस महीने salary 32000 रुपए आई है।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने salary 32,000 रुपए आई है।",
+      "cleaned": "इस महीने salary 32,000 रुपए आई है।"
+    },
+    {
+      "clip": "amt_06",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस महीने salary 32,000 रुपए आई है।",
+      "cleaned": "इस महीने salary 32,000 रुपये आई है।"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "कार का loan 7,75,000 रूपए का है।",
+      "cleaned": "कार का loan 7,75,000 रुपये का है।"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "OK, OK।"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "5,75,000"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका loan 7,75,000 रूपए का है।",
+      "cleaned": "कार का loan 7,75,000 रूपए का है।"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "7,75,000 रुपये का।",
+      "cleaned": "कार का loan 7,75,000 रुपये का है।"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "car का loan car"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "कार का loan 7,75,000।",
+      "cleaned": "कार का लोन 7,75,000"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "कार का loan 7,75,000 रुपये का है।",
+      "cleaned": "कार का लोन 7,75,000 रुपए का है।"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "कार का loan 7,75,000 रूपए का है।",
+      "cleaned": "कार का loan 7,75,000 रुपये का है।"
+    },
+    {
+      "clip": "amt_07",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "कार का loan 7,75,000 रूपए का है।",
+      "cleaned": "कार का लोन 7,75,000 रुपये का है।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "ऑटो वाले को 120 रुपए दिए।",
+      "cleaned": "ऑटो वाले को 120 रुपए दिए।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "तो पुलिस को।",
+      "cleaned": "photo वाली जो 120 रुपए।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "ऑटो वाले को 120 रुपए दिए।",
+      "cleaned": "photo वाले को 120 रुपए दिए।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "show वाले को 120 रुपये दिए।",
+      "cleaned": "photo वाली को 120 रुपए दिए।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "टो वाले को 120 रुपये मिले।",
+      "cleaned": "ऑटो वाले को 120 रुपये।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "ऑटो वाले को 120 रुपए दिए।",
+      "cleaned": "ऑटो वाले को 120 रुपए दिए।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "ऑटो वाले को 120 रुपए दिए।",
+      "cleaned": "ऑटो वाले को 120 रुपए दिए।"
+    },
+    {
+      "clip": "amt_08",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "ऑटो वाले को 120 रुपए दिए।",
+      "cleaned": "ऑटो वाले को 120 रुपए दिए।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "clean",
+      "wrong": true,
+      "flagged": true,
+      "raw": "जमीन का सौदा 135 लाख रुपए में तय हुआ।",
+      "cleaned": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हिंदु का।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr0",
+      "wrong": false,
+      "flagged": true,
+      "raw": "का सौदा 1,25,00,000 रुपये में तय हुआ।",
+      "cleaned": "जमीन का सौदा 1,32,00,000 रुपये में दर्ज हुआ।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "cleaned": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "cleaned": "जमीन का सौदा 1,25,00,000 रुपये में तय हुआ।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr-10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "जमीन का सौदा 1,25,00,000 रुपये में हुआ।",
+      "cleaned": "जमीन का सौदा एक करोड़।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "जमीन का सौदा 1 करोड़पति साहब के घर में हुआ।",
+      "cleaned": "जमीन का सौदा 1,00,00,000 पशुओं के साथ होगा।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "जमीन का सौदा 1,25,00,000 रुपये में तय हुआ।",
+      "cleaned": "जमीन का सौदा 1,25,00,000 रुपये में हुआ।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "cleaned": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।"
+    },
+    {
+      "clip": "amt_09",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "जमीन का सौदा 1,25,00,000 रुपए में तय हुआ।",
+      "cleaned": "जमीन का सौदा 1,25,00,000 रुपये में तय हुआ।"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिजली का बिल 2340 रुपए आया है।",
+      "cleaned": "बिजली का बिल 2340 रुपए आया है।"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "2000"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिजली का बिल 2340 रुपए आया है।",
+      "cleaned": "बिजली का बिल 2340 रुपये आया है।"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "का बिल 2340 रुपये आया है।",
+      "cleaned": "बिजली का बिल 2340 रुपए रहा है।"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "क्या bill 2020 का भुगतान होगा?",
+      "cleaned": "बिजली का bill 2,000"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "बिजली का बिल 2340 रुपये आ रहा है।",
+      "cleaned": "बिजली का बिल 2,362"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": true,
+      "raw": "बिजली का बिल 2340 रुपये आया है।",
+      "cleaned": "बिजली का बिल 2360 रुपये आया है।"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिजली का बिल 2340 रुपए आया है।",
+      "cleaned": "बिजली का बिल 2340 रुपये आया है।"
+    },
+    {
+      "clip": "amt_10",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिजली का बिल 2340 रुपए आया है।",
+      "cleaned": "बिजली का बिल 2340 रुपये आया है।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "mobile number 98565723 है।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा mobile number 9876543210 है।",
+      "cleaned": "मेरा mobile number 9876543210 है।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "mobile number 9876543210 है।",
+      "cleaned": "मेरा mobile number 9776543210 है।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मेरा mobile number 9552"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरा mobile number 987।",
+      "cleaned": "मेरा mobile number 98719।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरा mobile number 987254121 है।",
+      "cleaned": "मेरा मोबाइल नंबर 98765111111।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरा mobile number 9876543910 है।",
+      "cleaned": "मेरा mobile number 9876543210 है।"
+    },
+    {
+      "clip": "dig_01",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा mobile number 9876543210 है।",
+      "cleaned": "मेरा mobile number 9876543210 है।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "cleaned": "का OTP 482915 है, किसी को मत बताइए।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ, हाँ।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "4, 8, 2, 9, 1, 5, 6।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "cleaned": "का OTP 482915 है, किसी को मत बताइए।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "का OTP 482915 है, किसी को मत बताइए।",
+      "cleaned": "482915 है, किसी को मत बताइए।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "4 OTP 48",
+      "cleaned": "आपका OTP 482"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "का OTP 4829।",
+      "cleaned": "आपका OTP 489911।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": false,
+      "raw": "आपका OTP 489915 है, किसी को मत बताइए।",
+      "cleaned": "आपका OTP 489915 है।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "cleaned": "का OTP 482915 है, किसी को मत बताइए।"
+    },
+    {
+      "clip": "dig_02",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका OTP 482915 है, किसी को मत बताइए।",
+      "cleaned": "का OTP 482915 है, please वो मत बताइए।"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा pin code 492001 है।",
+      "cleaned": "मेरा pin code 492001 है।"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": false,
+      "raw": "क्या आप मुझे?",
+      "cleaned": "क्या?"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा pin code 492001 है।",
+      "cleaned": "मेरा pin code 492001 है।"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा pin code 492001 है।",
+      "cleaned": "क्या कुछ 492001 है?"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "249",
+      "cleaned": "मेरा pin code 492020 है।"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मेरा pin code 492।",
+      "cleaned": "मेरा pin code 492"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरा pin code 492031 है।",
+      "cleaned": "मेरा pin code 49221 है।"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा pin code 492001 है।",
+      "cleaned": "मेरा pin code 492001 है।"
+    },
+    {
+      "clip": "dig_03",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "मेरा pin code 492001 है।",
+      "cleaned": "मेरा pin code 4922 है।"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस number पर call कीजिए, 8123456। 780",
+      "cleaned": "इस number पर call कीजिए, 8123456। 780"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "5"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "इस number पर call 8123456 553"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस number पर call कीजिए, 8123456। 780",
+      "cleaned": "इस number पर call कीजिए 8123456 780"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "इस number पर call कीजिए, 8123456। 780",
+      "cleaned": "इस number पर call कीजिए। 8123456 7 8 दिन में।"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "इस number पर call कीजिए, 81।",
+      "cleaned": "इस number पर call कीजिए। 8288।"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "इस number पर call कीजिए, 81214। 7802",
+      "cleaned": "इस number पर call कीजिए, 8:00 बजे। 5 5।"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "इस number पर call कीजिए: 8123452। 780",
+      "cleaned": "इस number पर call कीजिए 81452 5 8 कुछ भी।"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "इस number पर call कीजिए, 8123456। 780",
+      "cleaned": "इस number पर call कीजिए, 8123456। 7819"
+    },
+    {
+      "clip": "dig_04",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "इस number पर call कीजिए, 8123456। 780",
+      "cleaned": "इस number पर call कीजिए: 8123452। 7 8 तो।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "PP 307561 डालिए और आगे बढ़िए।",
+      "cleaned": "OTP 307561 डालिए और आगे बढ़िए।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "7, 5, 6, 4, 10 और 5।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "307561 डालिए और आगे बढ़िए।",
+      "cleaned": "OTP 307561 डालिए और आगे बढ़िए।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "एकतालिये और आगे बढ़े।",
+      "cleaned": "307561 डालिए और आके बोलिए।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "433075"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "OTP 30756141।",
+      "cleaned": "OTP 3075627"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "OTP 30756140 और 822।",
+      "cleaned": "OTP 30756141 और 733।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "OTP 307561 डालिए और आगे बढ़िए।",
+      "cleaned": "OTP 307561 डालिए और आगे बढ़िए।"
+    },
+    {
+      "clip": "dig_05",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "OTP 307561 डालिए और आगे बढ़िए।",
+      "cleaned": "OTP 307561 डालिए और साथ में।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "घर का pin code 221001 है।",
+      "cleaned": "घर का pin code 221001 है।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "नहीं साहब।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "घर का pin code 221001 है।",
+      "cleaned": "घर का pin code 221001 है।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "घर का pin code 221001 है।",
+      "cleaned": "मेरा account number 221001 है।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "घर का pin code 2210।",
+      "cleaned": "hand का pin code 221"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "घर का pin code 221002।",
+      "cleaned": "घर का pin code 221234 है।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": true,
+      "raw": "घर का pin code 221001 है।",
+      "cleaned": "घर का pin code 2210 है।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "घर का pin code 221001 है।",
+      "cleaned": "घर का pin code 221001 है।"
+    },
+    {
+      "clip": "dig_06",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "घर का pin code 221001 है।",
+      "cleaned": "घर का pin code 22100 है।"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरे account number के आख़िर 4 अंक 7316 हैं।",
+      "cleaned": "मेरे account number के आख़िर चार अंक 7316 हैं।"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "4"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "account number 1541।",
+      "cleaned": "4545"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "account number के आख़िर 4 अंक 7316 हैं।",
+      "cleaned": "मेरे account number के आखिरी 4 अंक 7316 हैं।"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "account number के आख़िर 4 अंक 7316 हैं।",
+      "cleaned": "राम धम्पर की आखिर 4 7 दिन के छे है।"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मेरे account number के 8457"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरे account number के आख़िर 4 अंक 72।",
+      "cleaned": "मेरे account number के आखिरी 4 अंक 5 हैं।"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरे account number के आख़िर 4 अंक 73।",
+      "cleaned": "मेरे account number के आखिरी 4 अंक 7 है।"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "मेरे account number के आख़िर 4 अंक 7316 हैं।",
+      "cleaned": "मेरे account number के आख़िर चार अंक 731 हैं।"
+    },
+    {
+      "clip": "dig_07",
+      "condition": "street_snr5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरे account number के आख़िर 4 अंक 7312 हैं।",
+      "cleaned": "मेरे account number के आखिरी 4 अंक 73 है।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "cleaned": "दूसरा नंबर 7000123456 है। इस पर WhatsApp करना।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "4 दिन के लिए।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "4000।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr0",
+      "wrong": false,
+      "flagged": true,
+      "raw": "मेरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "cleaned": "4 नंबर 4 5 है, इस पर WhatsApp करना है।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मतरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "cleaned": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना है।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "cleaned": "दूसरा number 7000123456 है, इस पर WhatsApp करना है।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "17 नंबर 7।",
+      "cleaned": "दूसरा number star।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "दूसरा नंबर 700011111 है, इस पर WhatsApp रखें।",
+      "cleaned": "दूसरा number star 3 है।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "दूसरा नंबर 7000123452 है, इस पर WhatsApp करना।",
+      "cleaned": "दूसरा number 700121 है, इस पर WhatsApp रखना।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "दूसरा नंबर 7000123456 है, इस पर WhatsApp करना।",
+      "cleaned": "दूसरा नंबर 7000120452 है। इस पर WhatsApp करना है।"
+    },
+    {
+      "clip": "dig_08",
+      "condition": "street_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "दूसरा नंबर 7000123452 है, इस पर WhatsApp करना।",
+      "cleaned": "दूसरा नंबर 7000123452 है, इस पर WhatsApp करना।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "parcel pin code 492013 पर भेज दीजिए।",
+      "cleaned": "parcel pin code 492013 पर भेज दीजिए।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "आसन पे 44920131।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "parcel pin code 492013 पर भेज दीजिए।",
+      "cleaned": "parcel pin code 492013 पर भेज दीजिए।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "PIN code 492013 पर भेज दीजिए।",
+      "cleaned": "parcel pin code 492013 पर भेज दीजिए।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हर्षल सिंह और 4।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "56, pin code 4928।",
+      "cleaned": "parcel pin code 492"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "parcel pin code 4923036 है, समझ लीजिए।",
+      "cleaned": "parcel pin code 492।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "parcel pin code 492013 पर भेज दीजिए।",
+      "cleaned": "parcel pin code 492013 पर भेज दीजिए।"
+    },
+    {
+      "clip": "dig_09",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "parcel pin code 492013 पर भेज दीजिए।",
+      "cleaned": "parcel pin code 492083 पर भेज दीजिए।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका verification code 715204 है।",
+      "cleaned": "आपका verification code 715204 है।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "554"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "4 है, 1, 2, 7, 1, 5, 2, 4 है।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका verification code 715204 है।",
+      "cleaned": "आपका वेरिफिकेशन कोड 715204 है।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "का verification code 715204 है।",
+      "cleaned": "आपका verification code 715204 है।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "का verification code 7।",
+      "cleaned": "आपका verification code 71501999"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "आपका verification code 715295।",
+      "cleaned": "आपका verification code 715294 है।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "आपका verification code 715294 है।",
+      "cleaned": "आपका verification code 715234 है।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका verification code 715204 है।",
+      "cleaned": "आपका verification code 715204 है।"
+    },
+    {
+      "clip": "dig_10",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आपका verification code 715204 है।",
+      "cleaned": "आपका verification code 715204 है।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा account number 50100234567 है, please verify करो।",
+      "cleaned": "मेरा अकाउंट नंबर 50100234567 है please verify करो।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ, 5 5।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr0",
+      "wrong": false,
+      "flagged": true,
+      "raw": "मेरा account number 50100234567 है। please verify करें।",
+      "cleaned": "मेरा account number 501000034567 है। Please verify करें।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा account number 50100234567 है, please verify करें।",
+      "cleaned": "मेरा अकाउंट नंबर 50100234567 है please verify करो।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा account number 50100234567 है, please verify करें।",
+      "cleaned": "मेरा अकाउंट नंबर 50100234567 है। Please verify करें।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरा account number 5010।",
+      "cleaned": "मेरा account number 531"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरा account number 50100234527 है, इसे verify करें।",
+      "cleaned": "मेरा account number 50100174504 है।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "मेरा account number 50100234527 है। please verify करें।",
+      "cleaned": "मेरा account number 50100275527 है। please मेरी बात सुनो।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "मेरा account number 50100234567 है, please verify करो।",
+      "cleaned": "मेरा अकाउंट नंबर 50100234537 है please verify करो।"
+    },
+    {
+      "clip": "mix_01",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा account number 50100234567 है, please verify करो।",
+      "cleaned": "मेरा अकाउंट नंबर 50100234567 है please verify करो।"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिल की amount 3200 रुपये है, payment कर दो।",
+      "cleaned": "बिल की amount 3200 रुपये है, payment कर दो।"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "3,000, 3,200 रुपए है payment"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिल की amount 3200 रुपये है, payment कर दो।",
+      "cleaned": "बिल की amount 3200 रुपये है, payment कर दो।"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "की amount 3200 रुपये है, payment कर दें।",
+      "cleaned": "बिल की amount 3,200 रुपये है, payment कर दो।"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "बिल की amount 3,200"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिल की amount 3200 रुपये है, payment कर दें।",
+      "cleaned": "बिल की amount 3,200 रुपये है payment कर दीजिए।"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "बिल की amount 3200 रुपये है, payment कर दें।",
+      "cleaned": "बिल की amount 3200 रुपये है, payment कर दो।"
+    },
+    {
+      "clip": "mix_02",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "बिल की amount 3200 रुपये है, payment कर दें।",
+      "cleaned": "बिल की amount 3,200 रुपये है payment कर दें।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "का OTP 619204 आया होगा, please बताइए।",
+      "cleaned": "आपका OTP 619204 आया होगा, please बताइए।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "और पीछे एक नाव, 2 3 4 आया हुआ है, 3 लोग।",
+      "cleaned": "हाँ, 2 3 4 आया होता है, बताइए।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "का OTP 619204 आया होगा, please बताइए।",
+      "cleaned": "आपका OTP पीछे 19204 आया होगा, please बताइए।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "काउ के पीछे एक 9204 आया होगा, please बताइए।",
+      "cleaned": "आपका पीछे 1 2 3 4 आया होगा, please बताइए।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "का OTP 61।",
+      "cleaned": "आपका OTP 6192।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "का OTP 619234।",
+      "cleaned": "आपका OTP 61923455।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "का OTP 61920412 होगा, please बताइए।",
+      "cleaned": "आपका OTP 61920712।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "का OTP 619204 आया होगा, please बताइए।",
+      "cleaned": "आपका OTP 619204 आया होगा, please बताइए।"
+    },
+    {
+      "clip": "mix_03",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "का OTP 619204 आया होगा, please बताइए।",
+      "cleaned": "आपका OTP 619204 आया होगा, please बताइए।"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा loan 1,50,000 रूपए का है, EMI कब से start होगी?",
+      "cleaned": "मेरा loan 1,50,000 रूपए का है, EMI कब से start होगी?"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "बहुत अच्छा।"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "5000 रुपये का है ये माल।",
+      "cleaned": "हम लोग 1,50,000 रुपये का है, तिमाही 50।"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा loan 1,50,000 रुपए का है। EMI कब से start होगी?",
+      "cleaned": "मेरा loan 1,50,000 रुपए का है। EMI कब से start होगी?"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "लोन 1,50,000 रूपए का है, EMI कब से start होगी?",
+      "cleaned": "मेरा loan 1,50,000 रुपये का है, EMI कब से start होगी?"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr-10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "1,50,000 रूपए का है।",
+      "cleaned": "मेरा लोन 1,50,000 रुपए का है।"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा loan 1,50,000 रूपए का है, EMI कब तक बाकी होगी?",
+      "cleaned": "मेरा loan 1,50,000 रुपए का है।"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": true,
+      "raw": "मेरा loan 1,50,000 रुपए का है, EMI कब से start होगी?",
+      "cleaned": "मेरा loan 1,50,000 रुपये का है। EMI 7500"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा loan 1,50,000 रूपए का है, EMI कब से start होगी?",
+      "cleaned": "मेरा loan 1,50,000 रूपए का है, EMI कब से start होगी?"
+    },
+    {
+      "clip": "mix_04",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा loan 1,50,000 रुपए का है, EMI कब से start होगी?",
+      "cleaned": "मेरा loan 1,50,000 रुपए का है। EMI कब से start होगी?"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस number पर call करो, 9123456789, urgent है।",
+      "cleaned": "इस number पर call करो, 9123456789, urgent है।"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "91245345"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "इस number पर call करो 9123456789 urgent है।",
+      "cleaned": "इस number पर call करो 9123456789 urgent है।"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "पर call करो 9123456789। भजन नहीं",
+      "cleaned": "इस number पर call करो: 912345678959।"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "परसों।",
+      "cleaned": "इस number पर call करो। 9121"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "इस number पर call करो: 9123452479।",
+      "cleaned": "इस number पर call करो 912413459"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "इस number पर call करो, 9123452489। urgent है।",
+      "cleaned": "इस number पर call करो 9123453459।"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": true,
+      "raw": "इस number पर call करो, 9123456789, urgent है।",
+      "cleaned": "इस number पर call करो, 9123453489, urgent है।"
+    },
+    {
+      "clip": "mix_05",
+      "condition": "street_snr5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "इस number पर call करो, 9123452789, urgent है।",
+      "cleaned": "इस number पर call करो, 9123452489, urgent है।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं रायपुर से बोल रही हूँ।",
+      "cleaned": "मैं रायपुर से बोल रही हूँ।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मैं"
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "नहीं"
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मैं"
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं रायपुर से बोल रही हूँ।",
+      "cleaned": "मैं रायपुर से बोल रही हूँ।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "कुछ बोल रही हैं।",
+      "cleaned": "मैं रात से बोल रहा हूँ।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मैं रायपुर से बोल रही हूँ।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मैं रायपुर से बोल रही हूँ।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं रायपुर से बोल रही हूँ।",
+      "cleaned": "मैं रायपुर से बोल रही हूँ।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं रायपुर से बोल रही हूँ।",
+      "cleaned": "मैं रायपुर से बोल रही हूँ।"
+    },
+    {
+      "clip": "name_01",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं रायपुर से बोल रही हूँ।",
+      "cleaned": "मैं रायपुर से बोल रही हूँ।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ, नमस्ते।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुमित्रा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr-10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_02",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा नाम सुनीता वर्मा है।",
+      "cleaned": "मेरा नाम सुनीता वर्मा है।"
+    },
+    {
+      "clip": "name_03",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "cleaned": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।"
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "राकेश साहू बिलासपुर में रहते हैं।",
+      "cleaned": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।"
+    },
+    {
+      "clip": "name_03",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "ते शाहू बिलासपुर में रहते हैं।",
+      "cleaned": "राकेश साहू बिलासपुर में रहते हैं।"
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरे भैया राकेश साहू बिलासपुर से हैं।",
+      "cleaned": "मेरे भाई राकेश साहू बिलासपुर है।"
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "cleaned": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।"
+    },
+    {
+      "clip": "name_03",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।",
+      "cleaned": "मेरे भैया राकेश साहू बिलासपुर में रहते हैं।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आप पंडरी बाजार आ जाइए।",
+      "cleaned": "आप पंडरी बाजार आ जाइए।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "अच्छा।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ, 15000 आ जाएगी।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आप पंडरी बाजार आ जाइए।",
+      "cleaned": "आप पंडरी बाज़ार आ जाइए।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मेरी बाजार आ जाइए।",
+      "cleaned": "आप पंडरी बाज़ार आ जाइए।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr-10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "पंडरी बाजार आ जाइये।",
+      "cleaned": "आप पंडरी बाज़ार आ जाइए।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आप पंडरी बाजार आ जाइए।",
+      "cleaned": "आप पंडरी बाज़ार आ जाती हो?"
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आप पंडरी बाजार आ जाइए।",
+      "cleaned": "आप पंडरी बाज़ार आ जाइए।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आप पंडरी बाजार आ जाइए।",
+      "cleaned": "आप पंडरी बाजार आ जाइए।"
+    },
+    {
+      "clip": "name_04",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "आप पंडरी बाजार आ जाइए।",
+      "cleaned": "आप पंडरी बाज़ार आ जाइए।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा घर तेलीबांधा में है।",
+      "cleaned": "मेरा घर तेलीबांधा में है।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मेरा घर 1500।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "क्या घर के लिए बीमा नहीं है?",
+      "cleaned": "मेरा हर सेविंग 5000 रुपये।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा घर तेलीबांधा में है।",
+      "cleaned": "मेरा घर तेलीबांधा में है।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मेरा घर टेलीपांडा में है।",
+      "cleaned": "मेरा घर सेही बांदा में है।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मेरा घर पेरीपांडा में है।",
+      "cleaned": "मेरा हाथ थेरी बांधना नहीं है।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मेरा घर सेलिबांधा में है।",
+      "cleaned": "मेरा घर तेरी बांदा में है।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा घर तेलीबांधा में है।",
+      "cleaned": "मेरा घर तेलीबांधा में है।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा घर तेलीबांधा में है।",
+      "cleaned": "मेरा घर तेलीबांधा में है।"
+    },
+    {
+      "clip": "name_05",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मेरा घर तेलीबांधा में है।",
+      "cleaned": "मेरा घर तेलीबांधा में है।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम अस्सी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ, हाँ।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "बस 2000 के पास में।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": false,
+      "raw": "हम उसी घाट के पास रहते हैं।",
+      "cleaned": "हम उसी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम अस्सी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": true,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम उसी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr-10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम अस्सी घाट के पास रहके।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम अस्सी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम अस्सी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम अस्सी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_06",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "हम अस्सी घाट के पास रहते हैं।",
+      "cleaned": "हम अस्सी घाट के पास रहते हैं।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "अंजलि तिवारी जी से बात करवाइए।",
+      "cleaned": "अंजलि तिवारी जी से बात करवाइए।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "5 5"
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "5 5 बंदा।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr10",
+      "wrong": true,
+      "flagged": false,
+      "raw": "स्वारी जी से बात करवाइए।",
+      "cleaned": "अंजलि तिवारी जी से बात करवाइए।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "पारी से बात करवाइए।",
+      "cleaned": "उनके लिए तिवारी जी से बात करवाएंगे।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "अंजलि तिवारी जी से बात करवाइए।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "बात करवाइए।",
+      "cleaned": "अंजली तिवारी जी से बात करवाइए।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "अंजलि तिवारी जी से बात करवाइए।",
+      "cleaned": "अंजली तिवारी जी से बात करवाइए।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "अंजलि तिवारी जी से बात करवाइए।",
+      "cleaned": "अंजली तिवारी जी से बात करवाइए।"
+    },
+    {
+      "clip": "name_07",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "अंजलि तिवारी जी से बात करवाइए।",
+      "cleaned": "अंजली तिवारी जी से बात करवाइए।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "cleaned": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "तो 2,000 का आएगा।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "तो 2000 पर आया था।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "cleaned": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "वाराणसी में कढ़ौलिया चौराहे पर मिलते हैं।",
+      "cleaned": "इसी में भदौलिया चौराहे पर मिलते हैं।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": false,
+      "raw": "क्या मैं अपना mobile bill online काट सकता हूँ?",
+      "cleaned": "वाराणसी, main, बड़ौड़िया, चौड़ाया, सब।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "वाराणसी में गोदौलिया चौराहा प्रसिद्ध है।",
+      "cleaned": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "cleaned": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "cleaned": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।"
+    },
+    {
+      "clip": "name_08",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।",
+      "cleaned": "वाराणसी में गोदौलिया चौराहे पर मिलते हैं।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "cleaned": "दुर्ग से नया रायपुर की बस कब चलेगी?"
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": ""
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "10:00 बजे।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "cleaned": "दूर से नया रायपुर की बस चल रही है।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "रोड से नया रायपुर की बस कब चलेगी?",
+      "cleaned": "दो दिन से नया रायपुर की बस चल रही है।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": false,
+      "raw": "से नया रायपुर की बस।",
+      "cleaned": "दूर से नया रायपुर।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "cleaned": "दुर्ग से नया रायपुर की बस।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "cleaned": "दुर्ग से नया रायपुर की बस अब चलेगी।"
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "cleaned": "दुर्ग से नया रायपुर की बस कब चलेगी?"
+    },
+    {
+      "clip": "name_09",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "दुर्ग से नया रायपुर की बस कब चलेगी?",
+      "cleaned": "दुर्ग से नया रायपुर की बस कब चलेगी?"
+    },
+    {
+      "clip": "name_10",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "मैं बाजार से आया हूँ।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, मौका पर रुकूँगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, लसापुर से गया हूँ।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, गंगा पर दुग्गनवा।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "fan_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, जनतापुर जंजगा।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr-10",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, लड़का पढ़ रहा है।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr-5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, लड़का पर उतरूँगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, लंका पड़ी गंगा।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूं, लंका पर रुकूंगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।"
+    },
+    {
+      "clip": "name_10",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।",
+      "cleaned": "मैं भिलाई से आ रहा हूँ, लंका पर रुकूँगा।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "clean",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।",
+      "cleaned": "मैं कल रायपुर से लौट आऊँगा तब बात करेंगे।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr-10",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr-5",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "हाँ"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr0",
+      "wrong": true,
+      "flagged": true,
+      "raw": "",
+      "cleaned": "निकल जाए तो बहुत आसान बात है।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "cleaned": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "fan_snr5",
+      "wrong": true,
+      "flagged": false,
+      "raw": "कल जयपुर से लौट आऊंगा, तब बात करेंगे।",
+      "cleaned": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr-10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "कल रायपुर से लौट आऊंगा।",
+      "cleaned": "मैं कल रायपुर से लौट आऊंगा।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr-5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "cleaned": "मैं कल रायपुर से लौट आऊंगा तब बात करेंगे।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr0",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "cleaned": "मैं कल रायपुर से लौट आऊँगा तब बात करेंगे।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr10",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।",
+      "cleaned": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।"
+    },
+    {
+      "clip": "pln_04",
+      "condition": "street_snr5",
+      "wrong": false,
+      "flagged": false,
+      "raw": "मैं कल रायपुर से लौट आऊंगा, तब बात करेंगे।",
+      "cleaned": "मैं कल रायपुर से लौट आऊँगा, तब बात करेंगे।"
+    }
+  ]
+}

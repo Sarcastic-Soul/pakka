@@ -81,3 +81,8 @@ input[type="radio"] {
 fieldset {
   min-width: 0;
 }
+
+/* Set by the boot script in app/layout.tsx until the Hindi text is in place. */
+html.lang-pending body {
+  visibility: hidden;
+}
