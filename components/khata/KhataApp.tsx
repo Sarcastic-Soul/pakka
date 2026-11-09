@@ -8,6 +8,7 @@ import { ApiError, getMe, listCustomers, logout, parseEntry, saveEntry } from "@
 import { decodeToMono16k, RATE, toWav } from "@/lib/khata/client/audio";
 import { draftFromParse, emptyDraft, finalizeDraft, isDirty, type Draft } from "@/lib/khata/client/draft";
 import { formatRupees } from "@/lib/khata/client/format";
+import { clearHint, saveHint } from "@/lib/khata/client/session-hint";
 import { localize } from "@/lib/i18n/localize";
 import { useLang } from "@/lib/i18n/useLang";
 import LangToggle from "@/components/LangToggle";
@@ -67,6 +68,7 @@ export default function KhataApp() {
       .then((r) => {
         if (!alive) return;
         setShop(r.shop);
+        saveHint(r.shop.name);
         void refreshCustomers();
       })
       .catch((err: unknown) => {
@@ -148,6 +150,7 @@ export default function KhataApp() {
   };
 
   const onLogout = async () => {
+    clearHint();
     try {
       await logout();
     } catch {

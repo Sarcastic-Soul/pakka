@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, CircleNotch } from "@phosphor-icons/react";
 import type { Shop } from "@/lib/khata/types";
-import { getMe, login, register, startDemo } from "@/lib/khata/client/api";
+import { ApiError, getMe, login, register, startDemo } from "@/lib/khata/client/api";
+import { clearHint, readHint, saveHint } from "@/lib/khata/client/session-hint";
 import { localize } from "@/lib/i18n/localize";
 import { useLang } from "@/lib/i18n/useLang";
 
@@ -21,14 +22,33 @@ export default function AuthPanel() {
   const [busy, setBusy] = useState<"demo" | "form" | null>(null);
   const [problem, setProblem] = useState<Problem | null>(null);
   const [created, setCreated] = useState<Shop | null>(null);
-  const [existing, setExisting] = useState<Shop | null>(null);
+  // Until we know whether a login is saved, show an empty space instead of the
+  // wrong buttons. The page is built ahead of time, so it cannot know.
+  const [checked, setChecked] = useState(false);
+  const [existing, setExisting] = useState<string | null>(null);
 
   // A valid cookie lasts 30 days, so a returning owner can skip the login form.
   useEffect(() => {
     let alive = true;
+    const hint = readHint();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setExisting(hint);
+    if (hint === null) setChecked(true);
     getMe()
-      .then((r) => alive && setExisting(r.shop))
-      .catch(() => undefined);
+      .then((r) => {
+        if (!alive) return;
+        saveHint(r.shop.name);
+        setExisting(r.shop.name);
+        setChecked(true);
+      })
+      .catch((err: unknown) => {
+        if (!alive) return;
+        if (err instanceof ApiError && err.status === 401) {
+          clearHint();
+          setExisting(null);
+        }
+        setChecked(true);
+      });
     return () => {
       alive = false;
     };
@@ -96,6 +116,10 @@ export default function AuthPanel() {
     </button>
   );
 
+  if (!checked && existing === null && !created) {
+    return <div aria-hidden className="min-h-[13rem]" />;
+  }
+
   if (created) {
     return (
       <div lang={lang} className="border-2 border-ink p-5" role="status" aria-live="polite">
@@ -124,7 +148,7 @@ export default function AuthPanel() {
           className="inline-flex min-h-16 w-full min-w-0 items-center justify-center gap-3 rounded-sm bg-ink px-6 text-xl font-medium text-paper"
         >
           <span lang="hi" className="min-w-0 truncate">
-            {t.authContinue(existing.name)}
+            {t.authContinue(existing)}
           </span>
           <ArrowRight aria-hidden size={22} className="shrink-0" />
         </button>
