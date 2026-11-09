@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Warning } from "@phosphor-icons/react/dist/ssr";
 import AuthPanel from "@/components/khata/AuthPanel";
 
-const REPO = "https://github.com/Sarcastic-Soul/shor-meter";
+const REPO = "https://github.com/Sarcastic-Soul/pakka";
 
 /** Static picture of the confirm card, built from HTML so it reads like the real app. */
 function ExampleCard() {
@@ -201,7 +201,7 @@ export default function Landing() {
             Gemini 3.5 Flash Lite.
           </p>
           <a href={REPO} className="text-ink underline underline-offset-4">
-            github.com/Sarcastic-Soul/shor-meter
+            github.com/Sarcastic-Soul/pakka
           </a>
         </div>
       </footer>

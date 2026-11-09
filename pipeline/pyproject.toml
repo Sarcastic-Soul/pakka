@@ -1,7 +1,7 @@
 [project]
 name = "shor"
 version = "0.1.0"
-description = "Noise stress-test pipeline for Gnani Prisma on Hindi and Hinglish speech"
+description = "Noise benchmark pipeline (Shor Meter) for Gnani Prisma on Hindi and Hinglish speech"
 authors = [
     { name = "Sarcastic-Soul", email = "anishisbusy@gmail.com" }
 ]
