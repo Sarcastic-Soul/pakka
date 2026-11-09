@@ -207,7 +207,7 @@ def cmd_record_noise(args) -> None:
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(
-        prog="shor", description="Noise stress test for Gnani Prisma"
+        prog="shor", description="Shor Meter: noise benchmark for Gnani Prisma"
     )
     sub = parser.add_subparsers(dest="command", required=True)
 

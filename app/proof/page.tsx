@@ -15,7 +15,7 @@ const data = assertResultsFile(
   ),
 );
 
-const REPO = "https://github.com/Sarcastic-Soul/shor-meter";
+const REPO = "https://github.com/Sarcastic-Soul/pakka";
 
 export const metadata: Metadata = {
   title: "Shor Meter",
@@ -166,7 +166,7 @@ export default function Home() {
                 </a>
                 . Code:{" "}
                 <a href={REPO} className="text-ink underline underline-offset-4">
-                  github.com/Sarcastic-Soul/shor-meter
+                  github.com/Sarcastic-Soul/pakka
                 </a>
                 .
               </li>
