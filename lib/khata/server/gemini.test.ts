@@ -36,7 +36,7 @@ describe("validateExtraction", () => {
 
 describe("fallbackExtraction", () => {
   it("uses the largest number heard", () => {
-    expect(fallbackExtraction("2 Maggi 30 और दो सौ", null)).toEqual({ customer: null, kind: "udhaar", items: [], total: 200 });
-    expect(fallbackExtraction("कुछ नहीं", "")).toEqual({ customer: null, kind: "udhaar", items: [], total: null });
+    expect(fallbackExtraction("2 Maggi 30 और दो सौ", null)).toEqual({ customer: null, kind: "udhaar", items: [], total: 200, guessed: true });
+    expect(fallbackExtraction("कुछ नहीं", "")).toEqual({ customer: null, kind: "udhaar", items: [], total: null, guessed: true });
   });
 });

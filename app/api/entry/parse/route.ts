@@ -1,4 +1,4 @@
-import type { ParseResult } from "@/lib/khata/types";
+import type { Flag, ParseResult } from "@/lib/khata/types";
 import { currentShop } from "@/lib/khata/server/auth";
 import { runChecks } from "@/lib/khata/server/checks";
 import { takeDaily } from "@/lib/khata/server/db";
@@ -12,8 +12,13 @@ import { estimateSnrDb } from "@/lib/khata/server/snr";
 import { upstreamMessage } from "@/lib/khata/server/vachana";
 import { parseWavHeader } from "@/lib/live/wav";
 
-// Denoise + two Prisma calls + Gemini can take a while.
-export const maxDuration = 30;
+// Denoise + two Prisma calls + Gemini can take a while. Vercel allows up to
+// 300 s on every plan with fluid compute; 60 s is plenty and caps a stuck call.
+export const maxDuration = 60;
+
+// Skip the cleaned second hearing when this much time has already gone, so the
+// reply still arrives well inside maxDuration.
+const CLEAN_PASS_BUDGET_MS = 25_000;
 
 const MAX_BYTES = 1024 * 1024;
 const MAX_SEC = 15;
@@ -51,17 +56,19 @@ export async function POST(req: Request) {
     const customers = await customerNames(shop.id);
     const names = customers.map((c) => c.name);
 
-    const cleaned = await denoise(body);
-    const transcriptRaw = await transcribe(body, "raw", names);
+    // Denoise runs locally while Prisma hears the raw audio.
+    const [transcriptRaw, cleaned] = await Promise.all([transcribe(body, "raw", names), denoise(body)]);
     let transcriptClean: string | null = null;
-    if (cleaned) {
+    if (cleaned && Date.now() - t0 < CLEAN_PASS_BUDGET_MS) {
       // A failed second call should not lose the first transcript.
       transcriptClean = await transcribe(cleaned, "clean", names).catch(() => null);
     }
 
     const parsed = await extractEntry(transcriptRaw, transcriptClean, names);
     const checks = runChecks(transcriptRaw, transcriptClean, parsed, customers);
-    const flags = transcriptClean === null ? [...checks.flags, "denoise_unavailable" as const] : checks.flags;
+    const flags: Flag[] = [...checks.flags];
+    if (transcriptClean === null) flags.push("denoise_unavailable");
+    if (parsed.guessed) flags.push("ai_unavailable");
 
     const result: ParseResult = {
       transcriptRaw,

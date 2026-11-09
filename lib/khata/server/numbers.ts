@@ -188,6 +188,60 @@ for (const [w, v] of Object.entries(SCALES)) WORDS.set(fold(w), ["scale", v]);
 
 const SMALL_KINDS: readonly (Kind | null)[] = ["small", "en_unit", "en_tens", "literal"];
 
+// Fractional money words. "times" multiplies the next unit (डेढ़ सौ = 150).
+// "plus" adds a fraction of the unit to an optional count (साढ़े तीन सौ = 350,
+// सवा सौ = 125). They only count when a सौ / scale word follows.
+type Fraction = ["times" | "plus", number];
+const FRACTIONS = new Map<string, Fraction>();
+const addFraction = (words: string[], f: Fraction) => {
+  for (const w of words) FRACTIONS.set(fold(w), f);
+};
+addFraction(["डेढ़", "डेढ", "डेड़", "dedh", "dedth", "derh", "dhedh"], ["times", 1.5]);
+addFraction(["ढाई", "ढ़ाई", "dhai", "dhaai", "dhaee"], ["times", 2.5]);
+addFraction(["सवा", "sawa", "sava", "sawaa", "savaa"], ["plus", 0.25]);
+addFraction(["साढ़े", "साढे", "साड़े", "sadhe", "saadhe", "saade", "sade", "sarhe"], ["plus", 0.5]);
+addFraction(["पौने", "पोने", "paune", "pone"], ["plus", -0.25]);
+
+// Romanized units, only read after a fraction word ("dedh sau").
+const ROMAN_UNITS = new Map<string, [Kind, number]>([
+  ["sau", ["hundred", 100]],
+  ["so", ["hundred", 100]],
+  ["hazar", ["scale", 1e3]],
+  ["hazaar", ["scale", 1e3]],
+  ["hajar", ["scale", 1e3]],
+]);
+
+/** A unit word's value (सौ, हज़ार, लाख, ...) or null. */
+function unitOf(tok: string | undefined): [Kind, number] | null {
+  if (tok !== undefined && ROMAN_UNITS.has(tok)) return ROMAN_UNITS.get(tok)!;
+  const atom = tok === undefined ? null : classify(tok);
+  return atom && (atom[0] === "hundred" || atom[0] === "scale") ? [atom[0], atom[1]] : null;
+}
+
+/**
+ * Reads a fraction phrase starting at tokens[i]. Returns the value, the unit
+ * it ends on, and how many tokens it used, or null if it is not one.
+ */
+function readFraction(tokens: string[], i: number): [number, Kind, number, number] | null {
+  const frac = FRACTIONS.get(tokens[i].replaceAll(NUKTA, ""));
+  if (!frac) return null;
+  const [mode, f] = frac;
+  let count = 1;
+  let used = 1;
+  if (mode === "plus") {
+    const n = classify(tokens[i + 1] ?? "");
+    if (n && SMALL_KINDS.includes(n[0]) && n[1] >= 1 && n[1] <= 99) {
+      count = n[1];
+      used = 2;
+    }
+  }
+  const unit = unitOf(tokens[i + used]);
+  if (!unit) return null;
+  const value = mode === "times" ? f * unit[1] : (count + f) * unit[1];
+  if (!Number.isInteger(value) || value <= 0) return null;
+  return [value, unit[0], unit[1], used + 1];
+}
+
 function classify(tok: string): [Kind, number, boolean] | null {
   if (/^[0-9]+$/.test(tok)) return ["literal", Number(tok), false];
   const hit = WORDS.get(tok.replaceAll(NUKTA, ""));
@@ -253,20 +307,38 @@ export function parseSpokenNumbers(s: string): number[] {
     if (b.last !== null && b.hasWord) results.push(b.total + b.chunk);
     b.reset();
   };
-  tokens.forEach((tok, i) => {
+  for (let i = 0; i < tokens.length; i++) {
+    const tok = tokens[i];
+    const frac = readFraction(tokens, i);
+    if (frac !== null) {
+      const [value, unitKind, unitValue, used] = frac;
+      // "दो लाख ढाई हज़ार" continues the number; anything else starts a new one.
+      const joins = b.last === "scale" && b.chunk === 0 && b.lastScale !== null && b.lastScale > unitValue;
+      if (!joins) flush();
+      if (unitKind === "scale") {
+        b.total += value;
+        b.lastScale = unitValue;
+      } else {
+        b.chunk = value;
+      }
+      b.last = unitKind;
+      b.hasWord = true;
+      i += used - 1;
+      continue;
+    }
     const atom = classify(tok);
     if (atom === null) {
       if (tok === "and" && (b.last === "hundred" || b.last === "scale") && i + 1 < tokens.length) {
         const nxt = classify(tokens[i + 1]);
-        if (nxt !== null && SMALL_KINDS.includes(nxt[0])) return;
+        if (nxt !== null && SMALL_KINDS.includes(nxt[0])) continue;
       }
       flush();
-      return;
+      continue;
     }
     const [kind, value, isWord] = atom;
     if (!b.canTake(kind)) flush();
     b.add(kind, value, isWord, results);
-  });
+  }
   flush();
   return results;
 }

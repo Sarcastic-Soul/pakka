@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CheckCircle, CircleNotch, Keyboard, SignOut, WarningCircle } from "@phosphor-icons/react";
+import { ArrowCounterClockwise, CheckCircle, CircleNotch, Keyboard, SignOut, WarningCircle } from "@phosphor-icons/react";
 import type { Customer, Entry, Shop } from "@/lib/khata/types";
-import { ApiError, getMe, listCustomers, logout, parseEntry, saveEntry } from "@/lib/khata/client/api";
+import { ApiError, deleteEntry, getMe, listCustomers, logout, parseEntry, saveEntry } from "@/lib/khata/client/api";
 import { decodeToMono16k, RATE, toWav } from "@/lib/khata/client/audio";
 import { draftFromParse, emptyDraft, finalizeDraft, isDirty, type Draft } from "@/lib/khata/client/draft";
 import { formatRupees } from "@/lib/khata/client/format";
@@ -15,6 +15,7 @@ import LangToggle from "@/components/LangToggle";
 import ConfirmCard from "./ConfirmCard";
 import CustomerList from "./CustomerList";
 import CustomerPanel from "./CustomerPanel";
+import NotifyCustomer from "./NotifyCustomer";
 import Recorder, { type RecorderError } from "./Recorder";
 import SpeakButton from "./SpeakButton";
 
@@ -22,7 +23,7 @@ type Phase =
   | { kind: "idle" }
   | { kind: "processing"; step: number }
   | { kind: "confirm"; draft: Draft; saving: boolean; error: string | null }
-  | { kind: "saved"; entry: Entry; customer: Customer };
+  | { kind: "saved"; entry: Entry; customer: Customer; undoing: boolean; error: string | null };
 
 type Notice =
   | { kind: "recorder"; error: RecorderError }
@@ -44,6 +45,7 @@ export default function KhataApp() {
   const [phase, setPhase] = useState<Phase>({ kind: "idle" });
   const [notice, setNotice] = useState<Notice>(null);
   const [open, setOpen] = useState<Customer | null>(null);
+  const [flash, setFlash] = useState<string | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const workArea = useRef<HTMLDivElement | null>(null);
   const saveInFlight = useRef(false);
@@ -95,6 +97,7 @@ export default function KhataApp() {
   const onRecorded = useCallback(
     async (blob: Blob) => {
       setNotice(null);
+      setFlash(null);
       setPhase({ kind: "processing", step: 0 });
       clearTimers();
       try {
@@ -138,7 +141,7 @@ export default function KhataApp() {
     setPhase({ ...phase, saving: true, error: null });
     try {
       const saved = await saveEntry(r.entry);
-      setPhase({ kind: "saved", entry: saved.entry, customer: saved.customer });
+      setPhase({ kind: "saved", entry: saved.entry, customer: saved.customer, undoing: false, error: null });
       void refreshCustomers();
       scrollToWork();
     } catch (err) {
@@ -148,6 +151,33 @@ export default function KhataApp() {
       saveInFlight.current = false;
     }
   };
+
+  const onUndo = async () => {
+    if (phase.kind !== "saved" || phase.undoing || !window.confirm(t.undoConfirm)) return;
+    setPhase({ ...phase, undoing: true, error: null });
+    try {
+      await deleteEntry(phase.entry.id);
+      setPhase({ kind: "idle" });
+      setFlash(t.undone);
+      void refreshCustomers();
+    } catch (err) {
+      if (err instanceof ApiError && err.status === 401) return toHome();
+      setPhase({ ...phase, undoing: false, error: err instanceof Error ? err.message : t.deleteFail });
+    }
+  };
+
+  const onPayment = useCallback((c: Customer) => {
+    setOpen(null);
+    setNotice(null);
+    setFlash(null);
+    setPhase({
+      kind: "confirm",
+      draft: { ...emptyDraft(), customer: c.name, kind: "jama", total: c.balance > 0 ? String(c.balance) : "" },
+      saving: false,
+      error: null,
+    });
+    scrollToWork();
+  }, []);
 
   const onLogout = async () => {
     clearHint();
@@ -204,7 +234,7 @@ export default function KhataApp() {
 
   return (
     <div lang={lang} className="khata-app min-h-screen">
-      <header className="border-b border-ink">
+      <header className="border-b border-ink" inert={!!open}>
         <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 sm:px-8">
           <div className="min-w-0 basis-full sm:basis-0 sm:flex-1">
             <p className="font-display text-sm text-ink-soft">
@@ -232,7 +262,7 @@ export default function KhataApp() {
         </div>
       </header>
 
-      <main className="mx-auto grid max-w-5xl gap-10 px-4 pb-24 pt-6 sm:px-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14">
+      <main inert={!!open} className="mx-auto grid max-w-5xl gap-10 px-4 pb-24 pt-6 sm:px-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14">
         <section aria-labelledby="new-entry" ref={workArea} className="scroll-mt-4">
           <h2 id="new-entry" className="sr-only">
             {t.newEntryHeading}
@@ -269,6 +299,12 @@ export default function KhataApp() {
               )}
 
               <div aria-live="polite">
+                {flash && !notice && (
+                  <p className="mt-4 flex items-center gap-3 border-l-4 border-ink bg-paper-deep/60 px-4 py-3">
+                    <CheckCircle aria-hidden size={24} weight="fill" className="shrink-0" />
+                    {flash}
+                  </p>
+                )}
                 {notice && (
                   <div role="alert" className="mt-4 flex gap-3 border-l-4 border-accent bg-paper-deep/60 px-4 py-3">
                     <WarningCircle aria-hidden size={26} weight="fill" className="mt-0.5 shrink-0 text-accent" />
@@ -286,6 +322,7 @@ export default function KhataApp() {
                     type="button"
                     onClick={() => {
                       setNotice(null);
+                      setFlash(null);
                       setPhase({ kind: "confirm", draft: emptyDraft(), saving: false, error: null });
                     }}
                     className="inline-flex min-h-12 items-center gap-2 rounded-sm px-3 underline underline-offset-4"
@@ -330,6 +367,7 @@ export default function KhataApp() {
                 {t.newBalance}
               </p>
               <p className="num text-5xl">{formatRupees(phase.customer.balance)}</p>
+              <NotifyCustomer shopName={shop.name} entry={phase.entry} customer={phase.customer} />
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-start">
                 <SpeakButton
                   target={{ entryId: phase.entry.id }}
@@ -344,6 +382,24 @@ export default function KhataApp() {
                   {t.nextEntry}
                 </button>
               </div>
+              <button
+                type="button"
+                onClick={onUndo}
+                disabled={phase.undoing}
+                className="mt-4 inline-flex min-h-12 items-center gap-2 rounded-sm px-1 text-ink-soft underline underline-offset-4 disabled:opacity-60"
+              >
+                {phase.undoing ? (
+                  <CircleNotch aria-hidden size={20} className="animate-spin" />
+                ) : (
+                  <ArrowCounterClockwise aria-hidden size={20} />
+                )}
+                {t.undo}
+              </button>
+              {phase.error && (
+                <p role="alert" className="mt-2 text-accent">
+                  {localize(phase.error, lang)}
+                </p>
+              )}
             </div>
           )}
         </section>
@@ -370,7 +426,15 @@ export default function KhataApp() {
         </section>
       </main>
 
-      {open && <CustomerPanel customer={open} onClose={closePanel} onUnauthorized={toHome} />}
+      {open && (
+        <CustomerPanel
+          customer={open}
+          onClose={closePanel}
+          onUnauthorized={toHome}
+          onPayment={onPayment}
+          onChanged={refreshCustomers}
+        />
+      )}
     </div>
   );
 }

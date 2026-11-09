@@ -127,3 +127,8 @@ export async function speak(target: { entryId: number } | { customerId: number }
   );
   return res.blob();
 }
+
+/** Removes a wrong entry. Returns the customer with the new balance. */
+export function deleteEntry(id: number): Promise<{ customer: Customer }> {
+  return json(`/api/entries/${encodeURIComponent(String(id))}`, { method: "DELETE" });
+}

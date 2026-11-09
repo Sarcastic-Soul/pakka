@@ -1,7 +1,8 @@
 import { currentShop } from "@/lib/khata/server/auth";
 import { fail, MSG, readJson } from "@/lib/khata/server/http";
 import { getCustomer, getEntry } from "@/lib/khata/server/ledger";
-import { speakLimiter } from "@/lib/khata/server/limits";
+import { DAILY, speakLimiter } from "@/lib/khata/server/limits";
+import { takeDaily } from "@/lib/khata/server/db";
 import { balanceText, entryText, speak } from "@/lib/khata/server/timbre";
 import { upstreamMessage } from "@/lib/khata/server/vachana";
 
@@ -32,6 +33,9 @@ export async function POST(req: Request) {
     }
     if (speakLimiter.check(String(shop.id)) !== "ok") {
       return fail(429, "Too many voice replies this hour. Please wait a little.");
+    }
+    if (!(await takeDaily("speak", DAILY.speak))) {
+      return fail(429, "Voice read-back has hit its daily limit. Please come back tomorrow.");
     }
   } catch {
     console.error("pakka speak: lookup failed");

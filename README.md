@@ -34,6 +34,19 @@ So every entry goes to Prisma twice. If the numbers differ, an amount was never 
 4. The shop owner edits and confirms. Entries live in Neon Postgres.
 5. **Gnani Timbre v3.0** (voice Shivani) reads the entry and the new balance out loud, built only from saved data.
 
+## Try it
+
+1. Open the live site and tap "Try the demo". You get a throwaway shop with sample customers.
+2. Speak an entry, or type it.
+3. Check the card. Fix anything marked red.
+4. Save.
+
+After each saved entry, Pakka shows the message the customer would get: the amount just added and the balance left, with a WhatsApp share link. This is to stop fraud: the customer always knows what went on their tab. It is a share link, not a real WhatsApp or SMS integration.
+
+If an entry is wrong, undo it or delete it from the customer's page.
+
+The app works in Hindi or English. Use the toggle at the top; the choice is saved in your browser.
+
 ## Gnani tech used
 
 - Prisma v3.0 speech-to-text (REST `/stt/v3`), including `keyterms`
@@ -48,6 +61,8 @@ pnpm migrate
 pnpm dev
 ```
 
+`pnpm check` runs the type check, lint and tests (the same as CI).
+
 `pnpm build` downloads the pinned DeepFilterNet v0.5.6 binary (sha256-checked) into `bin/`.
 
 The benchmark pipeline is in `pipeline/` (Python, uv): `uv run shor run`, `uv run shor denoise-run deepfilter`, `uv run shor score`.
@@ -58,3 +73,7 @@ The benchmark pipeline is in `pipeline/` (Python, uv): `uv run shor run`, `uv ru
 - Gemini's free tier may use prompts for training. Demo shops hold sample data only and are deleted after 24 h.
 - Live calls are capped (per shop, per IP and per day) and can be switched off with `LIVE_ENABLED`.
 - Street noise: DEMAND dataset (STRAFFIC), CC BY-SA 3.0, Thiemann, Ito & Vincent 2013. Fan noise recorded by me.
+
+## License
+
+Code is MIT, see [LICENSE](LICENSE). The street noise bed in `data/noise/` and `public/noise/`, and the street-mixed clips in `public/audio/`, come from DEMAND and stay under CC BY-SA 3.0.

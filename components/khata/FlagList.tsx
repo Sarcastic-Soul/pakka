@@ -4,6 +4,7 @@ import {
   Calculator,
   EarSlash,
   PencilSimple,
+  Robot,
   Question,
   UserPlus,
   Warning,
@@ -22,6 +23,7 @@ const ICONS: Record<Flag, Icon> = {
   new_customer: UserPlus,
   no_total: PencilSimple,
   denoise_unavailable: WarningCircle,
+  ai_unavailable: Robot,
 };
 
 export default function FlagList({ flags }: { flags: Flag[] }) {

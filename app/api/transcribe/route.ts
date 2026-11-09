@@ -1,5 +1,7 @@
 import { createLimiter } from "@/lib/live/limits";
 import { parseWavHeader } from "@/lib/live/wav";
+import { takeDaily } from "@/lib/khata/server/db";
+import { DAILY } from "@/lib/khata/server/limits";
 
 // Node.js is the default runtime; with cacheComponents on, `runtime` and
 // `dynamic` exports are not allowed, and POST handlers are always dynamic.
@@ -77,6 +79,16 @@ export async function POST(req: Request) {
 
   const apiKey = process.env.GNANI_API_KEY;
   if (!apiKey) return fail(500, "Live testing is not set up on this server.");
+
+  // The in-memory limiter resets per instance; this cap holds across all of them.
+  try {
+    if (!(await takeDaily("transcribe", DAILY.transcribe))) {
+      return fail(429, "Live testing has hit its daily limit. Please come back tomorrow.");
+    }
+  } catch {
+    console.error("transcribe: usage check failed");
+    return fail(500, "Something went wrong on our side. Please try again.");
+  }
 
   const form = new FormData();
   form.append("audio_file", new Blob([body as BlobPart], { type: "audio/wav" }), "clip.wav");

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, CircleNotch, Warning } from "@phosphor-icons/react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowLeft, CircleNotch, HandCoins, Trash, Warning } from "@phosphor-icons/react";
 import type { Customer, Entry } from "@/lib/khata/types";
-import { ApiError, getCustomer } from "@/lib/khata/client/api";
+import { ApiError, deleteEntry, getCustomer } from "@/lib/khata/client/api";
 import { formatEntryDate, formatRupees } from "@/lib/khata/client/format";
 import { sortFlags } from "@/lib/khata/client/flags";
 import { localize } from "@/lib/i18n/localize";
@@ -15,8 +15,9 @@ type Load =
   | { kind: "ready"; customer: Customer; entries: Entry[] }
   | { kind: "error"; message: string };
 
-function EntryRow({ e }: { e: Entry }) {
+function EntryRow({ e, onDelete }: { e: Entry; onDelete: (e: Entry) => Promise<void> }) {
   const { lang, t } = useLang();
+  const [busy, setBusy] = useState(false);
   const warn = sortFlags(e.flags).filter((f) => f !== "new_customer");
   return (
     <li className="py-4">
@@ -31,9 +32,27 @@ function EntryRow({ e }: { e: Entry }) {
           </span>
           <span className="text-sm text-ink-soft">{formatEntryDate(e.createdAt, lang)}</span>
         </span>
-        <span className="num text-2xl">
-          {e.kind === "jama" ? "−" : "+"}
-          {formatRupees(e.total)}
+        <span className="flex items-center gap-1">
+          <span className="num text-2xl">
+            {e.kind === "jama" ? "−" : "+"}
+            {formatRupees(e.total)}
+          </span>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={async () => {
+              if (!window.confirm(t.deleteConfirm)) return;
+              setBusy(true);
+              await onDelete(e);
+              setBusy(false);
+            }}
+            className="-mr-2 inline-flex size-11 shrink-0 items-center justify-center rounded-sm text-ink-soft hover:text-accent disabled:opacity-50"
+          >
+            {busy ? <CircleNotch aria-hidden size={20} className="animate-spin" /> : <Trash aria-hidden size={20} />}
+            <span className="sr-only">
+              {t.deleteEntry} {formatRupees(e.total)}
+            </span>
+          </button>
         </span>
       </div>
       {e.items.length > 0 && (
@@ -57,13 +76,35 @@ export default function CustomerPanel({
   customer,
   onClose,
   onUnauthorized,
+  onPayment,
+  onChanged,
 }: {
   customer: Customer;
   onClose: () => void;
   onUnauthorized: () => void;
+  onPayment: (c: Customer) => void;
+  onChanged: () => void;
 }) {
   const { lang, t } = useLang();
   const [load, setLoad] = useState<Load>({ kind: "loading" });
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  const onDelete = useCallback(
+    async (e: Entry) => {
+      setDeleteError(null);
+      try {
+        const r = await deleteEntry(e.id);
+        setLoad((l) =>
+          l.kind === "ready" ? { kind: "ready", customer: r.customer, entries: l.entries.filter((x) => x.id !== e.id) } : l,
+        );
+        onChanged();
+      } catch (err) {
+        if (err instanceof ApiError && err.status === 401) return onUnauthorized();
+        setDeleteError(err instanceof Error ? localize(err.message, lang) : t.deleteFail);
+      }
+    },
+    [lang, onChanged, onUnauthorized, t.deleteFail],
+  );
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
@@ -87,10 +128,20 @@ export default function CustomerPanel({
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
+    // Phone Back button closes the panel instead of leaving the page.
+    window.history.pushState({ pakkaPanel: true }, "");
+    let poppedByBack = false;
+    const onPop = () => {
+      poppedByBack = true;
+      onClose();
+    };
+    window.addEventListener("popstate", onPop);
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
+      window.removeEventListener("popstate", onPop);
+      if (!poppedByBack && window.history.state?.pakkaPanel) window.history.back();
       document.body.style.overflow = overflow;
       prev?.focus();
     };
@@ -127,13 +178,26 @@ export default function CustomerPanel({
           <p className="mt-4 text-base text-ink-soft">{t.panelBalance}</p>
           <p className={`num text-5xl ${c.balance > 0 ? "" : "text-ink-soft"}`}>{formatRupees(c.balance)}</p>
 
-          <div className="mt-5">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-start">
             <SpeakButton target={{ customerId: customer.id }} label={t.readBalance} onUnauthorized={onUnauthorized} />
+            <button
+              type="button"
+              onClick={() => onPayment(c)}
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-sm bg-ink px-5 text-paper"
+            >
+              <HandCoins aria-hidden size={26} />
+              <span className="font-medium">{t.paymentReceived}</span>
+            </button>
           </div>
 
           <h3 className="mt-8 border-b border-ink pb-2 text-lg font-medium">{t.history}</h3>
 
           <div aria-live="polite">
+            {deleteError && (
+              <p role="alert" className="pt-4 text-accent">
+                {deleteError}
+              </p>
+            )}
             {load.kind === "loading" && (
               <p className="flex items-center gap-3 py-6 text-ink-soft">
                 <CircleNotch aria-hidden size={22} className="animate-spin" />
@@ -147,7 +211,7 @@ export default function CustomerPanel({
               ) : (
                 <ul className="divide-y divide-rule">
                   {load.entries.map((e) => (
-                    <EntryRow key={e.id} e={e} />
+                    <EntryRow key={e.id} e={e} onDelete={onDelete} />
                   ))}
                 </ul>
               ))}

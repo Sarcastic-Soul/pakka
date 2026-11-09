@@ -1,5 +1,5 @@
 import type { Flag, Item } from "@/lib/khata/types";
-import { matchCustomer } from "./names";
+import { suggestCustomer } from "./names";
 import { numbersIn } from "./numbers";
 
 export type Extracted = {
@@ -7,6 +7,8 @@ export type Extracted = {
   kind: "udhaar" | "jama";
   items: Item[];
   total: number | null;
+  /** True when Gemini could not be used and the entry is a rough guess. */
+  guessed?: boolean;
 };
 
 function sameSet(a: Set<number>, b: Set<number>): boolean {
@@ -36,7 +38,7 @@ export function runChecks(
 
   if (amounts.length > 0 && parsed.total !== null && sum !== parsed.total) flags.push("sum_mismatch");
 
-  const match = matchCustomer(parsed.customer, customers);
+  const match = suggestCustomer(parsed.customer, customers);
   if (!match) flags.push("new_customer");
   if (parsed.total === null) flags.push("no_total");
 

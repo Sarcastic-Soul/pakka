@@ -15,6 +15,7 @@ const FLAGS: readonly Flag[] = [
   "new_customer",
   "no_total",
   "denoise_unavailable",
+  "ai_unavailable",
 ];
 
 type Valid = {

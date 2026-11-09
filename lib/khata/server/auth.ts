@@ -45,8 +45,12 @@ export async function verifyPin(pin: string, stored: string | null): Promise<boo
 
 function secret(): Buffer {
   const s = process.env.SESSION_SECRET;
-  if (!s || s.length < 32) throw new Error("session secret is not configured");
-  return Buffer.from(s, "hex");
+  if (!s) throw new Error("session secret is not configured");
+  // Buffer.from(s, "hex") silently drops everything after the first non-hex
+  // character, so only decode as hex when the whole string is hex.
+  const key = /^(?:[0-9a-fA-F]{2})+$/.test(s) ? Buffer.from(s, "hex") : Buffer.from(s, "utf8");
+  if (key.length < 32) throw new Error("session secret is too short");
+  return key;
 }
 
 function sign(payload: string, key: Buffer): string {

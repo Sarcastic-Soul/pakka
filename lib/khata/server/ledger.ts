@@ -128,3 +128,11 @@ export async function insertEntry(shopId: number, e: NewEntry): Promise<number> 
     RETURNING id`) as { id: number }[];
   return rows[0].id;
 }
+
+/** Deletes one entry of this shop. Returns its customer id, or null if not found. */
+export async function deleteEntry(shopId: number, entryId: number): Promise<number | null> {
+  const rows = (await db()`
+    DELETE FROM entries WHERE shop_id = ${shopId} AND id = ${entryId}
+    RETURNING customer_id`) as { customer_id: number }[];
+  return rows[0]?.customer_id ?? null;
+}

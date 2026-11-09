@@ -6,6 +6,7 @@ export const FLAG_ORDER: Flag[] = [
   "amount_not_heard",
   "no_total",
   "sum_mismatch",
+  "ai_unavailable",
   "denoise_unavailable",
   "new_customer",
 ];

@@ -24,6 +24,17 @@ export function iso(v: unknown): string {
  * Adds one to today's (UTC) counter for `kind` unless it already reached `max`.
  * Returns false when the cap is hit.
  */
+/** Today's count for `kind` without changing it. */
+export async function peekDaily(kind: string): Promise<number> {
+  const rows = (await db()`
+    SELECT count FROM usage WHERE day = (now() AT TIME ZONE 'utc')::date AND kind = ${kind}`) as { count: number }[];
+  return rows[0]?.count ?? 0;
+}
+
+export async function clearDaily(kind: string): Promise<void> {
+  await db()`DELETE FROM usage WHERE day = (now() AT TIME ZONE 'utc')::date AND kind = ${kind}`;
+}
+
 export async function takeDaily(kind: string, max: number): Promise<boolean> {
   const sql = db();
   const rows = await sql`

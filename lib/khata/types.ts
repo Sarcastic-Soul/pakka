@@ -16,7 +16,8 @@ export type Flag =
   | "sum_mismatch" // item amounts do not add up to the total
   | "new_customer" // name not in this shop's customer list
   | "no_total" // no total could be found
-  | "denoise_unavailable"; // cleaning step failed, only one transcript
+  | "denoise_unavailable" // cleaning step failed, only one transcript
+  | "ai_unavailable"; // Gemini failed, the card is a rough guess from the numbers heard
 
 export type ParseResult = {
   transcriptRaw: string;
@@ -66,5 +67,6 @@ export type Shop = { id: number; code: string; name: string; isDemo: boolean };
 //                                            -> { entry: Entry, customer: Customer }
 // GET  /api/customers                        -> { customers: Customer[] }  sorted by balance desc
 // GET  /api/customers/:id                    -> { customer: Customer, entries: Entry[] } newest first
+// DELETE /api/entries/:id                   -> { customer: Customer }  removes a wrong entry
 // POST /api/speak         {entryId} | {customerId}
 //                                            -> audio/mpeg (Timbre reads the entry and the new balance)

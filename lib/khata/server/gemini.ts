@@ -103,7 +103,7 @@ export function validateExtraction(v: unknown): Extracted | null {
 
 export function fallbackExtraction(raw: string, clean: string | null): Extracted {
   const nums = [...numbersIn(raw), ...(clean ? numbersIn(clean) : [])].filter((n) => n > 0 && n <= MAX_AMOUNT);
-  return { customer: null, kind: "udhaar", items: [], total: nums.length ? Math.max(...nums) : null };
+  return { customer: null, kind: "udhaar", items: [], total: nums.length ? Math.max(...nums) : null, guessed: true };
 }
 
 async function callOnce(prompt: string, key: string): Promise<unknown> {
