@@ -76,3 +76,8 @@ input[type="radio"] {
     transition: none !important;
   }
 }
+
+/* Fieldsets default to min-width: min-content, which makes them wider than a phone screen. */
+fieldset {
+  min-width: 0;
+}

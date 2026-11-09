@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Microphone, MicrophoneSlash, Stop } from "@phosphor-icons/react";
 import { MAX_SECONDS, recordingSupported } from "@/lib/khata/client/audio";
+import { useLang } from "@/lib/i18n/useLang";
 
 export type RecorderError = "denied" | "unsupported" | "failed";
 
@@ -19,6 +20,7 @@ export default function Recorder({
   onRecorded: (blob: Blob) => void;
   onError: (e: RecorderError) => void;
 }) {
+  const { lang, t } = useLang();
   const [recording, setRecording] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [supported, setSupported] = useState(true);
@@ -29,6 +31,15 @@ export default function Recorder({
   const ctx = useRef<AudioContext | null>(null);
   const raf = useRef<number | null>(null);
   const tick = useRef<ReturnType<typeof setInterval> | null>(null);
+  const alive = useRef(true);
+  const starting = useRef(false);
+
+  useEffect(() => {
+    alive.current = true;
+    return () => {
+      alive.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     // Feature check must run in the browser after hydration.
@@ -64,16 +75,24 @@ export default function Recorder({
   }, []);
 
   const start = useCallback(async () => {
+    if (starting.current || rec.current) return;
     if (!recordingSupported()) {
       onError("unsupported");
       return;
     }
+    starting.current = true;
     let s: MediaStream;
     try {
       s = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1 } });
     } catch (err) {
       const name = err instanceof DOMException ? err.name : "";
       onError(name === "NotAllowedError" || name === "SecurityError" ? "denied" : "failed");
+      return;
+    } finally {
+      starting.current = false;
+    }
+    if (!alive.current) {
+      s.getTracks().forEach((track) => track.stop());
       return;
     }
     stream.current = s;
@@ -133,14 +152,10 @@ export default function Recorder({
 
   if (!supported) {
     return (
-      <div className="flex flex-col items-center gap-3 py-6 text-center">
+      <div lang={lang} className="flex flex-col items-center gap-3 py-6 text-center">
         <MicrophoneSlash aria-hidden size={48} className="text-accent" />
-        <p lang="hi" className="text-lg font-medium">
-          इस ब्राउज़र में रिकॉर्डिंग नहीं चलती
-        </p>
-        <p className="text-base text-ink-soft">
-          This browser cannot record audio. Try Chrome or Safari, or type the entry below.
-        </p>
+        <p className="text-lg font-medium">{t.recUnsupported}</p>
+        <p className="text-base text-ink-soft">{t.recUnsupportedHelp}</p>
       </div>
     );
   }
@@ -148,13 +163,13 @@ export default function Recorder({
   const left = MAX_SECONDS - elapsed;
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div lang={lang} className="flex flex-col items-center gap-4">
       <button
         type="button"
         onClick={recording ? stop : start}
         disabled={disabled && !recording}
         aria-pressed={recording}
-        aria-label={recording ? "रोकिए · Stop recording" : "बोलिए · Start recording"}
+        aria-label={recording ? t.recStopAria : t.recStartAria}
         className={`group relative flex size-44 flex-col items-center justify-center rounded-full text-paper shadow-[0_6px_0_0_var(--ink)] transition-transform active:translate-y-1 active:shadow-[0_2px_0_0_var(--ink)] disabled:opacity-50 sm:size-48 ${
           recording ? "bg-ink" : "bg-accent"
         }`}
@@ -163,10 +178,8 @@ export default function Recorder({
           <span aria-hidden className="absolute -inset-2 rounded-full border-4 border-accent motion-safe:animate-pulse" />
         )}
         {recording ? <Stop aria-hidden size={56} weight="fill" /> : <Microphone aria-hidden size={60} weight="fill" />}
-        <span lang="hi" className="mt-2 text-2xl font-semibold">
-          {recording ? "रोकिए" : "बोलिए"}
-        </span>
-        <span className="text-sm opacity-90">{recording ? "Tap to stop" : "Tap to speak"}</span>
+        <span className="mt-2 text-2xl font-semibold">{recording ? t.recStop : t.recSpeak}</span>
+        <span className="text-sm opacity-90">{recording ? t.recTapStop : t.recTapSpeak}</span>
       </button>
 
       <div className="h-16 w-full max-w-xs text-center">
@@ -180,15 +193,13 @@ export default function Recorder({
               <div ref={level} className="h-full w-full origin-left bg-ink" style={{ transform: "scaleX(0)" }} />
             </div>
             <p className="sr-only" aria-live="polite">
-              {left <= 5 ? `${left} सेकंड बाकी · ${left} seconds left` : ""}
+              {left <= 5 ? t.recSecondsLeft(left) : ""}
             </p>
           </>
         ) : (
           <p className="text-lg">
-            <span lang="hi">ग्राहक का नाम, सामान और रकम बोलिए</span>
-            <span className="block text-sm text-ink-soft">
-              Say the customer, the items and the amount. Up to {MAX_SECONDS} seconds.
-            </span>
+            {t.recPrompt}
+            <span className="block text-sm text-ink-soft">{t.recLimit(MAX_SECONDS)}</span>
           </p>
         )}
       </div>

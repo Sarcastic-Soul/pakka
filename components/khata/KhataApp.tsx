@@ -6,8 +6,11 @@ import { CheckCircle, CircleNotch, Keyboard, SignOut, WarningCircle } from "@pho
 import type { Customer, Entry, Shop } from "@/lib/khata/types";
 import { ApiError, getMe, listCustomers, logout, parseEntry, saveEntry } from "@/lib/khata/client/api";
 import { decodeToMono16k, RATE, toWav } from "@/lib/khata/client/audio";
-import { draftFromParse, emptyDraft, finalizeDraft, type Draft } from "@/lib/khata/client/draft";
+import { draftFromParse, emptyDraft, finalizeDraft, isDirty, type Draft } from "@/lib/khata/client/draft";
 import { formatRupees } from "@/lib/khata/client/format";
+import { localize } from "@/lib/i18n/localize";
+import { useLang } from "@/lib/i18n/useLang";
+import LangToggle from "@/components/LangToggle";
 import ConfirmCard from "./ConfirmCard";
 import CustomerList from "./CustomerList";
 import CustomerPanel from "./CustomerPanel";
@@ -20,42 +23,19 @@ type Phase =
   | { kind: "confirm"; draft: Draft; saving: boolean; error: string | null }
   | { kind: "saved"; entry: Entry; customer: Customer };
 
-type Notice = { hi: string; en: string } | null;
+type Notice =
+  | { kind: "recorder"; error: RecorderError }
+  | { kind: "short" }
+  | { kind: "unreadable" }
+  | { kind: "api"; status: number; message: string }
+  | null;
 
-const STEPS = [
-  { hi: "आवाज़ साफ़ की जा रही है…", en: "Cleaning the audio" },
-  { hi: "Prisma सुन रहा है…", en: "Prisma is listening, twice" },
-  { hi: "खाता बन रहा है…", en: "Writing the entry" },
-];
 // When each step label appears (ms after upload starts). Timed, not measured.
 const STEP_AT = [0, 2500, 6000];
 
-const RECORDER_ERRORS: Record<RecorderError, { hi: string; en: string }> = {
-  denied: {
-    hi: "माइक की इजाज़त नहीं मिली",
-    en: "Microphone access was blocked. Allow it in the browser settings, or type the entry instead.",
-  },
-  unsupported: {
-    hi: "इस ब्राउज़र में रिकॉर्डिंग नहीं चलती",
-    en: "This browser cannot record. Try Chrome or Safari, or type the entry instead.",
-  },
-  failed: {
-    hi: "माइक शुरू नहीं हो पाया",
-    en: "The microphone could not start. Check that no other app is using it.",
-  },
-};
-
-function messageFor(err: unknown): Notice {
-  if (err instanceof ApiError) {
-    if (err.status === 429) return { hi: "अभी बहुत भीड़ है, थोड़ी देर बाद बोलिए", en: err.message };
-    if (err.status === 403) return { hi: "आवाज़ से एंट्री अभी बंद है — लिखकर डालिए", en: err.message };
-    return { hi: "कुछ गड़बड़ हुई", en: err.message };
-  }
-  return { hi: "कुछ गड़बड़ हुई", en: err instanceof Error ? err.message : "Something went wrong." };
-}
-
 export default function KhataApp() {
   const router = useRouter();
+  const { lang, t } = useLang();
   const [shop, setShop] = useState<Shop | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
   const [customers, setCustomers] = useState<Customer[] | null>(null);
@@ -65,6 +45,7 @@ export default function KhataApp() {
   const [open, setOpen] = useState<Customer | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const workArea = useRef<HTMLDivElement | null>(null);
+  const saveInFlight = useRef(false);
 
   const toHome = useCallback(() => router.replace("/"), [router]);
   const closePanel = useCallback(() => setOpen(null), []);
@@ -76,7 +57,7 @@ export default function KhataApp() {
       setCustomersError(null);
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) return toHome();
-      setCustomersError(err instanceof Error ? err.message : "ग्राहक लोड नहीं हुए");
+      setCustomersError(err instanceof Error ? err.message : "");
     }
   }, [toHome]);
 
@@ -91,7 +72,7 @@ export default function KhataApp() {
       .catch((err: unknown) => {
         if (!alive) return;
         if (err instanceof ApiError && err.status === 401) toHome();
-        else setAuthError(err instanceof Error ? err.message : "Could not load your shop.");
+        else setAuthError(err instanceof Error ? err.message : "");
       });
     return () => {
       alive = false;
@@ -118,7 +99,7 @@ export default function KhataApp() {
         const samples = await decodeToMono16k(await blob.arrayBuffer());
         if (samples.length < RATE * 0.5) {
           setPhase({ kind: "idle" });
-          setNotice({ hi: "रिकॉर्डिंग बहुत छोटी थी", en: "That was too short. Tap, speak the entry, then tap again." });
+          setNotice({ kind: "short" });
           return;
         }
         STEP_AT.forEach((at, step) => {
@@ -134,23 +115,24 @@ export default function KhataApp() {
         setPhase({ kind: "idle" });
         setNotice(
           err instanceof ApiError
-            ? messageFor(err)
-            : { hi: "आवाज़ पढ़ी नहीं जा सकी", en: "Could not read the recording. Please try again." },
+            ? { kind: "api", status: err.status, message: err.message }
+            : { kind: "unreadable" },
         );
       }
     },
     [toHome],
   );
 
-  const onRecorderError = useCallback((e: RecorderError) => setNotice(RECORDER_ERRORS[e]), []);
+  const onRecorderError = useCallback((e: RecorderError) => setNotice({ kind: "recorder", error: e }), []);
 
   const onSave = async () => {
-    if (phase.kind !== "confirm") return;
-    const r = finalizeDraft(phase.draft, customerNames);
+    if (phase.kind !== "confirm" || saveInFlight.current) return;
+    const r = finalizeDraft(phase.draft, customerNames, t.draftErrors);
     if (!r.ok) {
       setPhase({ ...phase, error: r.error });
       return;
     }
+    saveInFlight.current = true;
     setPhase({ ...phase, saving: true, error: null });
     try {
       const saved = await saveEntry(r.entry);
@@ -159,7 +141,9 @@ export default function KhataApp() {
       scrollToWork();
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) return toHome();
-      setPhase({ ...phase, saving: false, error: err instanceof Error ? err.message : "सेव नहीं हुआ" });
+      setPhase({ ...phase, saving: false, error: err instanceof Error ? err.message : t.saveFail });
+    } finally {
+      saveInFlight.current = false;
     }
   };
 
@@ -172,25 +156,41 @@ export default function KhataApp() {
     toHome();
   };
 
+  const noticeText = (n: Exclude<Notice, null>): { title: string; detail: string } => {
+    switch (n.kind) {
+      case "recorder":
+        return t.recErrors[n.error];
+      case "short":
+        return { title: t.noticeTooShort, detail: t.noticeTooShortHelp };
+      case "unreadable":
+        return { title: t.noticeUnreadable, detail: t.noticeUnreadableHelp };
+      case "api":
+        return {
+          title: n.status === 429 ? t.noticeBusy : n.status === 403 ? t.noticeVoiceOff : t.noticeGeneric,
+          detail: localize(n.message, lang),
+        };
+    }
+  };
+
   if (!shop) {
     return (
-      <main className="mx-auto flex min-h-screen max-w-2xl items-center justify-center px-5">
+      <main lang={lang} className="mx-auto flex min-h-screen max-w-2xl items-center justify-center px-5">
         {authError ? (
           <div role="alert" className="text-center">
             <WarningCircle aria-hidden size={40} className="mx-auto text-accent" />
-            <p className="mt-3 text-lg">{authError}</p>
+            <p className="mt-3 text-lg">{authError ? localize(authError, lang) : t.shopLoadFail}</p>
             <button
               type="button"
               onClick={() => location.reload()}
               className="mt-4 min-h-12 rounded-sm border-2 border-ink px-5"
             >
-              <span lang="hi">फिर कोशिश कीजिए</span> · Try again
+              {t.retry}
             </button>
           </div>
         ) : (
           <p className="flex items-center gap-3 text-ink-soft" role="status">
             <CircleNotch aria-hidden size={24} className="animate-spin" />
-            <span lang="hi">खाता खुल रहा है…</span>
+            {t.opening}
           </p>
         )}
       </main>
@@ -200,32 +200,31 @@ export default function KhataApp() {
   const busy = phase.kind === "processing" || phase.kind === "confirm";
 
   return (
-    <div className="khata-app min-h-screen">
+    <div lang={lang} className="khata-app min-h-screen">
       <header className="border-b border-ink">
-        <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3 sm:px-8">
-          <div className="min-w-0 flex-1">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 sm:px-8">
+          <div className="min-w-0 basis-full sm:basis-0 sm:flex-1">
             <p className="font-display text-sm text-ink-soft">
               Pakka · <span lang="hi">पक्का</span>
             </p>
             <h1 className="truncate font-display text-2xl leading-tight">{shop.name}</h1>
             <p className="text-sm text-ink-soft">
-              <span lang="hi">दुकान कोड</span> · Shop code <span className="num text-ink">{shop.code}</span>
+              {t.shopCode} <span className="num text-ink">{shop.code}</span>
               {shop.isDemo && (
                 <span className="ml-2 inline-block border border-accent px-1.5 text-xs font-medium uppercase tracking-wide text-accent">
-                  Demo
+                  {t.demoBadge}
                 </span>
               )}
             </p>
           </div>
+          <LangToggle className="shrink-0" />
           <button
             type="button"
             onClick={onLogout}
             className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-sm border border-ink px-3"
           >
             <SignOut aria-hidden size={20} />
-            <span className="max-sm:sr-only">
-              <span lang="hi">बाहर</span> · Log out
-            </span>
+            <span className="max-sm:sr-only">{t.logOut}</span>
           </button>
         </div>
       </header>
@@ -233,7 +232,7 @@ export default function KhataApp() {
       <main className="mx-auto grid max-w-5xl gap-10 px-4 pb-24 pt-6 sm:px-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14">
         <section aria-labelledby="new-entry" ref={workArea} className="scroll-mt-4">
           <h2 id="new-entry" className="sr-only">
-            नई एंट्री · New entry
+            {t.newEntryHeading}
           </h2>
 
           {(phase.kind === "idle" || phase.kind === "processing") && (
@@ -241,9 +240,9 @@ export default function KhataApp() {
               {phase.kind === "processing" ? (
                 <div className="flex flex-col items-center py-8" role="status" aria-live="polite">
                   <ol className="w-full max-w-sm space-y-4">
-                    {STEPS.map((s, i) => (
+                    {t.steps.map((label, i) => (
                       <li
-                        key={s.en}
+                        key={i}
                         className={`flex items-center gap-3 ${i > phase.step ? "text-ink-soft/60" : ""}`}
                         aria-current={i === phase.step ? "step" : undefined}
                       >
@@ -254,17 +253,12 @@ export default function KhataApp() {
                         ) : (
                           <span aria-hidden className="inline-block size-7 rounded-full border-2 border-current" />
                         )}
-                        <span>
-                          <span lang="hi" className="block text-lg">
-                            {s.hi}
-                          </span>
-                          <span className="block text-sm text-ink-soft">{s.en}</span>
-                        </span>
+                        <span className="text-lg">{label}</span>
                       </li>
                     ))}
                   </ol>
                   <p className="mt-6 text-sm text-ink-soft">
-                    <span lang="hi">इसमें 5–15 सेकंड लगते हैं</span> · Usually 5–15 seconds
+                    {t.stepsTime}
                   </p>
                 </div>
               ) : (
@@ -276,10 +270,8 @@ export default function KhataApp() {
                   <div role="alert" className="mt-4 flex gap-3 border-l-4 border-accent bg-paper-deep/60 px-4 py-3">
                     <WarningCircle aria-hidden size={26} weight="fill" className="mt-0.5 shrink-0 text-accent" />
                     <p>
-                      <span lang="hi" className="block font-medium">
-                        {notice.hi}
-                      </span>
-                      <span className="block text-base text-ink-soft">{notice.en}</span>
+                      <span className="block font-medium">{noticeText(notice).title}</span>
+                      <span className="block text-base text-ink-soft">{noticeText(notice).detail}</span>
                     </p>
                   </div>
                 )}
@@ -296,8 +288,7 @@ export default function KhataApp() {
                     className="inline-flex min-h-12 items-center gap-2 rounded-sm px-3 underline underline-offset-4"
                   >
                     <Keyboard aria-hidden size={22} />
-                    <span lang="hi">बिना आवाज़ के लिखिए</span>
-                    <span className="text-sm text-ink-soft">· Type instead</span>
+                    {t.typeInstead}
                   </button>
                 </div>
               )}
@@ -313,7 +304,9 @@ export default function KhataApp() {
               error={phase.error}
               onSave={onSave}
               onRecordAgain={phase.draft.fromVoice ? () => setPhase({ kind: "idle" }) : null}
-              onCancel={() => setPhase({ kind: "idle" })}
+              onCancel={() => {
+                if (!isDirty(phase.draft) || window.confirm(t.discardConfirm)) setPhase({ kind: "idle" });
+              }}
             />
           )}
 
@@ -321,29 +314,23 @@ export default function KhataApp() {
             <div className="settle border border-ink px-5 py-6" role="status" aria-live="polite">
               <p className="flex items-center gap-3">
                 <CheckCircle aria-hidden size={32} weight="fill" />
-                <span>
-                  <span lang="hi" className="block text-xl font-medium">
-                    खाते में लिख दिया
-                  </span>
-                  <span className="block text-sm text-ink-soft">Saved to the khata</span>
-                </span>
+                <span className="text-xl font-medium">{t.saved}</span>
               </p>
               <p className="mt-5 text-base">
                 <span lang="hi" className="font-medium">
                   {phase.customer.name}
                 </span>{" "}
-                · <span lang="hi">{phase.entry.kind === "jama" ? "जमा" : "उधार"}</span>{" "}
+                · {phase.entry.kind === "jama" ? t.kindJamaShort : t.kindUdhaarShort}{" "}
                 <span className="num">{formatRupees(phase.entry.total)}</span>
               </p>
               <p className="mt-4 text-sm text-ink-soft">
-                <span lang="hi">नया बाकी</span> · New balance
+                {t.newBalance}
               </p>
               <p className="num text-5xl">{formatRupees(phase.customer.balance)}</p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-start">
                 <SpeakButton
                   target={{ entryId: phase.entry.id }}
-                  hi="ग्राहक को सुनाइए"
-                  en="Read out to customer"
+                  label={t.readToCustomer}
                   onUnauthorized={toHome}
                 />
                 <button
@@ -351,8 +338,7 @@ export default function KhataApp() {
                   onClick={() => setPhase({ kind: "idle" })}
                   className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm bg-ink px-5 text-paper"
                 >
-                  <span lang="hi">अगली एंट्री</span>
-                  <span className="text-sm opacity-80">· Next entry</span>
+                  {t.nextEntry}
                 </button>
               </div>
             </div>
@@ -361,20 +347,19 @@ export default function KhataApp() {
 
         <section aria-labelledby="customers-title">
           <h2 id="customers-title" className="mb-3 flex items-baseline gap-2 font-display text-3xl">
-            <span lang="hi">ग्राहक</span>
-            <span className="font-sans text-base text-ink-soft">· Customers</span>
+            {t.customers}
           </h2>
           {customersError ? (
             <p role="alert" className="text-accent">
-              {customersError}{" "}
+              {customersError ? localize(customersError, lang) : t.customersLoadFail}{" "}
               <button type="button" onClick={refreshCustomers} className="min-h-12 underline underline-offset-4">
-                <span lang="hi">फिर कोशिश</span> · Retry
+                {t.retry}
               </button>
             </p>
           ) : customers === null ? (
             <p className="flex items-center gap-3 text-ink-soft" role="status">
               <CircleNotch aria-hidden size={22} className="animate-spin" />
-              <span lang="hi">लोड हो रहा है…</span>
+              {t.loading}
             </p>
           ) : (
             <CustomerList customers={customers} onOpen={setOpen} />

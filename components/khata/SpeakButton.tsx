@@ -3,20 +3,21 @@
 import { useEffect, useRef, useState } from "react";
 import { CircleNotch, SpeakerHigh, Stop } from "@phosphor-icons/react";
 import { ApiError, speak } from "@/lib/khata/client/api";
+import { localize } from "@/lib/i18n/localize";
+import { useLang } from "@/lib/i18n/useLang";
 
 type State = { kind: "idle" } | { kind: "loading" } | { kind: "playing" } | { kind: "error"; message: string };
 
 export default function SpeakButton({
   target,
-  hi,
-  en,
+  label,
   onUnauthorized,
 }: {
   target: { entryId: number } | { customerId: number };
-  hi: string;
-  en: string;
+  label: string;
   onUnauthorized?: () => void;
 }) {
+  const { lang, t } = useLang();
   const [state, setState] = useState<State>({ kind: "idle" });
   const audio = useRef<HTMLAudioElement | null>(null);
   const url = useRef<string | null>(null);
@@ -49,18 +50,14 @@ export default function SpeakButton({
       };
       el.onerror = () => {
         release();
-        setState({ kind: "error", message: "आवाज़ चल नहीं पाई · Could not play the audio." });
+        setState({ kind: "error", message: t.playFail });
       };
       await el.play();
       setState({ kind: "playing" });
     } catch (err) {
       release();
       if (err instanceof ApiError && err.status === 401) onUnauthorized?.();
-      const message =
-        err instanceof ApiError
-          ? err.message
-          : "आवाज़ चल नहीं पाई। फ़ोन की आवाज़ चालू है? · Could not play the audio.";
-      setState({ kind: "error", message });
+      setState({ kind: "error", message: err instanceof ApiError ? err.message : t.playFailVolume });
     }
   };
 
@@ -80,17 +77,12 @@ export default function SpeakButton({
         ) : (
           <SpeakerHigh aria-hidden size={26} weight="fill" />
         )}
-        <span>
-          <span lang="hi" className="block font-medium">
-            {state.kind === "loading" ? "आवाज़ बन रही है…" : state.kind === "playing" ? "रोकिए" : hi}
-          </span>
-          <span className="block text-sm text-ink-soft">
-            {state.kind === "loading" ? "Preparing audio" : state.kind === "playing" ? "Stop" : en}
-          </span>
+        <span lang={lang} className="font-medium">
+          {state.kind === "loading" ? t.speakLoading : state.kind === "playing" ? t.speakStop : label}
         </span>
       </button>
-      <p role="status" aria-live="polite" className="mt-2 text-base text-accent empty:hidden">
-        {state.kind === "error" ? state.message : ""}
+      <p lang={lang} role="status" aria-live="polite" className="mt-2 text-base text-accent empty:hidden">
+        {state.kind === "error" ? localize(state.message, lang) : ""}
       </p>
     </div>
   );

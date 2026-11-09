@@ -5,7 +5,9 @@ import { ArrowLeft, CircleNotch, Warning } from "@phosphor-icons/react";
 import type { Customer, Entry } from "@/lib/khata/types";
 import { ApiError, getCustomer } from "@/lib/khata/client/api";
 import { formatEntryDate, formatRupees } from "@/lib/khata/client/format";
-import { FLAG_TEXT, sortFlags } from "@/lib/khata/client/flags";
+import { sortFlags } from "@/lib/khata/client/flags";
+import { localize } from "@/lib/i18n/localize";
+import { useLang } from "@/lib/i18n/useLang";
 import SpeakButton from "./SpeakButton";
 
 type Load =
@@ -14,20 +16,20 @@ type Load =
   | { kind: "error"; message: string };
 
 function EntryRow({ e }: { e: Entry }) {
+  const { lang, t } = useLang();
   const warn = sortFlags(e.flags).filter((f) => f !== "new_customer");
   return (
     <li className="py-4">
       <div className="flex items-baseline justify-between gap-3">
-        <span>
+        <span lang={lang}>
           <span
-            lang="hi"
             className={`mr-2 inline-block border px-2 text-sm font-medium ${
               e.kind === "jama" ? "border-ink-soft text-ink-soft" : "border-ink"
             }`}
           >
-            {e.kind === "jama" ? "जमा" : "उधार"}
+            {e.kind === "jama" ? t.kindJamaShort : t.kindUdhaarShort}
           </span>
-          <span className="text-sm text-ink-soft">{formatEntryDate(e.createdAt)}</span>
+          <span className="text-sm text-ink-soft">{formatEntryDate(e.createdAt, lang)}</span>
         </span>
         <span className="num text-2xl">
           {e.kind === "jama" ? "−" : "+"}
@@ -42,9 +44,9 @@ function EntryRow({ e }: { e: Entry }) {
         </p>
       )}
       {warn.length > 0 && (
-        <p className="mt-1 flex items-start gap-2 text-sm text-accent">
+        <p lang={lang} className="mt-1 flex items-start gap-2 text-sm text-accent">
           <Warning aria-hidden size={18} weight="fill" className="mt-0.5 shrink-0" />
-          <span lang="hi">जाँच कर सेव हुआ: {warn.map((f) => FLAG_TEXT[f].hi).join("; ")}</span>
+          <span>{t.savedAfterChecks(warn.map((f) => t.flags[f]).join("; "))}</span>
         </p>
       )}
     </li>
@@ -60,6 +62,7 @@ export default function CustomerPanel({
   onClose: () => void;
   onUnauthorized: () => void;
 }) {
+  const { lang, t } = useLang();
   const [load, setLoad] = useState<Load>({ kind: "loading" });
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
@@ -70,7 +73,7 @@ export default function CustomerPanel({
       .catch((err: unknown) => {
         if (!alive) return;
         if (err instanceof ApiError && err.status === 401) onUnauthorized();
-        setLoad({ kind: "error", message: err instanceof Error ? err.message : "कुछ गड़बड़ हुई" });
+        setLoad({ kind: "error", message: err instanceof Error ? err.message : "" });
       });
     return () => {
       alive = false;
@@ -102,6 +105,7 @@ export default function CustomerPanel({
         role="dialog"
         aria-modal="true"
         aria-labelledby="customer-panel-title"
+        lang={lang}
         className="settle relative flex h-full w-full flex-col overflow-y-auto bg-paper md:max-w-lg md:border-l md:border-ink"
       >
         <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-ink bg-paper px-2 py-2">
@@ -112,8 +116,7 @@ export default function CustomerPanel({
             className="inline-flex min-h-12 items-center gap-2 rounded-sm px-3"
           >
             <ArrowLeft aria-hidden size={22} />
-            <span lang="hi">वापस</span>
-            <span className="text-sm text-ink-soft">· Back</span>
+            {t.back}
           </button>
         </div>
 
@@ -121,40 +124,26 @@ export default function CustomerPanel({
           <h2 id="customer-panel-title" lang="hi" className="font-display text-4xl leading-tight">
             {c.name}
           </h2>
-          <p className="mt-4 text-base text-ink-soft">
-            <span lang="hi">बाकी</span> · Balance
-          </p>
+          <p className="mt-4 text-base text-ink-soft">{t.panelBalance}</p>
           <p className={`num text-5xl ${c.balance > 0 ? "" : "text-ink-soft"}`}>{formatRupees(c.balance)}</p>
 
           <div className="mt-5">
-            <SpeakButton
-              target={{ customerId: customer.id }}
-              hi="बाकी सुनाइए"
-              en="Read the balance aloud"
-              onUnauthorized={onUnauthorized}
-            />
+            <SpeakButton target={{ customerId: customer.id }} label={t.readBalance} onUnauthorized={onUnauthorized} />
           </div>
 
-          <h3 className="mt-8 border-b border-ink pb-2 text-lg">
-            <span lang="hi" className="font-medium">
-              हिसाब
-            </span>{" "}
-            <span className="text-sm text-ink-soft">· History, newest first</span>
-          </h3>
+          <h3 className="mt-8 border-b border-ink pb-2 text-lg font-medium">{t.history}</h3>
 
           <div aria-live="polite">
             {load.kind === "loading" && (
               <p className="flex items-center gap-3 py-6 text-ink-soft">
                 <CircleNotch aria-hidden size={22} className="animate-spin" />
-                <span lang="hi">लोड हो रहा है…</span>
+                {t.loading}
               </p>
             )}
-            {load.kind === "error" && <p className="py-6 text-accent">{load.message}</p>}
+            {load.kind === "error" && <p className="py-6 text-accent">{load.message ? localize(load.message, lang) : t.somethingWrong}</p>}
             {load.kind === "ready" &&
               (load.entries.length === 0 ? (
-                <p lang="hi" className="py-6 text-ink-soft">
-                  अभी कोई एंट्री नहीं
-                </p>
+                <p className="py-6 text-ink-soft">{t.noEntries}</p>
               ) : (
                 <ul className="divide-y divide-rule">
                   {load.entries.map((e) => (

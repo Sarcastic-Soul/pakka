@@ -5,6 +5,7 @@ import {
   IBM_Plex_Sans,
   Noto_Sans_Devanagari,
 } from "next/font/google";
+import { LangSync } from "@/components/LangToggle";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -28,10 +29,14 @@ const deva = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
 });
 
+const description =
+  "Udhaar you can trust. Speak a credit entry in Hindi; every amount is heard twice, checked by you, then saved and read out to the customer.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pakka-nu-puce.vercel.app"),
   title: "Pakka · पक्का",
-  description:
-    "Udhaar you can trust. Speak a credit entry in Hindi; every amount is heard twice, checked by you, then saved and read out to the customer.",
+  description,
+  openGraph: { title: "Pakka · पक्का", description, type: "website", locale: "hi_IN" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -40,7 +45,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable} ${deva.variable} antialiased`}
     >
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <LangSync />
+        {children}
+      </body>
     </html>
   );
 }

@@ -33,11 +33,30 @@ export function relativeHindi(iso: string | null, now: Date = new Date()): strin
   return y === 1 ? "1 साल पहले" : `${y} साल पहले`;
 }
 
-/** Date and time for entry history, e.g. "9 नव॰ 2026, 4:05 pm". */
-export function formatEntryDate(iso: string): string {
+/** Short relative date in English: Today, Yesterday, 3 days ago, 2 weeks ago, 4 months ago. */
+export function relativeEnglish(iso: string | null, now: Date = new Date()): string {
+  if (!iso) return "No entries";
+  const then = new Date(iso);
+  if (Number.isNaN(then.getTime())) return "";
+  const days = Math.round((startOfDay(now) - startOfDay(then)) / DAY_MS);
+  const plural = (n: number, unit: string) => `${n} ${unit}${n === 1 ? "" : "s"} ago`;
+  if (days <= 0) return "Today";
+  if (days === 1) return "Yesterday";
+  if (days < 7) return plural(days, "day");
+  if (days < 30) return plural(Math.floor(days / 7), "week");
+  if (days < 365) return plural(Math.floor(days / 30), "month");
+  return plural(Math.floor(days / 365), "year");
+}
+
+export function relativeDate(iso: string | null, lang: "hi" | "en", now: Date = new Date()): string {
+  return lang === "hi" ? relativeHindi(iso, now) : relativeEnglish(iso, now);
+}
+
+/** Date and time for entry history, e.g. "9 नव॰ 2026, 4:05 pm" or "9 Nov, 4:05 pm". */
+export function formatEntryDate(iso: string, lang: "hi" | "en" = "hi"): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
-  return new Intl.DateTimeFormat("hi-IN", {
+  return new Intl.DateTimeFormat(lang === "hi" ? "hi-IN" : "en-IN", {
     day: "numeric",
     month: "short",
     hour: "numeric",

@@ -24,7 +24,13 @@ export async function POST(req: Request) {
     return fail(403, "Voice entry is switched off right now. आवाज़ से एंट्री अभी बंद है।");
   }
   const t0 = Date.now();
-  const shop = await currentShop().catch(() => null);
+  let shop;
+  try {
+    shop = await currentShop();
+  } catch {
+    console.error("pakka parse: session lookup failed");
+    return fail(500, MSG.server);
+  }
   if (!shop) return fail(401, MSG.signIn);
 
   const body = await readBody(req, MAX_BYTES);

@@ -1,6 +1,9 @@
-import { highlightNumbers, type Segment } from "@/lib/khata/client/format";
+"use client";
 
-function Line({ segments }: { segments: Segment[] }) {
+import { highlightNumbers, type Segment } from "@/lib/khata/client/format";
+import { useLang } from "@/lib/i18n/useLang";
+
+function Line({ segments, differs }: { segments: Segment[]; differs: string }) {
   return (
     <p lang="hi" className="text-lg leading-relaxed">
       {segments.map((s, i) =>
@@ -12,7 +15,7 @@ function Line({ segments }: { segments: Segment[] }) {
             className="num bg-transparent font-medium text-accent underline decoration-2 underline-offset-4"
           >
             {s.text}
-            <span className="sr-only"> (दूसरी बार अलग · differs)</span>
+            <span className="sr-only">{differs}</span>
           </mark>
         ) : (
           <span key={i} className="num font-medium underline decoration-rule decoration-2 underline-offset-4">
@@ -26,44 +29,38 @@ function Line({ segments }: { segments: Segment[] }) {
 
 /** The raw and cleaned transcripts, numbers underlined, numbers that differ in red. */
 export default function Transcripts({ raw, clean }: { raw: string; clean: string | null }) {
+  const { lang, t } = useLang();
   const compare = clean !== null;
+  const empty = (text: string) => (
+    <p lang={lang} className="italic text-ink-soft">
+      {text}
+    </p>
+  );
   return (
     <div className="grid gap-5 sm:grid-cols-2">
       <div>
-        <h3 className="text-sm text-ink-soft">
-          <span lang="hi" className="text-base font-medium text-ink">
-            जो सुना
-          </span>{" "}
-          · Heard (raw)
+        <h3 lang={lang} className="text-base font-medium">
+          {t.heard}
         </h3>
         <div className="mt-1">
           {raw.trim() ? (
-            <Line segments={highlightNumbers(raw, compare ? clean : null)} />
+            <Line segments={highlightNumbers(raw, compare ? clean : null)} differs={t.differsSr} />
           ) : (
-            <p lang="hi" className="italic text-ink-soft">
-              कुछ सुनाई नहीं दिया
-            </p>
+            empty(t.nothingHeard)
           )}
         </div>
       </div>
       <div>
-        <h3 className="text-sm text-ink-soft">
-          <span lang="hi" className="text-base font-medium text-ink">
-            साफ़ आवाज़ से
-          </span>{" "}
-          · Cleaned
+        <h3 lang={lang} className="text-base font-medium">
+          {t.cleaned}
         </h3>
         <div className="mt-1">
           {clean === null ? (
-            <p lang="hi" className="italic text-ink-soft">
-              यह कदम नहीं चला
-            </p>
+            empty(t.stepSkipped)
           ) : clean.trim() ? (
-            <Line segments={highlightNumbers(clean, raw)} />
+            <Line segments={highlightNumbers(clean, raw)} differs={t.differsSr} />
           ) : (
-            <p lang="hi" className="italic text-ink-soft">
-              कुछ सुनाई नहीं दिया
-            </p>
+            empty(t.nothingHeard)
           )}
         </div>
       </div>

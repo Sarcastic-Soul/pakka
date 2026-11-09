@@ -4,7 +4,19 @@ import { useId } from "react";
 import { ArrowCounterClockwise, Check, CircleNotch, Plus, Trash, X } from "@phosphor-icons/react";
 import type { EntryKind, Flag } from "@/lib/khata/types";
 import { formatRupees, parseRupees } from "@/lib/khata/client/format";
-import { isNewCustomer, itemsSum, newItem, warningFlags, type Draft, type DraftItem } from "@/lib/khata/client/draft";
+import {
+  isNewCustomer,
+  itemsSum,
+  liveFlags,
+  MAX_ITEMS,
+  MAX_TEXT,
+  newItem,
+  warningFlags,
+  type Draft,
+  type DraftItem,
+} from "@/lib/khata/client/draft";
+import { localize } from "@/lib/i18n/localize";
+import { useLang } from "@/lib/i18n/useLang";
 import FlagList from "./FlagList";
 import Transcripts from "./Transcripts";
 
@@ -31,7 +43,8 @@ export default function ConfirmCard({
   onCancel: () => void;
 }) {
   const id = useId();
-  const warnings = warningFlags(draft.flags);
+  const { lang, t } = useLang();
+  const warnings = warningFlags(liveFlags(draft));
   const flags: Flag[] = isNewCustomer(draft.customer, customerNames)
     ? [...warnings, "new_customer"]
     : warnings;
@@ -50,6 +63,7 @@ export default function ConfirmCard({
 
   return (
     <form
+      lang={lang}
       aria-labelledby={`${id}-title`}
       onSubmit={(e) => {
         e.preventDefault();
@@ -63,16 +77,13 @@ export default function ConfirmCard({
 
       <div className="flex items-start justify-between gap-3 border-b border-rule pb-3">
         <h2 id={`${id}-title`} className="font-display text-2xl leading-tight">
-          <span lang="hi">{draft.fromVoice ? "जाँचिए और सेव कीजिए" : "नई एंट्री"}</span>
-          <span className="block font-sans text-sm text-ink-soft">
-            {draft.fromVoice ? "Check, then save" : "New entry"}
-          </span>
+          {draft.fromVoice ? t.cardCheck : t.cardNew}
         </h2>
         <button
           type="button"
           onClick={onCancel}
           className="-mr-2 inline-flex size-12 shrink-0 items-center justify-center rounded-sm"
-          aria-label="रद्द कीजिए · Cancel"
+          aria-label={t.cancel}
         >
           <X aria-hidden size={24} />
         </button>
@@ -82,25 +93,14 @@ export default function ConfirmCard({
         <div className="mt-4 space-y-3 border-b border-rule pb-4">
           <FlagList flags={flags} />
           {draft.snrDb !== null && draft.snrDb < 8 && (
-            <p className="text-base">
-              <span lang="hi" className="font-medium">
-                दुकान में शोर ज़्यादा है
-              </span>{" "}
-              <span className="text-sm text-ink-soft">
-                · The shop is noisy (about <span className="num">{Math.round(draft.snrDb)}</span> dB). Numbers
-                need a closer look.
-              </span>
-            </p>
+            <p className="text-base font-medium">{t.noisy(Math.round(draft.snrDb))}</p>
           )}
         </div>
       )}
 
       <div className="mt-4">
-        <label htmlFor={`${id}-customer`} className="block">
-          <span lang="hi" className="font-medium">
-            ग्राहक
-          </span>{" "}
-          <span className="text-sm text-ink-soft">· Customer</span>
+        <label htmlFor={`${id}-customer`} className="block font-medium">
+          {t.customer}
         </label>
         <input
           id={`${id}-customer`}
@@ -109,8 +109,9 @@ export default function ConfirmCard({
           value={draft.customer}
           onChange={(e) => onChange({ ...draft, customer: e.target.value })}
           autoComplete="off"
+          maxLength={MAX_TEXT}
           className={`${field} mt-1 font-display text-2xl`}
-          placeholder="नाम"
+          placeholder={t.customerPlaceholder}
           required
         />
         <datalist id={`${id}-customers`}>
@@ -121,17 +122,17 @@ export default function ConfirmCard({
       </div>
 
       <fieldset className="mt-4">
-        <legend className="sr-only">उधार या जमा · Credit or payment</legend>
+        <legend className="sr-only">{t.kindLegend}</legend>
         <div className="grid grid-cols-2 border border-ink">
           {(
             [
-              ["udhaar", "उधार", "Credit given"],
-              ["jama", "जमा", "Payment received"],
+              ["udhaar", t.kindUdhaar],
+              ["jama", t.kindJama],
             ] as const
-          ).map(([k, hi, en], i) => (
+          ).map(([k, label], i) => (
             <label
               key={k}
-              className={`flex min-h-14 cursor-pointer flex-col items-center justify-center px-2 text-center focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink ${
+              className={`flex min-h-14 cursor-pointer items-center justify-center px-2 text-center text-lg font-medium focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ink ${
                 i > 0 ? "border-l border-ink" : ""
               } ${draft.kind === k ? "bg-ink text-paper" : ""}`}
             >
@@ -143,38 +144,32 @@ export default function ConfirmCard({
                 onChange={() => setKind(k)}
                 className="sr-only"
               />
-              <span lang="hi" className="text-lg font-medium">
-                {hi}
-              </span>
-              <span className={`text-xs ${draft.kind === k ? "text-paper/80" : "text-ink-soft"}`}>{en}</span>
+              {label}
             </label>
           ))}
         </div>
       </fieldset>
 
       <fieldset className="mt-5">
-        <legend className="mb-2">
-          <span lang="hi" className="font-medium">
-            सामान
-          </span>{" "}
-          <span className="text-sm text-ink-soft">· Items (optional for a payment)</span>
-        </legend>
+        <legend className="mb-2 font-medium">{t.itemsLegend}</legend>
         <ul className="divide-y divide-rule border-y border-rule">
           {draft.items.map((it, i) => (
             <li key={it.key} className="grid grid-cols-[1fr_8rem_3rem] gap-2 py-3 sm:grid-cols-[1fr_7rem_8rem_3rem]">
               <input
-                aria-label={`सामान ${i + 1} का नाम · Item ${i + 1} name`}
+                aria-label={t.itemNameAria(i + 1)}
                 lang="hi"
                 value={it.name}
+                maxLength={MAX_TEXT}
                 onChange={(e) => setItem(it.key, { name: e.target.value })}
-                placeholder="सामान"
+                placeholder={t.itemPlaceholder}
                 className={`${field} col-span-3 sm:col-span-1`}
               />
               <input
-                aria-label={`सामान ${i + 1} की मात्रा · Item ${i + 1} quantity`}
+                aria-label={t.itemQtyAria(i + 1)}
                 value={it.qty}
+                maxLength={MAX_TEXT}
                 onChange={(e) => setItem(it.key, { qty: e.target.value })}
-                placeholder="मात्रा"
+                placeholder={t.qtyPlaceholder}
                 className={field}
               />
               <div className="relative">
@@ -182,8 +177,9 @@ export default function ConfirmCard({
                   ₹
                 </span>
                 <input
-                  aria-label={`सामान ${i + 1} की रकम, रुपये · Item ${i + 1} amount in rupees`}
+                  aria-label={t.itemAmountAria(i + 1)}
                   inputMode="numeric"
+                  maxLength={12}
                   value={it.amount}
                   onChange={(e) => setItem(it.key, { amount: e.target.value })}
                   placeholder="0"
@@ -193,7 +189,7 @@ export default function ConfirmCard({
               <button
                 type="button"
                 onClick={() => removeItem(it.key)}
-                aria-label={`सामान ${i + 1} हटाइए · Remove item ${i + 1}`}
+                aria-label={t.itemRemoveAria(i + 1)}
                 className="inline-flex size-12 items-center justify-center rounded-sm text-ink-soft hover:text-accent"
               >
                 <Trash aria-hidden size={22} />
@@ -204,21 +200,19 @@ export default function ConfirmCard({
         <button
           type="button"
           onClick={() => onChange({ ...draft, items: [...draft.items, newItem()] })}
-          className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-sm px-1 underline underline-offset-4"
+          disabled={draft.items.length >= MAX_ITEMS}
+          className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-sm px-1 underline underline-offset-4 disabled:opacity-50 disabled:no-underline"
         >
           <Plus aria-hidden size={20} />
-          <span lang="hi">सामान जोड़िए</span>
-          <span className="text-sm text-ink-soft">· Add item</span>
+          {t.addItem}
         </button>
       </fieldset>
 
       <div className="mt-5 border-t-2 border-ink pt-4">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <label htmlFor={`${id}-total`} className="pb-2">
-            <span lang="hi" className="block text-xl font-medium">
-              कुल
-            </span>
-            <span className="block text-sm text-ink-soft">Total, rupees</span>
+            <span className="block text-xl font-medium">{t.total}</span>
+            <span className="block text-sm text-ink-soft">{t.totalRupees}</span>
           </label>
           <div className="relative w-full max-w-[14rem]">
             <span aria-hidden className="num pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-3xl text-ink-soft">
@@ -227,6 +221,7 @@ export default function ConfirmCard({
             <input
               id={`${id}-total`}
               inputMode="numeric"
+              maxLength={12}
               value={draft.total}
               onChange={(e) => onChange({ ...draft, total: e.target.value })}
               placeholder="0"
@@ -241,9 +236,8 @@ export default function ConfirmCard({
         <p id={`${id}-sum`} className={`mt-2 text-right text-base ${sumDiffers ? "text-accent" : "text-ink-soft"}`}>
           {sum !== null && (
             <>
-              <span lang="hi">सामान का जोड़</span> · Items add up to{" "}
-              <span className="num font-medium">{formatRupees(sum)}</span>
-              {sumDiffers && <span lang="hi"> — कुल से अलग</span>}
+              {t.itemsAddUp} <span className="num font-medium">{formatRupees(sum)}</span>
+              {sumDiffers && t.differsFromTotal}
             </>
           )}
         </p>
@@ -256,7 +250,7 @@ export default function ConfirmCard({
       )}
 
       <p role="alert" className="mt-4 text-base font-medium text-accent empty:hidden">
-        {error ?? ""}
+        {error ? localize(error, lang) : ""}
       </p>
 
       <div className="mt-5 flex flex-col gap-3 whitespace-nowrap">
@@ -273,7 +267,7 @@ export default function ConfirmCard({
           ) : (
             <Check aria-hidden size={24} weight="bold" />
           )}
-          <span lang="hi">{saving ? "सेव हो रहा है…" : red ? "जाँच लिया, सेव करें" : "सेव करें"}</span>
+          {saving ? t.saving : red ? t.saveChecked : t.save}
         </button>
         {onRecordAgain && (
           <button
@@ -283,8 +277,7 @@ export default function ConfirmCard({
             className="inline-flex min-h-14 items-center justify-center gap-2 rounded-sm border-2 border-ink px-5 disabled:opacity-60"
           >
             <ArrowCounterClockwise aria-hidden size={22} />
-            <span lang="hi">दोबारा बोलिए</span>
-            <span className="text-sm text-ink-soft">· Record again</span>
+            {t.recordAgain}
           </button>
         )}
       </div>

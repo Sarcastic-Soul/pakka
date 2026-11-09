@@ -32,19 +32,24 @@ async function errorFrom(res: Response): Promise<ApiError> {
   return new ApiError(message || fallbackMessage(res.status), res.status);
 }
 
-async function send(path: string, init?: RequestInit): Promise<Response> {
+const DEFAULT_TIMEOUT_MS = 20_000;
+
+async function send(path: string, init?: RequestInit, timeoutMs = DEFAULT_TIMEOUT_MS): Promise<Response> {
   let res: Response;
   try {
-    res = await fetch(path, { credentials: "same-origin", ...init });
-  } catch {
+    res = await fetch(path, { credentials: "same-origin", signal: AbortSignal.timeout(timeoutMs), ...init });
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "TimeoutError") {
+      throw new ApiError("बहुत देर लग गई, फिर कोशिश कीजिए · That took too long. Please try again.", 0);
+    }
     throw new ApiError("इंटरनेट नहीं मिला · No connection. Check the network.", 0);
   }
   if (!res.ok) throw await errorFrom(res);
   return res;
 }
 
-async function json<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await send(path, init);
+async function json<T>(path: string, init?: RequestInit, timeoutMs?: number): Promise<T> {
+  const res = await send(path, init, timeoutMs);
   return (await res.json()) as T;
 }
 
@@ -76,12 +81,15 @@ export function getMe(): Promise<{ shop: Shop }> {
   return json("/api/me", { cache: "no-store" });
 }
 
+// The server allows 30 s; leave room for the upload.
+const PARSE_TIMEOUT_MS = 45_000;
+
 export function parseEntry(wav: Uint8Array): Promise<ParseResult> {
   return json("/api/entry/parse", {
     method: "POST",
     headers: { "content-type": "audio/wav" },
     body: wav as BlobPart,
-  });
+  }, PARSE_TIMEOUT_MS);
 }
 
 export type NewEntry = {
@@ -108,10 +116,14 @@ export function getCustomer(id: number): Promise<{ customer: Customer; entries: 
 
 /** Timbre mp3 for an entry (with the new balance) or a customer's balance. */
 export async function speak(target: { entryId: number } | { customerId: number }): Promise<Blob> {
-  const res = await send("/api/speak", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(target),
-  });
+  const res = await send(
+    "/api/speak",
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(target),
+    },
+    30_000,
+  );
   return res.blob();
 }

@@ -5,6 +5,7 @@ import {
   formatRupees,
   highlightNumbers,
   parseRupees,
+  relativeEnglish,
   relativeHindi,
   toAsciiDigits,
 } from "./format";
@@ -19,6 +20,19 @@ describe("formatRupees", () => {
   });
   it("puts the minus before the rupee sign", () => {
     expect(formatRupees(-1500)).toBe("-₹1,500");
+  });
+});
+
+describe("relativeEnglish", () => {
+  const now = new Date(2026, 10, 9, 12);
+  it("handles today, yesterday and plurals", () => {
+    expect(relativeEnglish(null, now)).toBe("No entries");
+    expect(relativeEnglish(new Date(2026, 10, 9, 8).toISOString(), now)).toBe("Today");
+    expect(relativeEnglish(new Date(2026, 10, 8, 23).toISOString(), now)).toBe("Yesterday");
+    expect(relativeEnglish(new Date(2026, 10, 6).toISOString(), now)).toBe("3 days ago");
+    expect(relativeEnglish(new Date(2026, 10, 2).toISOString(), now)).toBe("1 week ago");
+    expect(relativeEnglish(new Date(2026, 9, 20).toISOString(), now)).toBe("2 weeks ago");
+    expect(relativeEnglish(new Date(2025, 9, 1).toISOString(), now)).toBe("1 year ago");
   });
 });
 

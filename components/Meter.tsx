@@ -65,8 +65,8 @@ export default function Meter({ data }: { data: ResultsFile }) {
     "cursor-pointer border border-rule px-3 py-1.5 text-sm transition-colors has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-paper has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink";
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-      <div className="space-y-8">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+      <div className="min-w-0 space-y-8">
         <fieldset>
           <legend className="mb-3 text-sm text-ink-soft">Clip</legend>
           <div className="border-t border-rule">

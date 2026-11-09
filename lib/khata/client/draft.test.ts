@@ -1,11 +1,12 @@
 import { describe, expect, it } from "vitest";
-import type { ParseResult } from "@/lib/khata/types";
+import type { Flag, ParseResult } from "@/lib/khata/types";
 import {
   draftFromParse,
   emptyDraft,
   finalizeDraft,
   isNewCustomer,
   itemsSum,
+  liveFlags,
   newItem,
   warningFlags,
 } from "./draft";
@@ -59,6 +60,26 @@ describe("helpers", () => {
   });
   it("drops new_customer from warnings", () => {
     expect(warningFlags(["new_customer", "sum_mismatch"])).toEqual(["sum_mismatch"]);
+  });
+});
+
+describe("liveFlags", () => {
+  const base = { flags: ["sum_mismatch", "no_total", "numbers_differ"] as Flag[], items: [newItem("x", "", "30")], total: "" };
+
+  it("drops sum_mismatch and no_total once the form is fixed", () => {
+    expect(liveFlags({ ...base, total: "30" })).toEqual(["numbers_differ"]);
+  });
+
+  it("keeps no_total while the total is empty", () => {
+    expect(liveFlags(base)).toEqual(["numbers_differ", "no_total"]);
+  });
+
+  it("adds sum_mismatch when the typed amounts disagree", () => {
+    expect(liveFlags({ flags: [], items: [newItem("x", "", "30")], total: "50" })).toEqual(["sum_mismatch"]);
+  });
+
+  it("stays quiet on a blank typed entry", () => {
+    expect(liveFlags({ flags: [], items: [newItem()], total: "" })).toEqual([]);
   });
 });
 
