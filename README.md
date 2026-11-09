@@ -1,13 +1,16 @@
 # Pakka · पक्का
 
-Speak an udhaar entry in Hindi or Hinglish. Pakka writes it into the khata, checks every amount twice, and reads the balance back to the customer.
+A voice ledger for kirana shops. Udhaar is still written in a paper khata: the queue waits while the owner writes, and at month end nobody can prove what was on the tab. With Pakka the owner presses one button and says the entry in Hindi or Hinglish. Pakka writes it, the owner confirms with one tap, and the customer gets it on WhatsApp right away. No typing, no training.
 
 > "रमेश के खाते में 2 पैकेट Maggi 30 रुपये और एक दूध 28 रुपये"
 > → रमेश वर्मा · उधार · Maggi ₹30, दूध ₹28 · कुल ₹58 → confirm → Timbre: "रमेश वर्मा जी, आज 58 रुपये का सामान खाते में लिखा गया। अब कुल बाकी 226 रुपये है।"
 
-**Live:** https://pakka-nu-puce.vercel.app (tap "Try the demo", no signup) · noise test: https://pakka-nu-puce.vercel.app/proof
+- **Live:** https://pakka-nu-puce.vercel.app (tap "Try the demo", no signup)
+- **Demo video:** https://youtu.be/zZ2lHacwKYc
+- **One-page pitch:** [PITCH.md](PITCH.md)
+- **Noise test:** https://pakka-nu-puce.vercel.app/proof
 
-Built solo from Raipur for the Gnani AI Great Indian AI Internship Challenge.
+Built solo by Anish Kumar (IIIT Naya Raipur) for the Gnani AI Great Indian AI Internship Challenge.
 
 ## Why check twice
 
